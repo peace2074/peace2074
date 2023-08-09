@@ -1,0 +1,10 @@
+.rainbow {
+  background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);   
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.underline {
+  text-decoration: underline;
+}

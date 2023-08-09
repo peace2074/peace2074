@@ -1,6 +1,6 @@
 <template>
   <div>
-<h1 class="text-h4 text-center">Home</h1>
+<h3 class="text-center rainbow underline q-py-lg">Home Page</h3>
   </div>
 </template>
 
