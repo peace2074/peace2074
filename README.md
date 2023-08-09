@@ -1,12 +1,6 @@
-# Nuxt3.6 Template
+# Nuxt 3 Minimal Starter
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
-## Features
-MongoDB
-QuasarUI
-CASL permissions
-#### npx prisma generate
-#### update .env file
 
 ## Setup
 
@@ -65,6 +59,5 @@ pnpm run preview
 # yarn
 yarn preview
 ```
-![Demo Page](https://github.com/waelio/nuxt-template/blob/main/assets/Screenshot%20from%202023-07-11%2013-16-12.png)
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
