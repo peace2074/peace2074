@@ -7,7 +7,6 @@ export default defineNuxtConfig({
     'nuxt-quasar-ui'
   ],
     // @ts-ignore
-
   quasar: QuasarOptions,
 
 })
