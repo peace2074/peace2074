@@ -10,12 +10,12 @@
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
-    "@types/node": "^18.17.1",
+    "@types/node": "^18.17.4",
     "nuxt": "^3.6.5",
     "nuxt-quasar-ui": "^2.0.5"
   },
   "dependencies": {
     "@quasar/extras": "^1.16.5",
-    "quasar": "^2.12.3"
+    "quasar": "^2.12.4"
   }
 }
