@@ -12,7 +12,8 @@
     "@nuxt/devtools": "latest",
     "@types/node": "^18.17.4",
     "nuxt": "^3.6.5",
-    "nuxt-quasar-ui": "^2.0.5"
+    "nuxt-quasar-ui": "^2.0.5",
+    "waelio-utils": "^5.0.1"
   },
   "dependencies": {
     "@quasar/extras": "^1.16.5",

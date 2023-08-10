@@ -25,6 +25,9 @@ devDependencies:
   nuxt-quasar-ui:
     specifier: ^2.0.5
     version: 2.0.5(@quasar/extras@1.16.5)(quasar@2.12.4)
+  waelio-utils:
+    specifier: ^5.0.1
+    version: 5.0.1
 
 packages:
 
@@ -2280,6 +2283,10 @@ packages:
       path-key: 3.1.1
       shebang-command: 2.0.0
       which: 2.0.2
+    dev: true
+
+  /crypto-js@4.1.1:
+    resolution: {integrity: sha512-o2JlM7ydqd3Qk9CA0L4NL6mTzU2sdx96a+oOfPu8Mkl/PK51vSyoi8/rQ8NknZtk44vq15lmhAj9CIAGwgeWKw==}
     dev: true
 
   /css-declaration-sorter@6.4.1(postcss@8.4.27):
@@ -6362,6 +6369,12 @@ packages:
       '@vue/runtime-dom': 3.3.4
       '@vue/server-renderer': 3.3.4(vue@3.3.4)
       '@vue/shared': 3.3.4
+    dev: true
+
+  /waelio-utils@5.0.1:
+    resolution: {integrity: sha512-cZznf2CFjw0+jYUViuMrQqm2IRVpReNGT0oUi9trmgpjNXWqZmS5YneOsSjup4su6qmfj/TOVkeMbBdHmFHprQ==}
+    dependencies:
+      crypto-js: 4.1.1
     dev: true
 
   /wait-on@7.0.1:
