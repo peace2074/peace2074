@@ -312,3 +312,17 @@ export interface SubscriptionI {
   keys: KeysT
 }
 export type SubscriptionT = SubscriptionI
+
+
+/*** API */
+
+declare type api = ()  => Promise<object>
+
+ 
+  
+
+
+
+
+
+export default api

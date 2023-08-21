@@ -1,5 +1,5 @@
 .rainbow {
-  background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);   
+  background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -7,4 +7,28 @@
 
 .underline {
   text-decoration: underline;
+}
+
+
+.wCard {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: 1rem;
+    padding: 1rem;
+    margin: 1rem;
+}
+
+.wc {
+  font-size: 2.4em;
+  width: 25rem;
+  height: 12.5rem;
+  text-transform: capitalize;
+  box-shadow: inset 0 0 0 0 #54b3d6;
+  padding: 1rem;
+  margin: 0 -.25rem;
+  padding: 0 .25rem;
+  text-decoration: lime;
 }
