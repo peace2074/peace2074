@@ -1,13 +1,13 @@
 <script setup lang="ts">
-const color = useColorMode()
+import { useColorMode } from "@vueuse/core";
+
+const color = useColorMode();
 
 function toggleDark() {
-  color.preference = color.value === 'dark' ? 'light' : 'dark'
+  color.value = color.value === "dark" ? "light" : "dark";
 }
 </script>
 
 <template>
-  <button class="!outline-none" @click="toggleDark">
-    <div class="dark:i-carbon-moon i-carbon-sun" />
-  </button>
+  <q-icon class="q-mx-sm" size="lg" :name="color === 'dark' ? `dark_mode` : `light_mode`" @click="toggleDark" />
 </template>

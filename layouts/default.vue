@@ -77,8 +77,7 @@ const toggleLeftDrawer = () => {
             <span class="q-ml-sm text-h5 rainbow">{{ cleanerPath.capt }}</span>
           </nuxt-link>
         </q-toolbar-title>
-        
-        
+
         <q-space />
         <div v-if="search">
           <q-input
@@ -158,8 +157,9 @@ const toggleLeftDrawer = () => {
             </template>
           </q-input>
         </div>
-        <q-icon size="lg" name="search" @click="search='search'" v-else />        
-        <LangSwitcher v-if="!isAuthenticated" />
+        <q-icon size="lg" name="search" @click="search = 'search'" v-else />
+        <DarkToggle />
+        <LangSwitcher />
         <div v-if="isAuthenticated" class="q-gutter-sm row items-center no-wrap">
           <q-btn round :class="autoClass">
             <q-avatar size="42px">

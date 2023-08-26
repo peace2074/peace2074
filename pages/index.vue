@@ -1,15 +1,23 @@
 <script lang="ts" setup>
-import { UserI } from "../types";
+import { UserI, CaslActionE, CaslSubjectE } from "../types";
+import { useTimeAgo } from "@vueuse/core";
+import moment from "moment";
+
 import { Ref, ComputedRef } from "vue";
 import useAuth from "~/composables/useAuth";
-import { CaslActionE, CaslSubjectE } from "../types";
 import { useAuthStore } from "~/store/auth.pinia";
+import { useHead } from "@vueuse/head";
+
 const { t } = useI18n();
 const router = useRouter();
 const { useAuthUser, initAuth, useAuthLoading, logout } = useAuth();
 const { can, cannot } = useCasl();
 const $q = useQuasar();
 const _auth = useAuthStore();
+
+const date = "__DATE__";
+const timeAgo = useTimeAgo(date);
+const BuildTime: string = moment(date).format("ddd MMM DD, YYYY [at] HH:mm");
 
 useHead({
   title: t("welcome"),
@@ -56,7 +64,6 @@ const localAlert = (title: string, message: string) => {
 
         <!-- App -->
         <div clas="all-pages q-px-md">
- 
           <slot />
         </div>
         <div class="q-px-md">
@@ -67,6 +74,9 @@ const localAlert = (title: string, message: string) => {
             :label="$t(isAuthenticated ? 'navigation.Signout' : 'navigation.Signin')"
             @click.prevent="isAuthenticated ? logout() : router.push('/auth/login')"
           />
+        </div>
+        <div class="text-center" :class="isDark ? 'text-white' : 'text-dark'">
+          Built at: {{ BuildTime }} ({{ timeAgo }})
         </div>
       </MainSection>
     </NuxtLayout>

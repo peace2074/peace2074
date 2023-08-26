@@ -1,11 +1,8 @@
-<script setup>
-const { useAuthUser } = useAuth();
-const user = useAuthUser();
-</script>
+
 <template>
   <NuxtLayout name="default">
-    <div class="user-settings full-width" v-if="currentUser">
-      <q-form class="full-height" >
+    <div class="user-settings full-width" v-if="currentUser" :class="autoClass">
+      <q-form class="full-height" :class="autoClass">
         <div class="background-photo">
           <div class="default-background" >
             <q-img
@@ -126,7 +123,8 @@ const user = useAuthUser();
   </NuxtLayout>
 </template>
 
-<script>
+<script setup lang="ts">
+import {  autoClass } from "~/mixins";
 const { useAuthUser } = useAuth();
 const user = useAuthUser();
 const fullName = computed(()=> user.value.first_name+' ' + user.value.last_name)
