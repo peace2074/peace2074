@@ -74,7 +74,6 @@ export default defineNuxtConfig({
     resolve: {
       alias: {
         '~/': `${path.resolve(__dirname, '')}/`,
-        'src': `${path.resolve(__dirname, '')}/`,
         '@store': `${path.resolve(__dirname, '/store')}/`,
         '@components': `${path.resolve(__dirname, '/components')}/`,
         '@composables': `${path.resolve(__dirname, '/composables')}/`,
