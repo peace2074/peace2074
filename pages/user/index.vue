@@ -51,7 +51,8 @@
       <div class="col-8 self-start" v-if="tweet">
         <div class="q-px-md row justify-center full-width" style="height: 100%">
           <div style="width: 100%; min-width: 400px; height: 50vh; overflow-y: scroll">
-            <MessageList v-if="false"
+            <MessageList
+              v-if="false"
               :messages="chats"
               :findMessages="findUsers"
               :createMessage="createMessage"
@@ -81,14 +82,16 @@
   </NuxtLayout>
 </template>
 <script lang="ts" setup>
-import { UserI } from "../../types";
+import { ref, watch,onBeforeMount } from "vue";
+
+import { UserI } from "../../types/index";
 const loading = ref(false);
 const search = ref();
 const tweet = ref(null);
 const { useAuthUser, logout } = useAuth();
-const user:UserI = useAuthUser();
 const { getTweetById, getTweetsByUser } = useTweets();
 
+const user = useAuthUser() as UserI;
 watch(
   () => useRoute().fullPath,
   () => getTweet()
