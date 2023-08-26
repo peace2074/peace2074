@@ -67,6 +67,9 @@ export default defineNuxtConfig({
   },
   // @ts-ignore
   quasar: QuasarOptions,
+  vite: {
+    
+  },
   pwa: {
     manifest: {
       "name": "Peace2074 Home",
