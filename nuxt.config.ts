@@ -1,6 +1,8 @@
 import { defineNuxtConfig } from 'nuxt/config'
 import { QuasarOptions } from './qusarOptions'
-import { fileURLToPath } from 'url'
+import path from 'path'
+import replace from '@rollup/plugin-replace'
+
 
 
 export default defineNuxtConfig({
@@ -18,10 +20,10 @@ export default defineNuxtConfig({
     ],
   },
   alias: {
-    "@": fileURLToPath(new URL('./', import.meta.url)),
-    "@store": fileURLToPath(new URL('./store/', import.meta.url)),
-    "@pages": fileURLToPath(new URL('./pages/', import.meta.url)),
-    "@cmps": fileURLToPath(new URL('./composables/', import.meta.url)),
+    "@": './',
+    "@store": './store',
+    "@pages": './pages',
+    "@components": './composables',
   },
   css: [
     '@quasar/extras/material-icons/material-icons.css',
@@ -69,8 +71,20 @@ export default defineNuxtConfig({
   // @ts-ignore
   quasar: QuasarOptions,
   vite: {
-    
+    resolve: {
+      alias: {
+        '~/': `${path.resolve(__dirname, 'src')}/`,
+        'src/': `${path.resolve(__dirname, 'src')}/`,
+        'store/': `${path.resolve(__dirname, 'src/store')}/`,
+        'components/': `${path.resolve(__dirname, 'src/components')}/`,
+        'pages/': `${path.resolve(__dirname, 'src/pages')}/`,
+      },
+    },
   },
+  replace: ({
+    __DATE__: new Date().toISOString(),
+    preventAssignment: true,
+  }),
   pwa: {
     meta: {
       name: "Peace2074",

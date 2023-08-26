@@ -83,13 +83,14 @@
 </template>
 <script lang="ts" setup>
 import { ref, watch,onBeforeMount } from "vue";
+import { UserI } from "../../types";
 
-import { UserI } from "../../types/index";
 const loading = ref(false);
 const search = ref();
 const tweet = ref(null);
 const { useAuthUser, logout } = useAuth();
 const { getTweetById, getTweetsByUser } = useTweets();
+const route = useRoute()
 
 const user = useAuthUser() as UserI;
 watch(
