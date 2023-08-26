@@ -46,7 +46,7 @@
             <q-icon name="search" />
           </template>
         </q-input>
-        <UserList :users="UserI" :logout="logout" />
+        <UserList :users="user" :logout="logout" />
       </div>
       <div class="col-8 self-start" v-if="tweet">
         <div class="q-px-md row justify-center full-width" style="height: 100%">
@@ -83,7 +83,7 @@
 </template>
 <script lang="ts" setup>
 import { ref, watch,onBeforeMount } from "vue";
-import { UserI } from "../../types";
+import { UserI } from "@t";
 
 const loading = ref(false);
 const search = ref();

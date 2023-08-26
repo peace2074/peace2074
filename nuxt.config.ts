@@ -73,11 +73,12 @@ export default defineNuxtConfig({
   vite: {
     resolve: {
       alias: {
-        '~/': `${path.resolve(__dirname, 'src')}/`,
-        'src/': `${path.resolve(__dirname, 'src')}/`,
-        'store/': `${path.resolve(__dirname, 'src/store')}/`,
-        'components/': `${path.resolve(__dirname, 'src/components')}/`,
-        'pages/': `${path.resolve(__dirname, 'src/pages')}/`,
+        '~/': `${path.resolve(__dirname, '')}/`,
+        'src': `${path.resolve(__dirname, '')}/`,
+        '@store': `${path.resolve(__dirname, '/store')}/`,
+        '@components/': `${path.resolve(__dirname, '/components')}/`,
+        '@pages': `${path.resolve(__dirname, '/pages')}/`,
+        '@t': `${path.resolve(__dirname, '/type')}/`,
       },
     },
   },
