@@ -28,6 +28,7 @@ export default defineNuxtConfig({
     'quasar/dist/quasar.prod.css',
     '~/assets/styles/quasar.scss',
   ],
+  buildModules: ["@nuxtjs/pwa"],
   imports: {
     autoImport: true,
   },
@@ -71,6 +72,11 @@ export default defineNuxtConfig({
     
   },
   pwa: {
+    meta: {
+      name: "Peace2074",
+      author: "waelio 2023",
+      description: "pprofissional brand peace2074 by waelio",
+    },
     manifest: {
       "name": "Peace2074 Home",
       "short_name": "Peace2074",

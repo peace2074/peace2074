@@ -69,7 +69,7 @@ const toggleLeftDrawer = () => {
           class="q-mr-sm"
         />
 
-        <q-toolbar-title v-if="$q.screen.gt.xs" shrink class="row items-center no-wrap">
+        <q-toolbar-title shrink class="row items-center no-wrap">
           <nuxt-link to="/">
             <q-img :ratio="1 / 1" src="quasar-logo.png" class="quasar-logo" />
           </nuxt-link>
@@ -77,87 +77,88 @@ const toggleLeftDrawer = () => {
             <span class="q-ml-sm text-h5 rainbow">{{ cleanerPath.capt }}</span>
           </nuxt-link>
         </q-toolbar-title>
-
+        
+        
         <q-space />
+        <div v-if="search">
+          <q-input
+            :class="autoClass"
+            class="GNL__toolbar-input"
+            outlined
+            dense
+            v-model="search"
+            color="shadow-1"
+            placeholder="Search for topics, locations `&` sources"
+          >
+            <template v-slot:prepend>
+              <q-icon v-if="search === ''" name="search" />
+              <q-icon v-else name="clear" class="cursor-pointer" @click="search = ''" />
+            </template>
+            <template v-slot:append>
+              <q-btn
+                flat
+                dense
+                round
+                aria-label="Menu"
+                icon="arrow_drop_down"
+                :class="autoClass"
+              >
+                <q-menu anchor="bottom end" self="top end" :class="autoClass">
+                  <div class="q-pa-md" cl:class="widtCautoClass0px" :class="autoClass">
+                    <div class="text-body2 q-mb-md">Narrow your search results</div>
 
-        <q-input
-          :class="autoClass"
-          class="GNL__toolbar-input"
-          outlined
-          dense
-          v-model="search"
-          color="shadow-1"
-          placeholder="Search for topics, locations & sources"
-        >
-          <template v-slot:prepend>
-            <q-icon v-if="search === ''" name="search" />
-            <q-icon v-else name="clear" class="cursor-pointer" @click="search = ''" />
-          </template>
-          <template v-slot:append>
-            <q-btn
-              flat
-              dense
-              round
-              aria-label="Menu"
-              icon="arrow_drop_down"
-              :class="autoClass"
-            >
-              <q-menu anchor="bottom end" self="top end" :class="autoClass">
-                <div class="q-pa-md" cl:class="widtCautoClass0px" :class="autoClass">
-                  <div class="text-body2 q-mb-md">Narrow your search results</div>
+                    <div class="row items-center">
+                      <div class="col-3 text-subtitle2 text-grey">Exact phrase</div>
+                      <div class="col-9 q-pl-md">
+                        <q-input dense v-model="exactPhrase" />
+                      </div>
 
-                  <div class="row items-center">
-                    <div class="col-3 text-subtitle2 text-grey">Exact phrase</div>
-                    <div class="col-9 q-pl-md">
-                      <q-input dense v-model="exactPhrase" />
-                    </div>
+                      <div class="col-3 text-subtitle2 text-grey">Has words</div>
+                      <div class="col-9 q-pl-md">
+                        <q-input dense v-model="hasWords" />
+                      </div>
 
-                    <div class="col-3 text-subtitle2 text-grey">Has words</div>
-                    <div class="col-9 q-pl-md">
-                      <q-input dense v-model="hasWords" />
-                    </div>
+                      <div class="col-3 text-subtitle2 text-grey">Exclude words</div>
+                      <div class="col-9 q-pl-md">
+                        <q-input dense v-model="excludeWords" />
+                      </div>
 
-                    <div class="col-3 text-subtitle2 text-grey">Exclude words</div>
-                    <div class="col-9 q-pl-md">
-                      <q-input dense v-model="excludeWords" />
-                    </div>
+                      <div class="col-3 text-subtitle2 text-grey">Website</div>
+                      <div class="col-9 q-pl-md">
+                        <q-input dense v-model="byWebsite" />
+                      </div>
 
-                    <div class="col-3 text-subtitle2 text-grey">Website</div>
-                    <div class="col-9 q-pl-md">
-                      <q-input dense v-model="byWebsite" />
-                    </div>
-
-                    <div class="col-12 q-pt-lg row justify-end">
-                      <q-btn
-                        flat
-                        dense
-                        no-caps
-                        color="grey-7"
-                        size="md"
-                        style="min-width: 68px"
-                        label="Search"
-                        v-close-popup
-                      />
-                      <q-btn
-                        flat
-                        dense
-                        no-caps
-                        color="grey-7"
-                        size="md"
-                        style="min-width: 68px"
-                        @click="onClear"
-                        label="Clear"
-                        v-close-popup
-                      />
+                      <div class="col-12 q-pt-lg row justify-end">
+                        <q-btn
+                          flat
+                          dense
+                          no-caps
+                          color="grey-7"
+                          size="md"
+                          style="min-width: 68px"
+                          label="Search"
+                          v-close-popup
+                        />
+                        <q-btn
+                          flat
+                          dense
+                          no-caps
+                          color="grey-7"
+                          size="md"
+                          style="min-width: 68px"
+                          @click="onClear"
+                          label="Clear"
+                          v-close-popup
+                        />
+                      </div>
                     </div>
                   </div>
-                </div>
-              </q-menu>
-            </q-btn>
-          </template>
-        </q-input>
-
-        <q-space />
+                </q-menu>
+              </q-btn>
+            </template>
+          </q-input>
+        </div>
+        <q-icon size="lg" name="search" @click="search='search'" v-else />        
         <LangSwitcher v-if="!isAuthenticated" />
         <div v-if="isAuthenticated" class="q-gutter-sm row items-center no-wrap">
           <q-btn round :class="autoClass">

@@ -2,8 +2,8 @@ import { /*fasEarthAmericas,*/ fasFlask } from "@quasar/extras/fontawesome-v6";
 import { QSpinnerGears } from 'quasar'
 
 export const links1 = [
-  { icon: "person", text: "navigation.Profile", dist: "/auth/profile" },
-  { icon: "star_border", text: "navigation.Favorites", dist: "/auth/favorites" },
+  { icon: "person", text: "navigation.Profile", dist: "/user/profile" },
+  { icon: "star_border", text: "navigation.Favorites", dist: "/user/favorites" },
   { icon: "settings", text: "navigation.SettingsPageTitle", dist: "/settings" },
   { icon: "info", text: "navigation.AboutPageTitle", dist: "/about" },
   { icon: "mail", text: "navigation.Messages", dist: "/user/inbox" },

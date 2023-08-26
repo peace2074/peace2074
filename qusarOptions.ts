@@ -13,18 +13,18 @@ export const QuasarOptions = {
   importStrategy: 'auto',
   extras: {
     font: 'roboto-font',
-      fontIcons: ['material-icons'],
-        animations: 'all',
+    fontIcons: ['material-icons'],
+    animations: 'all',
   },
   config: {
     dark: false,
-    },
+  },
   // @ts-ignore
   components: {
     defaults: {
       QBtn: {
         glossy: true,
-        },
+      },
     },
   },
 }

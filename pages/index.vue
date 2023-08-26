@@ -52,103 +52,11 @@ const localAlert = (title: string, message: string) => {
   <ClientOnly>
     <NuxtLayout name="default">
       <MainSection class="fit no-borders" title="Home" :loading="loading">
-        <LoadingPage v-if="isAuthLoading" />
+        <LoadingPage v-if="!isAuthLoading" />
 
         <!-- App -->
         <div clas="all-pages q-px-md">
-          <section class="lg:px-[15%] px-[5%] pt-20">
-            <h3
-              class="lg:text-5xl text-2xl leading-normal font-semibold text-center revrainbow"
-            >
-              Check Out Our Latest
-            </h3>
-          </section>
-          <h4>
-            <a target="_blank" href="https://casl.js.org/v6/en">CASL Documentaions</a>
-          </h4>
-          <fieldset>
-            <legend>{{ $t("demoContent.q1") }}</legend>
-            <q-btn
-              :label="$t('demoContent.q1')"
-              :color="
-                can(CaslActionE.CREATE, CaslSubjectE.POST) ? 'positive' : 'negative'
-              "
-              @click="
-                localAlert(
-                  `demoContent.q1`,
-                  JSON.stringify(can(CaslActionE.CREATE, CaslSubjectE.POST))
-                )
-              "
-            ></q-btn>
-            <pre lang="html">
-              v-if="can({{ CaslActionE.CREATE }}, {{
-                CaslSubjectE.POST
-              }})"                         
-            </pre>
-            <q-radio
-              :label="can(CaslActionE.CREATE, CaslSubjectE.POST) ? 'True' : 'False'"
-            />
-            <p>
-             <q-btn color="pink" text-color="white" label="change" @click="updateStore(CaslSubjectE.POST,CaslActionE.CREATE)" />
-            </p>
-            
-          </fieldset>
-          <fieldset>
-            <legend>{{ $t("demoContent.q2") }}</legend>
-            <q-btn
-              label="Read Post"
-              :color="can(CaslActionE.READ, CaslSubjectE.POST) ? 'positive' : 'negative'"
-              @click="
-                localAlert(
-                  `demoContent.q2`,
-                  JSON.stringify(can(CaslActionE.READ, CaslSubjectE.POST))
-                )
-              "
-            ></q-btn>
-            <p v-if="can(CaslActionE.READ, CaslSubjectE.POST)">POST content ...</p>
-            <pre lang="html">
-              v-if="can({{ CaslActionE.READ }}, {{
-                CaslSubjectE.POST
-              }})"                         
-            </pre>
-            <q-radio
-              :label="can(CaslActionE.READ, CaslSubjectE.POST) ? 'True' : 'False'"
-            />
-          </fieldset>
-          <fieldset>
-            <legend>{{ $t("demoContent.q3") }}</legend>
-            <q-btn
-              label="Update Post"
-              color="warning"
-              :disable="cannot(CaslActionE.UPDATE, CaslSubjectE.POST)"
-            ></q-btn>
-            <pre lang="html">
-              :disable="cannot({{ CaslActionE.UPDATE }}, {{
-                CaslSubjectE.POST
-              }})"                         
-            </pre>
-            <q-radio
-              :label="can(CaslActionE.UPDATE, CaslSubjectE.POST) ? 'True' : 'False'"
-            />
-          </fieldset>
-
-          <fieldset>
-            <legend>{{ $t("demoContent.q4") }}</legend>
-            <q-btn
-              label="Delete Post"
-              color="negative"
-              :disable="cannot(CaslActionE.DELETE, CaslSubjectE.POST)"
-            ></q-btn>
-            <pre lang="javascript">
-              :disable="cannot({{ CaslActionE.DELETE }}, {{
-                CaslSubjectE.POST
-              }})"                         
-            </pre>
-            <q-radio
-              :label="can(CaslActionE.DELETE, CaslSubjectE.POST) ? 'True' : 'False'"
-            />
-          </fieldset>
-
+ 
           <slot />
         </div>
         <div class="q-px-md">

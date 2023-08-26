@@ -46,12 +46,12 @@
             <q-icon name="search" />
           </template>
         </q-input>
-        <UserList :users="users" :logout="logout" />
+        <UserList :users="UserI" :logout="logout" />
       </div>
       <div class="col-8 self-start" v-if="tweet">
         <div class="q-px-md row justify-center full-width" style="height: 100%">
           <div style="width: 100%; min-width: 400px; height: 50vh; overflow-y: scroll">
-            <MessageList
+            <MessageList v-if="false"
               :messages="chats"
               :findMessages="findUsers"
               :createMessage="createMessage"
@@ -81,13 +81,12 @@
   </NuxtLayout>
 </template>
 <script lang="ts" setup>
-import useTweets from "~/composables/useTweets";
-
+import { UserI } from "../../types";
 const loading = ref(false);
 const search = ref();
 const tweet = ref(null);
 const { useAuthUser, logout } = useAuth();
-const user = useAuthUser();
+const user:UserI = useAuthUser();
 const { getTweetById, getTweetsByUser } = useTweets();
 
 watch(
