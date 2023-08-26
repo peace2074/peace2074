@@ -192,6 +192,8 @@ export interface UserI {
   first_name?: string;
   last_name?: string;
   profileImage?: string;
+  user_locale?: string[];
+  phone_number?: number;
   role: string;
   // Refresh token
   refreshToken?: RefreshToken[];
