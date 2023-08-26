@@ -1,9 +1,12 @@
 <template>
   <div>
+    <VitePwaManifest />
     <RouterView />
   </div>
 </template>
-<style>
-  @import url('~/assets/css/style.scss');
-
-</style>
+<script setup>
+import runSetup from "./utils/setup";
+if (process.client) {
+  runSetup();
+}
+</script>

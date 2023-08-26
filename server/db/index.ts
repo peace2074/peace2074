@@ -1,5 +1,4 @@
 import { PrismaClient } from '@prisma/client'
+export const prisma = new PrismaClient()
 
-const prisma: Partial<PrismaClient> = new PrismaClient()
-
-export { prisma }
+export default prisma

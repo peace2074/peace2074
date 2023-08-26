@@ -1,3 +1,6 @@
+import { MediaFile, RefreshToken, Tweet } from "@prisma/client"
+import { NavigationGuard, RouteLocationNormalized } from "~/.nuxt/vue-router"
+
 export type KeyT = number
 export type ColorT = string
 export type NameT = string
@@ -191,15 +194,15 @@ export interface UserI {
   profileImage?: string;
   role: string;
   // Refresh token
-  refreshToken?: ReshreshTokenT[];
+  refreshToken?: RefreshToken[];
 
   //Auth0
   auth0Id?: string;
 
   // Tweet
-  tweet?: string[];
+  tweet?: Tweet[];
   // MediaFiles
-  mediaFiles?: string[]
+  mediaFiles?: MediaFile[]
 }
 export type UserT = UserI
 
@@ -271,6 +274,10 @@ export interface RequestPostI {
   data: PostI
 }
 
+export interface RouteMiddlewareI {
+  (to: RouteLocationNormalized, from: RouteLocationNormalized): ReturnType<NavigationGuard>
+}
+
 export enum CaslActionE {
   CREATE = 'create',
   READ = 'read',
@@ -312,17 +319,3 @@ export interface SubscriptionI {
   keys: KeysT
 }
 export type SubscriptionT = SubscriptionI
-
-
-/*** API */
-
-declare type api = ()  => Promise<object>
-
- 
-  
-
-
-
-
-
-export default api

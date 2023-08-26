@@ -1,48 +1,142 @@
-import { defineNuxtConfig } from "nuxt/config";
+import { defineNuxtConfig } from 'nuxt/config'
 import { QuasarOptions } from './qusarOptions'
+import { fileURLToPath } from 'url'
+
 
 export default defineNuxtConfig({
   devtools: { enabled: true },
-
-  ssr: false,
-  target: 'static',
   app: {
     head: {
-      htmlAttrs: { lang: 'en' },
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
-      meta: [
-        { charset: 'utf-8' }
-      ]
+    }
+  },
+  meta: {
+    meta: [
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { name: 'manifest', content: './manifest.json' }
+    ],
+  },
+  alias: {
+    "@": fileURLToPath(new URL('./', import.meta.url)),
+    "@store": fileURLToPath(new URL('./store/', import.meta.url)),
+    "@pages": fileURLToPath(new URL('./pages/', import.meta.url)),
+    "@cmps": fileURLToPath(new URL('./composables/', import.meta.url)),
+  },
+  css: [
+    '@quasar/extras/material-icons/material-icons.css',
+    'quasar/dist/quasar.prod.css',
+    '~/assets/styles/quasar.scss',
+  ],
+  imports: {
+    autoImport: true,
+  },
+  ssr: false,
+  runtimeConfig: {
+    // Auth
+    jwtAccessSecret: process.env.JWT_ACCESS_TOKEN_SECRET,
+    jwtRefreshSecret: process.env.JWT_REFRESH_TOKEN_SECRET,
+    // Cloudinary
+    cloudinaryCloudName: process.env.CLOUDINARY_CLOUD_NAME,
+    cloudinaryApiKey: process.env.CLOUDINARY_API_KEY,
+    cloudinaryApiSecret: process.env.CLOUDINARY_API_SECRET,
+    // EmailJS
+    emailPrivateKey: process.env.EMAIL_PRIVATE_KEY,
+    // Root User
+    rootEmail: process.env.ROOT_USER,
+    public: {
+      // EmailJS
+      EMAIL_SERVICE: process.env.EMAIL_PUBLIC_KEY,
+      EMAIL_TEMPLATE: process.env.EMAIL_TEMPLATE,
+      EMAIL_USER: process.env.EMAIL_USER,
+      // JSON place Holder
+      apiBase: process.env.API_URL,
     }
   },
   modules: [
+    '@pinia/nuxt',
     'nuxt-quasar-ui',
-    '@vueuse/nuxt',
     '@nuxtjs/i18n',
-    // "nuxt-lodash",
-    // '@nuxtjs/axios',
+    '@vite-pwa/nuxt'
   ],
+  pinia: {
+    autoImports: [
+      'defineStore',
+      ['defineStore', 'definePiniaStore'],
+    ],
+  },
   // @ts-ignore
   quasar: QuasarOptions,
-  i18n: {
-    vueI18n: './i18n.config.ts' // if you are using custom path, default 
+  pwa: {
+    manifest: {
+      "name": "Peace2074 Home",
+      "short_name": "Peace2074",
+      "theme_color": "#1976d2",
+      "background_color": "#fafafa",
+      "display": "standalone",
+      "icons": [
+        {
+          "src": "/icons/icon-72x72.png",
+          "sizes": "72x72",
+          "type": "image/png"
+        },
+        {
+          "src": "/icons/icon-48x48.png",
+          "sizes": "48x48",
+          "type": "image/png"
+        },
+        {
+          "src": "/icons/icon-96x96.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        },
+        {
+          "src": "/icons/icon-128x128.png",
+          "sizes": "128x128",
+          "type": "image/png"
+        },
+        {
+          "src": "/icons/icon-144x144.png",
+          "sizes": "144x144",
+          "type": "image/png"
+        },
+        {
+          "src": "/icons/icon-152x152.png",
+          "sizes": "152x152",
+          "type": "image/png"
+        },
+        {
+          "src": "/icons/icon-192x192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        },
+        {
+          "src": "/icons/icon-384x384.png",
+          "sizes": "384x384",
+          "type": "image/png"
+        },
+        {
+          "src": "/icons/icon-512x512.png",
+          "sizes": "512x512",
+          "type": "image/png"
+        }
+      ]
+    },
+    workbox: {
+      navigateFallback: "/",
+    },
+    devOptions: {
+      enabled: true,
+      type: "module",
+    },
   },
-  // privateRuntimeConfig: {
-  //   nuxtswagger: [
-  //     // { pluginName: 'foo', src: 'https://api.server.foo/swagger.json' },
-  //   ]
-  // },
-  // publicRuntimeConfig: {
-  //   // nuxtswagger: {
-  //     // pluginName: 'waelio',
-  //     // AxiosRequestConfig?
-  //     // axiosConfig: {
-  //     //   baseURL: process.env.API_WAELIO,
-  //     //   sudoURL: process.env.API_SUDOKU,
-  //     //   gnameURL: process.env.API_GNAMES
-  //     // }
-  //   // }
-  // }
+  i18n: {
+    vueI18n: './i18n.config.ts',
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      redirectOn: 'root',
+    }
+  },
 
 })
