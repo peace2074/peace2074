@@ -71,7 +71,7 @@ const toggleLeftDrawer = () => {
 
         <q-toolbar-title shrink class="row items-center no-wrap">
           <nuxt-link to="/">
-            <q-img :ratio="1 / 1" src="quasar-logo.png" class="quasar-logo" />
+            <q-img :ratio="1 / 1" src="lg.png" class="quasar-logo" />
           </nuxt-link>
           <nuxt-link :to="cleanerPath.path" v-if="PageName">
             <span class="q-ml-sm text-h5 rainbow">{{ cleanerPath.capt }}</span>
