@@ -1,8 +1,6 @@
 import { defineNuxtConfig } from 'nuxt/config'
 import { QuasarOptions } from './qusarOptions'
 import path from 'path'
-import replace from '@rollup/plugin-replace'
-
 
 
 export default defineNuxtConfig({
@@ -82,10 +80,6 @@ export default defineNuxtConfig({
       },
     },
   },
-  replace: ({
-    __DATE__: new Date().toISOString(),
-    preventAssignment: true,
-  }),
   pwa: {
     meta: {
       name: "Peace2074",

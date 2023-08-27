@@ -2,6 +2,7 @@
 import { UserI, CaslActionE, CaslSubjectE } from "../types";
 import { useTimeAgo } from "@vueuse/core";
 import moment from "moment";
+import { isDark } from "../mixins";
 
 import { Ref, ComputedRef } from "vue";
 import useAuth from "~/composables/useAuth";
@@ -14,8 +15,8 @@ const { useAuthUser, initAuth, useAuthLoading, logout } = useAuth();
 const { can, cannot } = useCasl();
 const $q = useQuasar();
 const _auth = useAuthStore();
-
-const date = "__DATE__";
+const __DATE__ = new Date().toISOString()
+const date = __DATE__;
 const timeAgo = useTimeAgo(date);
 const BuildTime: string = moment(date).format("ddd MMM DD, YYYY [at] HH:mm");
 
