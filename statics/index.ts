@@ -6,7 +6,7 @@ export const links1 = [
   { icon: "star_border", text: "navigation.Favorites", dist: "/user/favorites" },
   { icon: "settings", text: "navigation.SettingsPageTitle", dist: "/settings" },
   { icon: "info", text: "navigation.AboutPageTitle", dist: "/about" },
-  { icon: "mail", text: "navigation.Messages", dist: "/user/inbox" },
+  { icon: "mail", text: "navigation.Messages", dist: "/user/messages" },
   { icon: "contact_page", text: "navigation.ContactPageTitle", dist: "/contact" },
   { icon: "manage_accounts", text: "navigation.AdminPage", dist: "/admin" },
 

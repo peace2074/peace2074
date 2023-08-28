@@ -7,15 +7,19 @@ import { isDark } from "../mixins";
 import { Ref, ComputedRef } from "vue";
 import useAuth from "~/composables/useAuth";
 import { useAuthStore } from "~/store/auth.pinia";
-import { useHead } from "@vueuse/head";
-
+const { $io } = useNuxtApp();
 const { t } = useI18n();
 const router = useRouter();
-const { useAuthUser, initAuth, useAuthLoading, logout } = useAuth();
 const { can, cannot } = useCasl();
+
+const sendMessage = () => {
+  console.log("Click");
+  $io.emit("message", "new message sent");
+};
+const { useAuthUser, initAuth, useAuthLoading, logout } = useAuth();
 const $q = useQuasar();
 const _auth = useAuthStore();
-const __DATE__ = new Date().toISOString()
+const __DATE__ = new Date().toISOString();
 const date = __DATE__;
 const timeAgo = useTimeAgo(date);
 const BuildTime: string = moment(date).format("ddd MMM DD, YYYY [at] HH:mm");
@@ -67,6 +71,9 @@ const localAlert = (title: string, message: string) => {
         <div clas="all-pages q-px-md">
           <slot />
         </div>
+        <!--
+        <q-btn @click="sendMessage" color="primary">Send Message</q-btn>
+        -->
         <div class="q-px-md">
           <q-btn
             class="q-my-md q-ml-none`"

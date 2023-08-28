@@ -9,13 +9,16 @@ export default defineNuxtConfig({
     head: {
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
+      meta: [
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { name: 'manifest', content: './manifest.json' }
+      ],
     }
   },
-  meta: {
-    meta: [
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { name: 'manifest', content: './manifest.json' }
-    ],
+  nitro: {
+    externals: {
+      inline: ['date-fns']
+    }
   },
   alias: {
     "@": './',
@@ -58,7 +61,9 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     'nuxt-quasar-ui',
     '@nuxtjs/i18n',
-    '@vite-pwa/nuxt'
+    '@vite-pwa/nuxt',
+    '@vueuse/nuxt',
+
   ],
   pinia: {
     autoImports: [
@@ -66,6 +71,7 @@ export default defineNuxtConfig({
       ['defineStore', 'definePiniaStore'],
     ],
   },
+
   // @ts-ignore
   quasar: QuasarOptions,
   vite: {
@@ -81,6 +87,7 @@ export default defineNuxtConfig({
     },
   },
   pwa: {
+    // @ts-ignore
     meta: {
       name: "Peace2074",
       author: "waelio 2023",
@@ -156,5 +163,12 @@ export default defineNuxtConfig({
       redirectOn: 'root',
     }
   },
+  serverHandlers: [
+    {
+      route: '/ws',
+      handler: '~/server-middleware/socket'
+    }
+  ]
+
 
 })

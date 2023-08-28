@@ -83,7 +83,7 @@
 </template>
 <script lang="ts" setup>
 import { ref, watch,onBeforeMount } from "vue";
-import { UserI } from "@t";
+import { UserI } from "../../types";
 
 const loading = ref(false);
 const search = ref();
