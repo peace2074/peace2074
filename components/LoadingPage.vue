@@ -2,7 +2,7 @@
 import { ref } from "vue";
 const visible = ref(false);
 const showSimulatedReturnData = ref(false);
-
+const msg = ref('')
 const showTextLoading = () => {
   visible.value = true;
   showSimulatedReturnData.value = false;

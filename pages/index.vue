@@ -11,10 +11,11 @@ const { $io } = useNuxtApp();
 const { t } = useI18n();
 const router = useRouter();
 const { can, cannot } = useCasl();
-
+const msg = ref("");
 const sendMessage = () => {
   console.log("Click");
-  $io.emit("message", "new message sent");
+  $io.emit("message", msg.value);
+  msg.value = ''
 };
 const { useAuthUser, initAuth, useAuthLoading, logout } = useAuth();
 const $q = useQuasar();
@@ -71,9 +72,10 @@ const localAlert = (title: string, message: string) => {
         <div clas="all-pages q-px-md">
           <slot />
         </div>
-        <!--
+        <q-input v-model="msg" type="text" label="Write Message" />
+        <q-chat-message :text="[msg]" sent />
         <q-btn @click="sendMessage" color="primary">Send Message</q-btn>
-        -->
+
         <div class="q-px-md">
           <q-btn
             class="q-my-md q-ml-none`"
