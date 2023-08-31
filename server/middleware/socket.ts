@@ -1,4 +1,6 @@
+
 import { Server } from 'socket.io';
+import { fromNodeMiddleware } from "h3";
 
 const io = new Server(3001, {
   cors: {
@@ -25,7 +27,9 @@ io.on('connect', (socket) => {
   })
 });
 
-export default function (req, res, next) {
+
+export default fromNodeMiddleware((_req, res, next) => {
   res.statusCode = 200
   res.end()
-}
+  next()
+})

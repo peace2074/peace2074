@@ -5,6 +5,11 @@ import path from 'path'
 
 export default defineNuxtConfig({
   devtools: { enabled: true },
+  experimental: {
+    asyncContext: true,
+    headNext: true
+
+  },
   app: {
     head: {
       charset: 'utf-8',
@@ -166,7 +171,7 @@ export default defineNuxtConfig({
   serverHandlers: [
     {
       route: '/ws',
-      handler: '~/server-middleware/socket'
+      handler: '~/server/middleware/socket'
     }
   ]
 
