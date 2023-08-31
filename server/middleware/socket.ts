@@ -1,43 +1,35 @@
-// @ts-ignore
-import WebSocket, { WebSocketServer } from "ws"
 
-type Client = {
-  id: string
-  send: (message: string) => void
-  readyState: number
-}
+import { Server } from 'socket.io';
+import { fromNodeMiddleware } from "h3";
 
-declare global {
-  var wss: WebSocketServer
-  var clients: Client[]
-}
-
-let wss: WebSocketServer
-let clients: Client[] = []
-
-export default defineEventHandler((event) => {
-
-  if (!global.wss) {
-    wss = new WebSocketServer({ server: event.node.res.socket?.server })
-
-
-    wss.on("connection", function (socket: { send: (arg0: string) => void; on: (arg0: string, arg1: (message: any) => void) => void }) {
-
-      socket.send("connected")
-
-      socket.on("message", function (message) {
-        wss.clients.forEach(function (client: Client) {
-          if (client == socket && client.readyState === WebSocket.OPEN) {
-            clients.push({
-              id: message.toString(),
-              send: (data: string) => client.send(data),
-              readyState: client.readyState,
-            })
-            global.clients = clients
-          }
-        })
-      })
-      global.wss = wss
-    })
+const io = new Server(3001, {
+  cors: {
+    origin: '*',
   }
+});
+
+io.on('connection', (socket) => {
+  console.log('Connection', socket.id)
+})
+
+io.on('connect', (socket) => {
+  socket.emit('message', `welcome ${socket.id}`)
+  socket.broadcast.emit('message', `${socket.id} joined`)
+
+  socket.on('message', function message(data: any) {
+    console.log('message received: %s', data)
+    socket.emit('message', { data })
+  })
+
+  socket.on('disconnecting', () => {
+    console.log('disconnected', socket.id)
+    socket.broadcast.emit('message', `${socket.id} left`)
+  })
+});
+
+
+export default fromNodeMiddleware((_req, res, next) => {
+  res.statusCode = 200
+  res.end()
+  next()
 })

@@ -96,6 +96,7 @@ const localAlert = (title: string, message: string) => {
   };
   $q.dialog(p);
 };
+
 </script>
 <template>
   <ClientOnly>

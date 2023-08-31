@@ -6,7 +6,7 @@ import path from 'path'
 export default defineNuxtConfig({
   devtools: { enabled: true },
   experimental: {
-    // asyncContext: true,
+    asyncContext: true,
     headNext: true
 
   },
