@@ -15,6 +15,6 @@ export default defineEventHandler(async (event) => {
 
   return {
     statusCode: 200,
-    body: "This is done",
+    body: message || "This is done",
   }
 })
