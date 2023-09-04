@@ -10,7 +10,7 @@ import { getPermissionsByRoleByName } from "../../db/roles"
 import { _to } from 'waelio-utils'
 
 export default defineEventHandler(async (event) => {
-    console.trace(event)
+    
     const body = await readBody(event)
     let myPermissions = {}
 
