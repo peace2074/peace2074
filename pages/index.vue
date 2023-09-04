@@ -1,79 +1,53 @@
 <script lang="ts" setup>
 import { UserI, CaslActionE, CaslSubjectE } from "../types";
-import { useTimeAgo } from "@vueuse/core";
-import moment from "moment";
-import { isDark } from "../mixins";
-import { v4 as uuid } from "uuid";
 import { Ref, ComputedRef } from "vue";
-import useAuth from "~/composables/useAuth";
+import { useTimeAgo } from "@vueuse/core";
 import { useAuthStore } from "~/store/auth.pinia";
 
-const message = ref<string>("");
+import { isDark } from "../mixins";
+import moment from "moment";
+import useAuth from "~/composables/useAuth";
+const { t } = useI18n();
 
-const { $socket } = useNuxtApp();
-const uid = uuid();
+useHead({
+  title: t("Peace2074"),
+});
+const loading = ref(false);
+let isAuthenticated: ComputedRef<boolean> = computed(
+  () => !!(user.value && user.value.username)
+);
+const { useAuthUser, initAuth, useAuthLoading, logout } = useAuth();
+const isAuthLoading = useAuthLoading();
+
+
+const $q = useQuasar();
+const _auth = useAuthStore();
 
 interface MessageI {
   sent: boolean;
   text: string;
   user?: UserI;
 }
-// const { $socket } = useNuxtApp();
-const { t } = useI18n();
+
+const message = ref<string>("");
 const router = useRouter();
 // const { can, cannot } = useCasl();
 const placeholder = "Write a message ...";
 const newMsg: Ref<string> = ref("");
 const guest = ref(false);
-const messages: Ref<MessageI[]> = ref([]);
-const sendMessage = () => {
-  fetch("/api/sendmessage", {
-    method: "POST",
-    body: JSON.stringify({
-      message: Math.random(),
-      sender: localStorage.getItem(`connection-${uid}`),
-    }),
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      console.log("sent");
-    });
-};
-const { useAuthUser, initAuth, useAuthLoading, logout } = useAuth();
-const $q = useQuasar();
-const _auth = useAuthStore();
 const __DATE__ = new Date().toISOString();
 const date = __DATE__;
 const timeAgo = useTimeAgo(date);
+const messages: Ref<MessageI[]> = ref([]);
 const BuildTime: string = moment(date).format("ddd MMM DD, YYYY [at] HH:mm");
 
-useHead({
-  title: t("welcome"),
-});
-const loading = ref(false);
-const isAuthLoading = useAuthLoading();
-let isAuthenticated: ComputedRef<boolean> = computed(
-  () => !!(user.value && user.value.username)
-);
 initAuth();
 
 const updateStore = (subject: CaslSubjectE, action: CaslActionE) => {
   _auth.setPermission(subject, action);
 };
 const user: Ref<UserI> = useAuthUser();
-onMounted(() => {
-  $socket.onopen = () => {
-    localStorage.setItem(`connection-${uid}`, uid);
-    $socket.send(uid);
-  };
-  $socket.onmessage = ({ data }: any) => {
-    console.log("data", data);
-    message.value = data;
-  };
-  $socket.onclose = function () {
-    console.log("disconnected");
-  };
-});
+
 onBeforeMount(async () => {
   initAuth();
   isAuthenticated = computed(() => !!(user.value && user.value.username));
@@ -97,6 +71,16 @@ const localAlert = (title: string, message: string) => {
   $q.dialog(p);
 };
 
+const sendMessage = () => {
+  fetch("/api/sendmessage", {
+    method: "POST",
+    body: JSON.stringify({
+      message: Math.random(),
+    }),
+  })
+    
+};
+
 </script>
 <template>
   <ClientOnly>
@@ -113,7 +97,7 @@ const localAlert = (title: string, message: string) => {
             <span class="text-slate-900 dark:text-gray-100">{{ message }}</span>
             <q-btn
               color="purple"
-              @click="sendMessage"
+              @click="sendChat"
               class="font-semibold px-5 py-2 rounded-lg"
               label="Click me to send random
             number"
@@ -121,7 +105,7 @@ const localAlert = (title: string, message: string) => {
           </span>
         </div>
         <q-input v-model="newMsg" type="text" :label="placeholder" />
-        <q-btn @click="sendMessage" color="primary">Send Message</q-btn>
+        <q-btn @click="sendChat" color="primary">Send Message</q-btn>
         <q-toggle v-model="guest" />
 
         <div class="q-pa-md row justify-center">

@@ -67,9 +67,8 @@ export default defineNuxtConfig({
     'nuxt-quasar-ui',
     '@nuxtjs/i18n',
     '@vite-pwa/nuxt',
-    '@vueuse/nuxt',
-
-  ],
+    '@vueuse/nuxt'
+  ],  
   pinia: {
     autoImports: [
       'defineStore',
