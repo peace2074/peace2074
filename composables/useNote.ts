@@ -2,7 +2,7 @@ import {
   defaultStyles,
   notifyDefaults,
 } from '~/statics/index'
-import { NoteAcionsE } from '../types';
+import { NoteAcionsE } from '~/types';
 
 function note(action: NoteAcionsE, payload: string | number | object, notifyDefaults: any) {
   return Notify.create({ type: action, message: payload, ...notifyDefaults })

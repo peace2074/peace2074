@@ -1,13 +1,21 @@
 <script setup lang="ts">
-import { useColorMode } from "@vueuse/core";
+const color = useColorMode()
 
-const color = useColorMode();
+useHead({
+  meta: [{
+    id: 'theme-color',
+    name: 'theme-color',
+    content: () => color.value === 'dark' ? '#222222' : '#ffffff',
+  }],
+})
 
 function toggleDark() {
-  color.value = color.value === "dark" ? "light" : "dark";
+  color.preference = color.value === 'dark' ? 'light' : 'dark'
 }
 </script>
 
 <template>
-  <q-icon class="q-mx-sm" size="lg" :name="color === 'dark' ? `dark_mode` : `light_mode`" @click="toggleDark" />
+  <button class="!outline-none" @click="toggleDark">
+    <div class="i-carbon-sun dark:i-carbon-moon" />
+  </button>
 </template>
