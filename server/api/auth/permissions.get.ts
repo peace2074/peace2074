@@ -1,5 +1,5 @@
 // import { note } from './useNote'
-import { getPermissionById } from "~~/server/db/permissions"
+import { getPermissionById } from "~/server/db/permissions"
 import { _sniffId } from 'waelio-utils'
 
 export default defineEventHandler(async (event) => {

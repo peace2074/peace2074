@@ -1,5 +1,5 @@
 import { H3Event, defineEventHandler, getQuery } from "h3";
-import quran from '../db/static/quran';
+import quran from '~/server/db/static/quran';
 
 export default defineEventHandler((event: H3Event) => {
   const query = getQuery(event);

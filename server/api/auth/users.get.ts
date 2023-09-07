@@ -1,4 +1,4 @@
-import { userTransformer } from "~~/server/transformers/user"
+import { userTransformer } from "~/server/transformers/user"
 
 export default defineEventHandler((event) => {
 

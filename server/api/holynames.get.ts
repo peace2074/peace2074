@@ -1,5 +1,5 @@
 import { defineEventHandler, H3Event } from "h3";
-import hollynames from '../db/static/gnames' ;
+import hollynames from '~/server/db/static/gnames' ;
 
 
 export default defineEventHandler((event: H3Event) => {

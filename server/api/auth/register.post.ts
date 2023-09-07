@@ -1,7 +1,7 @@
 import { sendError } from "h3"
 import { createUser } from "../../db/users.js"
-import { userTransformer } from "~~/server/transformers/user.js"
-import { UserI } from "~~/types"
+import { userTransformer } from "~/server/transformers/user.js"
+import { UserI } from "~/types"
 
 export default defineEventHandler(async (event) => {
     const config = useRuntimeConfig()
