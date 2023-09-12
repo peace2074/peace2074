@@ -1,6 +1,7 @@
-import { pwa } from './statics/pwa'
+import { pwa } from './config/pwa'
 import { appDescription } from './constants/index'
 import { QuasarOptions } from './qusarOptions'
+
 
 export default defineNuxtConfig({
   modules: [
@@ -24,14 +25,12 @@ export default defineNuxtConfig({
     '@unocss/reset/tailwind.css',
     '@quasar/extras/material-icons/material-icons.css',
     'quasar/dist/quasar.prod.css',
-    '~/assets/styles/quasar.scss',
   ],
+  quasar: QuasarOptions,
 
   colorMode: {
     classSuffix: '',
   },
-    quasar: QuasarOptions,
-
 
   nitro: {
     esbuild: {
@@ -41,7 +40,8 @@ export default defineNuxtConfig({
     },
     prerender: {
       crawlLinks: false,
-      routes: ['/']
+      routes: ['/'],
+      ignore: ['/hi'],
     },
   },
 

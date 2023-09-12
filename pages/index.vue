@@ -7,6 +7,7 @@ const online = useOnline()
     <Logos mb-6 />
     <Suspense>
       <ClientOnly>
+        <q-btn v-if="online" label="test" color="secondary"></q-btn>
         <PageView v-if="online" />
         <div v-else text-gray:80>
           You're offline
