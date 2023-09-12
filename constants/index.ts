@@ -1,8 +1,8 @@
 import { /*fasEarthAmericas,*/ fasFlask } from "@quasar/extras/fontawesome-v6";
 import { QSpinnerGears } from 'quasar'
 
-export const appName = 'Vitesse for Nuxt 3'
-export const appDescription = 'Vitesse for Nuxt 3'
+export const appName = 'Waelio'
+export const appDescription = 'Waelio Nuxt 3'
 
 export const links1 = [
   { icon: "person", text: "navigation.Profile", dist: "/user/profile" },
