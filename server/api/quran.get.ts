@@ -7,6 +7,6 @@ export default defineEventHandler((event: H3Event) => {
   const Size = quran.length;
   const legitIndex = index && index <= Size
   const Data = legitIndex ? quran[index - 1] : quran
-  return Data[0] || 'data'
+  return Data || 'data'
   
 })

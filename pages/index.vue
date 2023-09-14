@@ -26,10 +26,8 @@ onBeforeMount(() => {
             <q-card-section>
               <div v-if="qrn">
                 <div v-for="q in qrn">
-                  <pre>
-                    {{ q }}
-
-                  </pre>
+                  
+                    <pre>{{ q }}</pre>
                   
                 </div>
               </div>
