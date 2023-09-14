@@ -117,16 +117,16 @@ export interface HarfI {
   color?: string;
   encoding?: string;
 }
-export interface kalimatI {
+export interface KalimatI extends HarfI {
   horuf: HarfI[];
 }
-export interface AyaI {
-  Kalemat: kalimatI[];
+export interface AyaI extends KalimatI {
+  Kalemat: KalimatI[];
 }
-export interface SuraI {
+export interface SuraI extends AyaI {
   Ayat: AyaI[];
 }
-export interface QuranI {
+export interface QuranI extends SuraI {
   Surah: SuraI[];
 }
 export interface StateI {
