@@ -314,3 +314,14 @@ export interface SubscriptionI {
   keys: KeysT
 }
 export type SubscriptionT = SubscriptionI
+
+/** Enum Note Actions */
+export enum ENoteAcions {
+  Show = 'show',
+  Hide = 'hide',
+  success = 'success',
+  Info = 'info',
+  warning = 'warning',
+  Errror = 'error',
+  Loading = 'loading'
+}
