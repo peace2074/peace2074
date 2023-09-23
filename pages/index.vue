@@ -1,18 +1,12 @@
 <script setup lang="ts">
-import { SuraI } from '~/types';
-import { _get } from "waelio-utils";
+import { AyaI, SuraI } from '~/types';
+import { _get, _reParseString } from "waelio-utils";
+import { ref, Ref, unref, reactive } from "#imports";
+const { start, quran, legends } = useQuran()
 const online = useOnline()
-const qrn: Ref<SuraI[]> = ref([])
 
-const fetchData = () => {
-  const res = useFetch<SuraI[]>('/api/quran')
-    .then(quran => {
-      const r1 = _get(_get(quran))
-      qrn.value.push(r1)
-    })
-}
 onBeforeMount(() => {
-  fetchData()
+  start()
 })
 </script>
 
@@ -22,20 +16,17 @@ onBeforeMount(() => {
     <Suspense>
       <ClientOnly>
         <PageView v-if="online">
-          <q-card>
-            <q-card-section>
-              <div v-if="qrn">
-                <div v-for="q in qrn">
-                  
-                    <pre>{{ q }}</pre>
-                  
-                </div>
-              </div>
-            </q-card-section>
-          </q-card>
+          <div v-for="one in legends">
+            <pre>{{ one }}</pre>
+          </div>
+          <!-- <pre>{{ data[0] }}</pre> -->
+          <!-- <pre>{{ Ayat() }}</pre> -->
         </PageView>
         <div v-else text-gray:80>
-          You're offline
+          <div class="online-banner rounded text-h1 text-red border-white border-lg" label="You're offline">{{ "You're offline" }}</div>
+          <div v-for="one in legends">
+            <pre>{{ one.name }}</pre>
+          </div>
         </div>
       </ClientOnly>
       <template #fallback>
@@ -47,3 +38,8 @@ onBeforeMount(() => {
     <InputEntry />
   </div>
 </template>
+<style scoped>
+.online-banner {
+  border: solid 0.11rem lightgoldenrodyellow;
+}
+</style>

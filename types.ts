@@ -121,9 +121,11 @@ export interface KalimatI extends HarfI {
   horuf: HarfI[];
 }
 export interface AyaI extends KalimatI {
+  index?: string | number;
   Kalemat: KalimatI[];
 }
 export interface SuraI extends AyaI {
+  index?: string | number;
   Ayat: AyaI[];
 }
 export interface QuranI extends SuraI {

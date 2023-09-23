@@ -1,5 +1,3 @@
-import { Notify, Dialog, Loading } from '#imports'
-import type { Loading as _Loading } from '#imports'
 
 import {
   defaultStyles,
@@ -52,12 +50,12 @@ note.debug = (title: string, err: { message: string }) => {
 }
 
 
-export default{
-  note,
-  Notify, Dialog, Loading
+export const useNote = () => {
+  return {
+
+    note,
+    Notify, Dialog, Loading
+  }
 }
 
-export {
-  note,
-  Notify, Dialog, Loading
-}
+export default useNote
