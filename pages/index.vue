@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { onBeforeMount, ref, useFetch, useOnline } from '#imports';
+import { onBeforeMount, ref, useOnline } from '#imports';
+import { _to } from 'waelio-utils';
 import useNote from '~/composables/useNote';
 import { SuraI } from '~/types';
 const online = useOnline()
@@ -10,19 +11,21 @@ const _legends = ref([])
 const _quran = ref([])
 
 async function start() {
+  const { data, error } = await useFetch('/api/quran')
+  const nr = await data.value?.data
 
-  const { data } = await useFetch('/api/quran')
-console.log('data', data);
+  _size.value = nr.Size;
+  _quran.value.push(nr.Quran)
+  _legends.value.push(nr.Legend)
 
-  if (data.value && data.value.Quran) {
-    _quran.value.push(data.value.Quran);
-    _legends.value.push(data.value.Legend);
-    _size.value = data.value.Size;
-    note.success('data loaded succsessfuly')
-  }
+
+
+  note.success('data loaded succsessfuly')
+  return _quran.value
 }
-onMounted(() => {
-  start()
+
+onBeforeMount(() => {
+  start();
 })
 
 </script>
@@ -53,8 +56,8 @@ onMounted(() => {
       </template>
     </Suspense>
     <InputEntry />
-    <div v-if="quran">
-      <div v-for="(index, one) in quran" :key="index+''+one[index].name">
+    <div v-if="_legends">
+      <div v-for="(index, one) in _legends" :key="index + '' + one[index].name">
         <pre>{{ one.name }}</pre>
       </div>
     </div>
