@@ -1,4 +1,5 @@
-import { MediaFile, RefreshToken, Tweet } from "@prisma/client"
+import type { MediaFile, RefreshToken, Tweet } from '@prisma/client'
+
 export type KeyT = number
 export type ColorT = string
 export type NameT = string
@@ -8,25 +9,25 @@ export type ValueT = string
 export type DescriptionT = string
 
 export interface WindowI {
-  Etherium: any;
-  web3: any;
+  Etherium: any
+  web3: any
 }
 /** User Roles from casl */
 export interface RoleI {
-  name: NameT;
-  subject: NameT;
-  actions: NameT[];
-  inverted?: boolean;
+  name: NameT
+  subject: NameT
+  actions: NameT[]
+  inverted?: boolean
   conditions?: NameT[]
-  fields?: NameT[];
-  reason?: NameT;
+  fields?: NameT[]
+  reason?: NameT
 }
 
 /** Loght Modes */
 export enum LightModesE {
   Dark = 'dark',
   Light = 'light',
-  System = 'auto'
+  System = 'auto',
 }
 
 /** Enum Note Actions */
@@ -37,12 +38,12 @@ export enum NoteAcionsE {
   Info = 'info',
   warning = 'warning',
   Errror = 'error',
-  Loading = 'loading'
+  Loading = 'loading',
 }
 /** Loding Defaults */
-export type LoadingDefaultsT = {
-  spinner: string;
-  message: string;
+export interface LoadingDefaultsT {
+  spinner: string
+  message: string
 }
 /** Notify Positions */
 export enum PositionsE {
@@ -54,219 +55,213 @@ export enum PositionsE {
   bottomLeft = 'bottom-left',
   right = 'right',
   left = 'left',
-  center = 'center'
+  center = 'center',
 }
 /** Education History interface */
-export interface HistoryI {
-  key: KeyT,
-  color: ColorT,
-  name: NameT,
-  link: LinkT,
-  year: YearT,
-  text: string
-}
+
 /** Project interface */
 export interface IProject {
   key: string
-  value: ValueT,
+  value: ValueT
   selected: boolean
 }
 export interface SponsorI {
-  name: string,
-  img: string,
+  name: string
+  img: string
   url: string
 }
 export interface WorkOptionsI {
-  name?: "SHA-256" | "PBKDF2";
-  encode?: "base64" | "utf8" | "hex";
-  salt?: any;
-  hash?: string;
-  length?: number;
+  name?: 'SHA-256' | 'PBKDF2'
+  encode?: 'base64' | 'utf8' | 'hex'
+  salt?: any
+  hash?: string
+  length?: number
 }
 /** Authentication Strategies */
 export enum NetworksNamesE {
-  google = "google",
-  facebook = "facebook",
-  twitter = "twitter",
-  local = "local",
-  passport = "passport",
+  google = 'google',
+  facebook = 'facebook',
+  twitter = 'twitter',
+  local = 'local',
+  passport = 'passport',
 }
 
 /** Social login user scopes */
 export enum ScopesNamesE {
-  profile = "profile",
-  social = "social",
-  email = "email",
-  fullname = "fullname",
+  profile = 'profile',
+  social = 'social',
+  email = 'email',
+  fullname = 'fullname',
 }
 /** Social login scope */
 export interface ScopeI {
-  name?: string;
-  network: Partial<NetworksNamesE>;
-  scope: Partial<ScopesNamesE>;
-  icon?: string;
-  emitName?: string | Function;
+  name?: string
+  network: Partial<NetworksNamesE>
+  scope: Partial<ScopesNamesE>
+  icon?: string
+  emitName?: string | 'Function'
 }
 export type ScopeT = ScopeI
 
 export interface HarfI {
-  name: string;
-  weight: number;
+  index?: number | string
+  name: string
+  weight: number
   value: string
-  description?: string;
-  color?: string;
-  encoding?: string;
+  description?: string
+  color?: string
+  encoding?: string
 }
 export interface KalimatI extends HarfI {
-  horuf: HarfI[];
+  horuf: HarfI[]
 }
-export interface AyaI extends KalimatI {
-  index?: string | number;
-  Kalemat: KalimatI[];
+export interface AyaI extends KalimatI,HarfI {
+  bismillah: string
+  index: string | number
+  Kalemat: KalimatI[]
 }
-export interface SuraI extends AyaI {
-  index?: string | number;
-  Ayat: AyaI[];
+export interface SuraI extends AyaI, HarfI {
+  index: string | number
+  Ayat: AyaI[]
 }
-export interface QuranI extends SuraI {
-  Surah: SuraI[];
+export interface QuranI extends SuraI, AyaI{
+  Surah: SuraI[]
 }
 export interface StateI {
-  quran: QuranI;
-  Surah: SuraI[];
-  Index: QuranI;
+  quran: QuranI
+  Surah: SuraI[]
+  Index: QuranI
 }
 
 export interface Q2bI {
   state: StateI
 }
 export interface LinkT {
-  text: string;
-  icon: string;
+  text: string
+  icon: string
 }
 
 export interface HistoryI {
-  key: KeyT,
-  color: ColorT,
-  name: NameT,
-  link: LinkT,
-  year: YearT,
+  key: KeyT
+  color: ColorT
+  name: NameT
+  link: LinkT
+  year: YearT
   text: string
 }
 export interface ProjectsI {
   key: string
-  value: ValueT,
+  value: ValueT
   selected: boolean
 }
 export type ProjectsT = ProjectsI
 export interface SponsorsI {
-  name: string,
-  img: string,
+  name: string
+  img: string
   url: string
 }
 export type SponsorsT = SponsorsI
 export interface TransactionInterfaceI {
-  addressFrom: string;
-  addressTo: string;
-  amount: number;
-  message: string;
-  keyword: string;
-  timestamp: string;
-  url?: string;
-  gifUrl?: string;
-  receiver: string;
-  sender: string;
+  addressFrom: string
+  addressTo: string
+  amount: number
+  message: string
+  keyword: string
+  timestamp: string
+  url?: string
+  gifUrl?: string
+  receiver: string
+  sender: string
 }
 export type TransactionT = TransactionInterfaceI & {
-  id?: string | number;
-};
-export type TransactionsT = TransactionT[];
+  id?: string | number
+}
+export type TransactionsT = TransactionT[]
 
 export interface UserI {
   [x: string]: any
-  id?: string;
-  email: string;
-  username: string;
-  handle?: string;
-  password: string;
-  first_name?: string;
-  last_name?: string;
-  profileImage?: string;
-  role: string;
+  id?: string
+  email: string
+  username: string
+  handle?: string
+  password: string
+  first_name?: string
+  last_name?: string
+  profileImage?: string
+  role: string
   // Refresh token
-  refreshToken?: RefreshToken[];
+  refreshToken?: RefreshToken[]
 
-  //Auth0
-  auth0Id?: string;
+  // Auth0
+  auth0Id?: string
 
   // Tweet
-  tweet?: Tweet[];
+  tweet?: Tweet[]
   // MediaFiles
   mediaFiles?: MediaFile[]
 }
 export type UserT = UserI
 
-
 export interface PermessionI {
-  id?: string;
-  action: string | string[];
-  subject: string | string[];
-  fields?: string | string[];
-  conditions?: string[];
-  inverted?: boolean;
-  reason?: string;
-  permissionId: string;
-  createdAt?: string;
-  updatedAt?: string;
+  id?: string
+  action: string | string[]
+  subject: string | string[]
+  fields?: string | string[]
+  conditions?: string[]
+  inverted?: boolean
+  reason?: string
+  permissionId: string
+  createdAt?: string
+  updatedAt?: string
 }
 export type PermessionT = PermessionI
 
 export interface TokenI {
-  userId: string;
-  iat: number;
-  exp: number;
+  userId: string
+  iat: number
+  exp: number
 }
-export type TokenT = {
+export interface TokenT {
   id: string
-  token: string;
-  createdAt: string;
-  updatedAt: string;
-  userId: string;
+  token: string
+  createdAt: string
+  updatedAt: string
+  userId: string
 }
 
-export type RegisterUserT = {
-  username: string,
-  user_email: string,
-  password: string,
-  repeatPassword: string,
-  first_name: string,
+export interface RegisterUserT {
+  username: string
+  user_email: string
+  password: string
+  repeatPassword: string
+  first_name: string
   last_name: string
 }
 
 export interface SubscriptionI {
-  id: string;
-  endpoint: string;
-  expirationTime: string;
-  keys_p256dh: string;
-  keys_auth: string;
-  createdAt: string;
-  updatedAt: string;
-  userId: string;
-  user: UserI;
+  id: string
+  endpoint: string
+  expirationTime: string
+  keys_p256dh: string
+  keys_auth: string
+  createdAt: string
+  updatedAt: string
+  userId: string
+  user: UserI
 }
 
-export type ReshreshTokenT = {
-  id: string;
-  token: string;
-  userId: string;
-  updatedAt?: Date;
-  createdAt?: Date;
+export interface ReshreshTokenT {
+  id: string
+  token: string
+  userId: string
+  updatedAt?: Date
+  createdAt?: Date
 }
 
 export interface PostI {
   [x: string]: string | number
-  userId: number | string,
-  id: number,
+  userId: number | string
+  id: number
   title: string
 }
 
@@ -274,13 +269,12 @@ export interface RequestPostI {
   data: PostI
 }
 
-
 export enum CaslActionE {
   CREATE = 'create',
   READ = 'read',
   UPDATE = 'update',
   DELETE = 'delete',
-  MANAGE = 'manage'
+  MANAGE = 'manage',
 }
 export enum CaslSubjectE {
   ALL = 'all',
@@ -296,24 +290,14 @@ export enum CaslSubjectE {
   USER = 'user',
 }
 // CASL
-export type CaslActionsT = CaslActionE.CREATE | CaslActionE.READ | CaslActionE.UPDATE | CaslActionE.DELETE;
-export type CaslSubjectsT = CaslSubjectE.CATEGORY | CaslSubjectE.LIKES | CaslSubjectE.MEDIAFILE | CaslSubjectE.PERMISSIONS | CaslSubjectE.POST | CaslSubjectE.ROLES | CaslSubjectE.TWEET | CaslSubjectE.USER | CaslSubjectE.ADMIN;
+export type CaslActionsT = CaslActionE.CREATE | CaslActionE.READ | CaslActionE.UPDATE | CaslActionE.DELETE
+export type CaslSubjectsT = CaslSubjectE.CATEGORY | CaslSubjectE.LIKES | CaslSubjectE.MEDIAFILE | CaslSubjectE.PERMISSIONS | CaslSubjectE.POST | CaslSubjectE.ROLES | CaslSubjectE.TWEET | CaslSubjectE.USER | CaslSubjectE.ADMIN
 
 export interface CaslActionsI {
   actions: CaslActionsT
 }
 export interface CaslSubjectsI {
   actions: CaslSubjectsT
-}
-
-type KeysT = {
-  p256dh: string
-  auth: string
-}
-export interface SubscriptionI {
-  endpoint: string;
-  expirationTime: string;
-  keys: KeysT
 }
 export type SubscriptionT = SubscriptionI
 
@@ -325,5 +309,5 @@ export enum ENoteAcions {
   Info = 'info',
   warning = 'warning',
   Errror = 'error',
-  Loading = 'loading'
+  Loading = 'loading',
 }

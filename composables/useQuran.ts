@@ -3,7 +3,7 @@ import { SuraI } from "~/types"
 import { _ } from 'lodash'
 
 const { note } = useNote()
-const quran: SuraI[] = []
+const _quran: SuraI[] = []
 let legends: string[] = []
 let loading = false
 let size = 0
@@ -11,7 +11,7 @@ const sanetize = (payload: SuraI[]) => {
   return _get(_get(payload))
 }
 export const useQuran = () => {
-  const noLocalCach = quran && quran.length && quran.length === 14;
+  const noLocalCach = _quran && _quran.length && _quran.length === 14;
   const fetchData = () => {
     loading = true
 
@@ -19,13 +19,13 @@ export const useQuran = () => {
       // @ts-ignore
       .then(async (res) => {
         size = res.Size;
-        quran.push(sanetize(res.quran))
+        _quran.push(sanetize(res.Quran))
         console.log(await res.Size);
-        legends = await res.legend
+        legends = await res.Legend
 
         loading = false
         note.success('quran successfuly loaded ...')
-        return quran
+        return _quran
       })
       .catch(error => {
         note.log(error);
@@ -37,7 +37,7 @@ export const useQuran = () => {
   }
   return {
     start: fetchData,
-    quran,
+    quran:_quran,
     loading,
     legends
   }

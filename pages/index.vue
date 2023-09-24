@@ -1,13 +1,30 @@
 <script setup lang="ts">
-import { AyaI, SuraI } from '~/types';
-import { _get, _reParseString } from "waelio-utils";
-import { ref, Ref, unref, reactive } from "#imports";
-const { start, quran, legends } = useQuran()
+import { onBeforeMount, ref, useFetch, useOnline } from '#imports';
+import useNote from '~/composables/useNote';
+import { SuraI } from '~/types';
 const online = useOnline()
+const { note } = useNote()
 
-onBeforeMount(() => {
+const _size = ref('114')
+const _legends = ref([])
+const _quran = ref([])
+
+async function start() {
+
+  const { data } = await useFetch('/api/quran')
+console.log('data', data);
+
+  if (data.value && data.value.Quran) {
+    _quran.value.push(data.value.Quran);
+    _legends.value.push(data.value.Legend);
+    _size.value = data.value.Size;
+    note.success('data loaded succsessfuly')
+  }
+}
+onMounted(() => {
   start()
 })
+
 </script>
 
 <template>
@@ -23,10 +40,10 @@ onBeforeMount(() => {
           <!-- <pre>{{ Ayat() }}</pre> -->
         </PageView>
         <div v-else text-gray:80>
-          <div class="online-banner rounded text-h1 text-red border-white border-lg" label="You're offline">{{ "You're offline" }}</div>
-          <div v-for="one in legends">
-            <pre>{{ one.name }}</pre>
+          <div class="online-banner rounded text-h4 text-red border-white border-lg" label="You're offline">
+            {{ "You'reoffline" }}
           </div>
+
         </div>
       </ClientOnly>
       <template #fallback>
@@ -36,6 +53,11 @@ onBeforeMount(() => {
       </template>
     </Suspense>
     <InputEntry />
+    <div v-if="quran">
+      <div v-for="(index, one) in quran" :key="index+''+one[index].name">
+        <pre>{{ one.name }}</pre>
+      </div>
+    </div>
   </div>
 </template>
 <style scoped>
