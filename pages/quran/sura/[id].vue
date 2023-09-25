@@ -32,7 +32,7 @@ onBeforeMount(() => {
           <div class="name q-mr-auto text-left"> اسم السوره: {{ target.name }}</div>
         </div>
         <div class="ayat" v-for="one in target.aya">
-          <span>{{ one.text }}</span>
+          <span v-html>{{ one.index }} - {{ one.text }}</span>
         </div>
       </div>
     </div>
@@ -59,7 +59,7 @@ onBeforeMount(() => {
   font-size: large;
 }
 .sura .ayat::after {
-  content: ' - ';
+  content: ' ⚖';
 }
 .sura .ayat:last-child::after {
   content: '';

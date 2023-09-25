@@ -4,8 +4,9 @@ import { _to } from 'waelio-utils';
 import { core } from '../utils/core'
 const online = useOnline()
 const router = useRouter()
-const { start, _quran, _legends, _size,  _enums } = useQuran()
+const { start, _quran, _legends, _size, _enums } = useQuran()
 const navToSura = (n: number) => router.push(`/quran/sura/${n}`)
+const goodList = [1, 36, 114, 113, 112]
 
 onBeforeMount(() => {
   start();
@@ -47,7 +48,11 @@ onBeforeMount(() => {
       <InputEntry />
       <div class="q-pa-md row items-start q-gutter-md" v-if="_legends">
         <div v-for="one in _legends" class="rtl">
-          <q-btn :class="one.index" :label="one.name" @click="navToSura(one.index)" />
+          <q-btn :label="one.name" @click="navToSura(one.index)" :class="{ 'bg-green text-white': goodList.includes(one.index) }">
+            <q-tooltip>
+              {{ one.index }}
+            </q-tooltip>
+          </q-btn>
         </div>
       </div>
     </div>
