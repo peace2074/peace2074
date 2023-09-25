@@ -4,11 +4,9 @@ import type { SuraI } from '~/types'
 
 export default defineEventHandler((event: H3Event) => {
   const query = getQuery(event)
-  const index: number = +query?.index || 0
-  const _Size: number = holybook.length || 114
-  const legitIndex: boolean = _Size > index < 0
-  const Data: SuraI[] = legitIndex ? holybook[index - 1] : holybook
-  const names = () => Data.map((one: SuraI) => ({
+  const _Size: number = holybook.length
+  const Data: SuraI[] = holybook
+  const names = () => Data.map((one: SuraI ) => ({
     index: +one.index,
     name: one.name,
   }))
@@ -18,6 +16,7 @@ export default defineEventHandler((event: H3Event) => {
       Quran: holybook,
       Size: _Size,
       Legend: names(),
+      Query: query
     }
   }
 })
