@@ -25,11 +25,13 @@ onBeforeMount(() => {
 
 <template>
   <ClientOnly>
-    <div>
-      <div>
-        <div>رقم السوره: {{ target.index }}</div>
-        <div> اسم السوره: {{ target.name }}</div>
-        <div v-for="one in target.aya">
+    <div class="q-page">
+      <div class="sura">
+        <div class="flex">
+          <div class="index q-ml-auto text-right">رقم السوره: {{ target.index }}</div>
+          <div class="name q-mr-auto text-left"> اسم السوره: {{ target.name }}</div>
+        </div>
+        <div class="ayat" v-for="one in target.aya">
           <span>{{ one.text }}</span>
         </div>
       </div>
@@ -37,4 +39,29 @@ onBeforeMount(() => {
   </ClientOnly>
 </template>
 
-<style></style>
+<style>
+.sura {
+  border: 3px solid goldenrod;
+  padding: 15px;
+  border-radius: 15px;
+  direction: rtl;
+}
+
+.sura .index,
+.sura .name {
+  display: table;
+  border: 3px solid goldenrod;
+  padding: 10px;
+  border-radius: 10px;
+}
+.sura .ayat {
+  font-family: sans-serif;
+  font-size: large;
+}
+.sura .ayat::after {
+  content: ' - ';
+}
+.sura .ayat:last-child::after {
+  content: '';
+}
+</style>
