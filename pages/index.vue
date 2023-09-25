@@ -5,23 +5,28 @@ import useNote from '~/composables/useNote';
 import { SuraI } from '~/types';
 const online = useOnline()
 const { note } = useNote()
-
-const _size = ref('114')
-const _legends = ref([])
-const _quran = ref([])
+type LegendT = {
+  index: number;
+  name: string;
+}
+const _size: Ref<number | string> = ref('114')
+const _legends: Ref<LegendT[]> = ref([])
+const _quran: Ref<SuraI[]> = ref([])
 
 async function start() {
-  const { data, error } = await useFetch('/api/quran')
-  const nr = await data.value?.data
+  const { data, error } = await useFetch('/api/quran', { lazy: false, })
+  if (data && data.value) {
+    const nr = await data.value?.data
+    _size.value = nr.Size;
+    _quran.value = [...nr.Quran]
+    _legends.value = [...nr.Legend]
+    note.success('data loaded succsessfuly')
+    return _quran.value
+  }
 
-  _size.value = nr.Size;
-  _quran.value.push(nr.Quran)
-  _legends.value.push(nr.Legend)
-
-
-
-  note.success('data loaded succsessfuly')
-  return _quran.value
+  if (error) {
+    note.error(error)
+  }
 }
 
 onBeforeMount(() => {
@@ -56,9 +61,9 @@ onBeforeMount(() => {
       </template>
     </Suspense>
     <InputEntry />
-    <div v-if="_legends">
-      <div v-for="(index, one) in _legends" :key="index + '' + one[index].name">
-        <pre>{{ one.name }}</pre>
+    <div v-if="_legends && _legends[0]">
+      <div v-for="one in _legends[0]">
+        <div><span :class="one.index">{{ one.name }}</span> </div>
       </div>
     </div>
   </div>
