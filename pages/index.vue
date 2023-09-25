@@ -34,7 +34,6 @@ onBeforeMount(() => {
 })
 
 </script>
-
 <template>
   <div>
     <Logos mb-6 />
@@ -61,10 +60,10 @@ onBeforeMount(() => {
       </template>
     </Suspense>
     <InputEntry />
-    <div v-if="_legends && _legends[0]">
-      <div v-for="one in _legends[0]">
-        <div><span :class="one.index">{{ one.name }}</span> </div>
-      </div>
+    <div class="q-pa-md row items-start q-gutter-md" v-if="_legends">
+        <div v-for="one in _legends">
+          <q-btn :class="one.index" :label="one.name" />
+        </div>
     </div>
   </div>
 </template>
