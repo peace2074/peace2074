@@ -1,48 +1,51 @@
 import { _get } from "waelio-utils"
 import { SuraI } from "~/types"
-import { _ } from 'lodash'
+import { core } from '~/utils/core'
 
-const { note } = useNote()
-const _quran: SuraI[] = []
-let legends: string[] = []
-let loading = false
-let size = 0
-const sanetize = (payload: SuraI[]) => {
-  return _get(_get(payload))
+enum storageE {
+  quran = 'Quran',
+  size = 'Size',
+  legend = 'Legend'
 }
+type LegendT = {
+  index: number
+  name: string
+}
+const { note } = useNote()
+let loading = false
+const _quran: Ref<object[]> = ref([])
+const _size: Ref<number | string> = ref('114')
+const _legends: Ref<LegendT[]> = ref([])
+
 export const useQuran = () => {
-  const noLocalCach = _quran && _quran.length && _quran.length === 14;
-  const fetchData = () => {
+  const fetchData = async () => {
     loading = true
-
-    useFetch<SuraI[]>('/api/quran')
-      // @ts-ignore
-      .then(async (res) => {
-        size = res.Size;
-        _quran.push(sanetize(res.Quran))
-        console.log(await res.Size);
-        legends = await res.Legend
-
-        loading = false
-        note.success('quran successfuly loaded ...')
-        return _quran
-      })
-      .catch(error => {
-        note.log(error);
+    const { data, error } = await useFetch('/api/quran', { lazy: false, })
+    setTimeout(async () => {
+      if (data && data.value) {
+        const nr = await data.value?.data
+        _size.value = nr.Size;
+        core.setItem(storageE.size, nr.Size)
+        _quran.value = nr.Quran
+        core.setItem(storageE.quran, nr.Quran)
+        _legends.value = nr.Legend
+        core.setItem(storageE.legend, nr.Legend)
+        note.success('data loaded succsessfuly')
+        return _quran.value
+      }
+      if (error) {
         note.error(error)
-        loading = false
-      })
+      }
 
-
+    }, 2000);
   }
   return {
     start: fetchData,
-    quran:_quran,
     loading,
-    legends
+    _enums: storageE,
+    _quran,
+    _size,
+    _legends,
   }
-
-
 }
 
-export default useQuran

@@ -1,25 +1,39 @@
 <script lang="ts" setup>
-import { ref } from '#imports';
-enum storageE {
-  quran = 'Quran',
-  size = 'Size',
-  legend = 'Legend'
-}
-import { conf } from "../../../utils/conf";
-const route = useRoute()
-const sura = ref(0)
-const localQ = conf.getItem(storageE.quran)
+import { ref, watchEffect, useRoute, onBeforeMount } from '#imports';
+import { useQuran } from '../../../composables/useQuran'
+const { start, _quran, _legends, _enums } = useQuran()
+import { core } from "../../../utils/core";
 
-const target = localQ?.find(s => s.index === sura.value)
+const route = useRoute()
+const sura = ref(1)
+
+
+const target = !!_quran ? _quran.value.find(s => s.index == sura.value.toString()) : ''
 
 watchEffect(() => {
-  sura.value = route.params.id as string
+  sura.value = +route.params.id
+})
+onBeforeMount(() => {
+  start();
+  if (core.has(_enums.quran)) {
+    _quran.value = core.getItem(_enums.quran)
+  }
+  if (core.has(_enums.legend)) {
+    _quran.value = core.getItem(_enums.legend)
+  }
 })
 </script>
 <template>
   <ClientOnly>
     <div>
-      {{ sura }} {{ target }}
+      {{ sura }}
+    </div>
+    <div>
+      <div>
+        <div>index: {{ target.index }}</div>
+        <div> name: {{ target.name }}</div>
+        <div v-for="one in target.aya"> <span>{{ one.text }}</span> </div>
+      </div>
     </div>
   </ClientOnly>
 </template>
