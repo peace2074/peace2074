@@ -5,6 +5,12 @@ import useNote from '~/composables/useNote';
 import { SuraI } from '~/types';
 const online = useOnline()
 const { note } = useNote()
+enum storageE {
+  quran = 'Quran',
+  size = 'Size',
+  legend = 'Legend'
+
+}
 type LegendT = {
   index: number;
   name: string;
@@ -17,8 +23,9 @@ async function start() {
   const { data, error } = await useFetch('/api/quran', { lazy: false, })
   if (data && data.value) {
     const nr = await data.value?.data
-    _size.value = nr.Size;
     _quran.value = [...nr.Quran]
+    localStorage.setItem(storageE.quran, JSON.stringify(nr.Quran))
+    _size.value = nr.Size;
     _legends.value = [...nr.Legend]
     note.success('data loaded succsessfuly')
     return _quran.value
@@ -30,6 +37,9 @@ async function start() {
 }
 
 onBeforeMount(() => {
+  if(!!localStorage.getItem(storageE.quran)){
+    _quran.value = JSON.parse(localStorage.getItem(storageE.quran))
+  }
   start();
 })
 
@@ -40,9 +50,6 @@ onBeforeMount(() => {
     <Suspense>
       <ClientOnly>
         <PageView v-if="online">
-          <div v-for="one in legends">
-            <pre>{{ one }}</pre>
-          </div>
           <!-- <pre>{{ data[0] }}</pre> -->
           <!-- <pre>{{ Ayat() }}</pre> -->
         </PageView>
@@ -61,14 +68,18 @@ onBeforeMount(() => {
     </Suspense>
     <InputEntry />
     <div class="q-pa-md row items-start q-gutter-md" v-if="_legends">
-        <div v-for="one in _legends">
-          <q-btn :class="one.index" :label="one.name" />
-        </div>
+      <div v-for="one in _legends" class="rtl">
+        <q-btn :class="one.index" :label="one.name" />
+      </div>
     </div>
   </div>
 </template>
 <style scoped>
 .online-banner {
   border: solid 0.11rem lightgoldenrodyellow;
+}
+
+.rtl {
+  direction: rtl;
 }
 </style>
