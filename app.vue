@@ -1,8 +1,13 @@
 <script setup lang="ts">
-import { appName } from '~/constants'
+import { appName } from '~/constant'
+
+const { start } = useQuran()
 
 useHead({
   title: appName,
+})
+onBeforeMount(() => {
+  start()
 })
 </script>
 

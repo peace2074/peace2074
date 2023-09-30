@@ -1,7 +1,6 @@
 import { pwa } from './config/pwa'
-import { appDescription } from './constants/index'
+import { appDescription } from './constant/index'
 import { QuasarOptions } from './qusarOptions'
-
 
 export default defineNuxtConfig({
   modules: [
@@ -26,9 +25,9 @@ export default defineNuxtConfig({
     '@unocss/reset/tailwind.css',
     '@quasar/extras/material-icons/material-icons.css',
     'quasar/dist/quasar.prod.css',
+    '~/assets/style/quasar.css',
   ],
   quasar: QuasarOptions,
-
   colorMode: {
     classSuffix: '',
   },

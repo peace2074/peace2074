@@ -4,9 +4,10 @@ import prod from '~/config/prod'
 import server from '~/config/server'
 
 class Conf {
-  [x: string]: {};
+  [x: string]: string | number | boolean | string[] | number[] | object;
   constructor() {
-    const self = this;
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
+    const self = this
 
     self.setEnvironment()
     self._server = self.getServerVars()
@@ -30,18 +31,17 @@ class Conf {
       const keys = key.split(':')
       let storeKey = this._store
 
-      keys.forEach(function (k: string | number, i: number) {
-        if (keys.length === i + 1) {
+      keys.forEach((k: string | number, i: number) => {
+        if (keys.length === i + 1)
           storeKey[k] = value
-        }
 
-        if (storeKey[k] === undefined) {
+        if (storeKey[k] === undefined)
           storeKey[k] = {}
-        }
 
         storeKey = storeKey[k]
       })
-    } else {
+    }
+    else {
       this._store[key] = value
     }
   }
@@ -74,7 +74,6 @@ class Conf {
     return this.getItem('dev')
   }
 
-
   server() {
     return this.getItem('server')
   }
@@ -88,11 +87,11 @@ class Conf {
   }
 
   setEnvironment() {
-    if (process.browser) {
+    if (process.browser)
       this._env = 'client'
-    } else {
+
+    else
       this._env = 'server'
-    }
   }
 
   getServerVars() {
@@ -101,10 +100,10 @@ class Conf {
     if (this._env === 'server') {
       try {
         serverVars = server
-      } catch (e) {
-        if (process.env.NODE_ENV === 'development') {
-          console.warn("Didn't find a server config in `./config`.")
-        }
+      }
+      catch (e) {
+        if (process.env.NODE_ENV === 'development')
+          console.warn('Didn\'t find a server config in `./config`.')
       }
     }
 
@@ -116,12 +115,12 @@ class Conf {
 
     try {
       clientVars = client
-    } catch (e) {
+    }
+    catch (e) {
       clientVars = {}
 
-      if (process.env.NODE_ENV === 'development') {
-        console.warn("Didn't find a client config in `./config`.")
-      }
+      if (process.env.NODE_ENV === 'development')
+        console.warn('Didn\'t find a client config in `./config`.')
     }
 
     return clientVars
@@ -131,15 +130,16 @@ class Conf {
     let overrides
     const filename = process.env.NODE_ENV === 'production' ? 'prod' : 'dev'
     try {
-      overrides =
-        process.env.NODE_ENV === 'production'
+      overrides
+        = process.env.NODE_ENV === 'production'
           ? prod
           : dev
 
       console.warn(
         `FYI: data in \`./config/${filename}.js\` file will override Server & Client equal data/values.`,
       )
-    } catch (e) {
+    }
+    catch (e) {
       overrides = {}
     }
 
@@ -152,10 +152,11 @@ class Conf {
     const keys = nestedKey.split(':')
     let storeKey = this._store
 
-    keys.forEach(function (k: string | number) {
+    keys.forEach((k: string | number) => {
       try {
         storeKey = storeKey[k]
-      } catch (e) {
+      }
+      catch (e) {
         return undefined
       }
     })

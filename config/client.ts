@@ -1,33 +1,33 @@
 export default {
   init: false,
   app: {
-    businessName: "",
-    businessDomain: "",
-    businessAddress: "",
-    businessEmail: "",
-    businessImage: "",
-    businessDescription: ""
+    businessName: 'Peace2074',
+    businessDomain: 'https://peace2074.com',
+    businessAddress: 'Israel, United States of America',
+    businessEmail: '',
+    businessImage: '',
+    businessDescription: 'A group of utilites and personal work with the holy Quran',
   },
   settings: {
-    locale: "en-us",
+    locale: 'en-us',
     darkMode: true,
   },
   Credentials: {
     google: {
-      clientId: "",
-      clientPassword: ""
+      clientId: '',
+      clientPassword: '',
     },
     facebook: {
-      clientId: "",
-      clientPassword: ""
+      clientId: '',
+      clientPassword: '',
     },
     apple: {
-      clientId: "",
-      clientPassword: ""
+      clientId: '',
+      clientPassword: '',
     },
     twitter: {
-      clientId: "",
-      clientPassword: ""
-    }
-  }
-};
+      clientId: '',
+      clientPassword: '',
+    },
+  },
+}

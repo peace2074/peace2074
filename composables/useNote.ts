@@ -1,16 +1,17 @@
-
+import type { notifyDefaults } from '../constant'
 import {
   defaultStyles,
-  notifyDefaults,
-} from '../constants'
-import { ENoteAcions } from '../types';
+} from '../constant'
+import { ENoteAcions } from '../types'
 
 function note(action: ENoteAcions, payload: string | number | object, notifyDefaults: any) {
   return Notify.create({ type: action, message: payload, ...notifyDefaults })
 }
+// eslint-disable-next-line no-empty-pattern
 note.dialog = (...{ }) => Dialog
 note.show = function (message: string, style: string, config?: typeof notifyDefaults) {
-  // @ts-ignore
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-expect-error
   const newStyle = style in defaultStyles ? defaultStyles[style] : defaultStyles.success
   Object.assign(newStyle, config)
   const payload = { message, ...newStyle }
@@ -28,11 +29,11 @@ note.error = (error: any, config = {}) => {
   const errorMsg = message || errorMessage || statusMessage || 'Undandled Error!'
   if (statusCode || errorMessage || message || statusMessage) {
     note.show(statusCode || errorMessage || message || statusMessage, ENoteAcions.Errror, {
-      // @ts-ignore
+      // @ts-expect-error
       caption: status || statusCode,
       type: ENoteAcions.Errror,
-      ...config
-    }
+      ...config,
+    },
     )
   }
 }
@@ -49,12 +50,13 @@ note.debug = (title: string, err: { message: string }) => {
     console.log(title)
 }
 
-
-export const useNote = () => {
+export function useNote() {
   return {
 
     note,
-    Notify, Dialog, Loading
+    Notify,
+    Dialog,
+    Loading,
   }
 }
 
