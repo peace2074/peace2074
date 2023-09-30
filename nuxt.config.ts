@@ -1,3 +1,4 @@
+import { isProduction } from 'std-env'
 import { pwa } from './config/pwa'
 import { appDescription } from './constant/index'
 import { QuasarOptions } from './qusarOptions'
@@ -22,7 +23,9 @@ export default defineNuxtConfig({
   },
   appConfig: {
     public: {
-      gtagId: 'G-XN9FGVQBKX',
+      gtagId: process.env.google_analytics_id,
+      google_analytics_id: process.env.google_analytics_id,
+      production_mode: isProduction,
     },
   },
   css: [
@@ -64,7 +67,6 @@ export default defineNuxtConfig({
       ],
     },
   },
-
   pwa,
 
   devtools: {
