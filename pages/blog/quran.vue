@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <div>
+  <page-view :views="true">
     <quran-list />
-  </div>
+  </page-view>
 </template>

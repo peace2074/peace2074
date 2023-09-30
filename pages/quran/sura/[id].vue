@@ -27,7 +27,7 @@ useMeta({
 </script>
 
 <template>
-  <ClientOnly>
+  <page-view :views="true">
     <div class="rtl q-page">
       <h3>Fahras</h3>
       <div id="book" class="q-mx-auto q-pa-lg text-center text-lg">
@@ -44,7 +44,7 @@ useMeta({
         </div>
       </div>
     </div>
-  </ClientOnly>
+  </page-view>
 </template>
 
 <style>

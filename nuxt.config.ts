@@ -20,7 +20,11 @@ export default defineNuxtConfig({
     renderJsonPayloads: true,
     typedPages: true,
   },
-
+  appConfig: {
+    public: {
+      gtagId: 'G-XN9FGVQBKX',
+    },
+  },
   css: [
     '@unocss/reset/tailwind.css',
     '@quasar/extras/material-icons/material-icons.css',

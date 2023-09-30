@@ -8,10 +8,11 @@ const online = useOnline()
 <template>
   <KeepAlive>
     <PageView :views="true">
-      <Logos mb-6 />
+      <Logos mx-auto mb-6 class="table" />
       <q-card>
         <q-card-section>
           <q-badge>Quran</q-badge>
+          <q-badge>Holy Names</q-badge>
         </q-card-section>
       </q-card>
     </PageView>

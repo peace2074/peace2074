@@ -3,12 +3,12 @@
 </script>
 
 <template>
-  <LazyNuxtLayout>
+  <PageView :views="true">
     <h1 class="h3">
       Quran
     </h1>
     <slot />
-  </LazyNuxtLayout>
+  </PageView>
 </template>
 
 <style>
