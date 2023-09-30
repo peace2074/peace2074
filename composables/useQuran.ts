@@ -1,30 +1,30 @@
-import { _get } from "waelio-utils"
-import { SuraI } from "~/types"
+import { _get } from 'waelio-utils'
+import { SuraI } from '~/types'
 import { core } from '~/utils/core'
 
 enum storageE {
   quran = 'Quran',
   size = 'Size',
-  legend = 'Legend'
+  legend = 'Legend',
 }
-type LegendT = {
+interface LegendT {
   index: number
   name: string
 }
 const { note } = useNote()
-let loading = false
-const _quran: Ref<object[]> = ref([])
-const _size: Ref<number | string> = ref('114')
-const _legends: Ref<LegendT[]> = ref([])
 
-export const useQuran = () => {
+export function useQuran() {
+  let loading = false
+  const _quran: Ref<object[]> = ref([])
+  const _size: Ref<number | string> = ref('114')
+  const _legends: Ref<LegendT[]> = ref([])
   const fetchData = async () => {
     loading = true
-    const { data, error } = await useFetch('/api/quran', { lazy: false, })
+    const { data, error } = await useFetch('/api/quran', { lazy: false })
     setTimeout(async () => {
       if (data && data.value) {
         const nr = await data.value?.data
-        _size.value = nr.Size;
+        _size.value = nr.Size
         core.setItem(storageE.size, nr.Size)
         _quran.value = nr.Quran
         core.setItem(storageE.quran, nr.Quran)
@@ -33,11 +33,9 @@ export const useQuran = () => {
         note.success('data loaded succsessfuly')
         return _quran.value
       }
-      if (error) {
+      if (error)
         note.error(error)
-      }
-
-    }, 2000);
+    }, 2000)
   }
   return {
     start: fetchData,
@@ -48,4 +46,3 @@ export const useQuran = () => {
     _legends,
   }
 }
-
