@@ -33,7 +33,7 @@ function toggleRightDrawer() {
       <q-tabs align="left">
         <q-route-tab to="/" label="Home" />
         <q-route-tab to="/blog/quran" label="Quran" />
-        <q-route-tab to="/quran/sura/1" label="Sura" />
+        <q-route-tab to="/blog/holynames" label="Holynames" />
       </q-tabs>
     </q-header>
 
