@@ -22,7 +22,7 @@ onBeforeMount(() => {
 <template>
   <div v-if="_legends" class="q-pa-md row q-gutter-md items-start">
     <div v-for="one in _legends" :key="one.index" class="rtl">
-      <q-btn color="positive" :class="one.index" :label="one.name" @click="navToSura(one.index)" />
+      <q-btn color="secondary" :class="one.index" :label="one.name" @click="navToSura(one.index)" />
     </div>
   </div>
 </template>
