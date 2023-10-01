@@ -1,8 +1,4 @@
-import { onBeforeMount, useOnline } from '#imports';
 <script setup lang="ts">
-import { _to } from 'waelio-utils'
-
-const online = useOnline()
 </script>
 
 <template>

@@ -12,6 +12,12 @@ function toggleLeftDrawer() {
 function toggleRightDrawer() {
   rightDrawerOpen.value = !rightDrawerOpen.value
 }
+const options = [
+  { value: 'en', label: 'English' },
+  { value: 'ar', label: 'العربية' },
+  { value: 'il', label: 'עברית' },
+]
+const lng = ref(null)
 </script>
 
 <template>
@@ -19,14 +25,17 @@ function toggleRightDrawer() {
     <q-header reveal elevated class="bg-primary text-white" height-hint="98">
       <q-toolbar>
         <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
-
         <q-toolbar-title>
           <q-avatar>
             <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
           </q-avatar>
           {{ conf.get('app:businessName') }}
         </q-toolbar-title>
-
+        <select v-model="$i18n.locale" class="txt-white bg-primary">
+          <option v-for="locale in $i18n.availableLocales" :key="`locale-${locale}`" :value="locale">
+            {{ locale }}
+          </option>
+        </select>
         <q-btn dense flat round icon="menu" @click="toggleRightDrawer" />
       </q-toolbar>
 
@@ -52,10 +61,15 @@ function toggleRightDrawer() {
     <q-footer elevated class="bg-primary text-white">
       <q-toolbar>
         <q-toolbar-title>
-          <q-avatar>
-            <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
-          </q-avatar>
-          <span class="q-mx-sm">{{ conf.get('app:businessName') }}</span>
+          <div class="flex justify-between">
+            <div>
+              <q-avatar>
+                <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
+              </q-avatar>
+              <span class="q-mx-sm">{{ conf.get('app:businessName') }}</span>
+            </div>
+            <span class="q-mx-sm">{{ $t('name') }}</span>
+          </div>
         </q-toolbar-title>
       </q-toolbar>
     </q-footer>
