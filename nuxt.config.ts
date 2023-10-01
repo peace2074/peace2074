@@ -65,6 +65,14 @@ export default defineNuxtConfig({
         { name: 'description', content: appDescription },
         { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },
       ],
+      script: [
+        {
+          // eslint-disable-next-line n/prefer-global/process
+          src: `https://www.googletagmanager.com/gtag/js?id=${process.env.google_analytics_id}`,
+          async: true,
+        },
+      ],
+
     },
   },
   pwa,

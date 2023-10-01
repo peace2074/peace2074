@@ -49,15 +49,13 @@ function toggleRightDrawer() {
       <slot />
     </q-page-container>
 
-    <q-footer elevated class="bg-grey-8 text-white">
+    <q-footer elevated class="bg-primary text-white">
       <q-toolbar>
         <q-toolbar-title>
           <q-avatar>
             <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
           </q-avatar>
-          <div>
-            <pre> {{ conf.get('app:buinessName') }}</pre>
-          </div>
+          <span class="q-mx-sm">{{ conf.get('app:businessName') }}</span>
         </q-toolbar-title>
       </q-toolbar>
     </q-footer>

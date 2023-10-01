@@ -30,7 +30,7 @@ export function useQuran() {
         core.setItem(storageE.quran, nr.Quran)
         _legends.value = nr.Legend
         core.setItem(storageE.legend, nr.Legend)
-        note.success('data loaded succsessfuly')
+        // note.success('data loaded succsessfuly')
         return _quran.value
       }
       if (error)
