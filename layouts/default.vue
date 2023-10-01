@@ -1,9 +1,11 @@
 <script lang="ts" setup>
 import { conf } from '../utils/conf'
 import { ref } from '#imports'
+import { useI18n } from 'vue-i18n'
 
 const leftDrawerOpen = ref(false)
 const rightDrawerOpen = ref(false)
+const { t } = useI18n()
 
 function toggleLeftDrawer() {
   leftDrawerOpen.value = !leftDrawerOpen.value
@@ -12,12 +14,7 @@ function toggleLeftDrawer() {
 function toggleRightDrawer() {
   rightDrawerOpen.value = !rightDrawerOpen.value
 }
-const options = [
-  { value: 'en', label: 'English' },
-  { value: 'ar', label: 'العربية' },
-  { value: 'il', label: 'עברית' },
-]
-const lng = ref(null)
+
 </script>
 
 <template>
@@ -68,7 +65,7 @@ const lng = ref(null)
               </q-avatar>
               <span class="q-mx-sm">{{ conf.get('app:businessName') }}</span>
             </div>
-            <span class="q-mx-sm">{{ $t('name') }}</span>
+            <span class="q-mx-sm">{{ t('name') }}</span>
           </div>
         </q-toolbar-title>
       </q-toolbar>

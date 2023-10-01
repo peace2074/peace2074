@@ -34,7 +34,9 @@
     "vue-tsc": "^1.8.8"
   },
   "dependencies": {
+    "@liripeng/vue-audio-player": "^1.5.2",
     "@quasar/extras": "^1.16.6",
+    "@vueuse/sound": "^2.0.1",
     "nuxt-quasar-ui": "^2.0.5",
     "quasar": "^2.12.6",
     "waelio-utils": "^5.0.1"
