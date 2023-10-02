@@ -1,7 +1,7 @@
 <script lang="ts" setup>
+import { useI18n } from 'vue-i18n'
 import { conf } from '../utils/conf'
 import { ref } from '#imports'
-import { useI18n } from 'vue-i18n'
 
 const leftDrawerOpen = ref(false)
 const rightDrawerOpen = ref(false)
@@ -14,7 +14,6 @@ function toggleLeftDrawer() {
 function toggleRightDrawer() {
   rightDrawerOpen.value = !rightDrawerOpen.value
 }
-
 </script>
 
 <template>
@@ -37,9 +36,9 @@ function toggleRightDrawer() {
       </q-toolbar>
 
       <q-tabs align="left">
-        <q-route-tab to="/" label="Home" />
-        <q-route-tab to="/blog/quran" label="Quran" />
-        <q-route-tab to="/blog/holynames" label="Holynames" />
+        <q-route-tab to="/" :label="$t('general.Home')" />
+        <q-route-tab to="/blog/quran" :label="$t('general.Quran')" />
+        <q-route-tab to="/blog/holynames" :label="$t('general.HolyNames')" />
       </q-tabs>
     </q-header>
 
