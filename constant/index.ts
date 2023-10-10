@@ -1,0 +1,1 @@
+export const appDescription = 'Peace2074'

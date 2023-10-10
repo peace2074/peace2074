@@ -22,7 +22,9 @@
     "vuetify": "3.3.19"
   },
   "devDependencies": {
+    "@nuxtjs/i18n": "8.0.0-rc.5",
     "@sidebase/nuxt-auth": "0.6.0-beta.6",
-    "nuxt": "^3.7.4"
+    "nuxt": "^3.7.4",
+    "vue-gtag-next": "^1.14.0"
   }
 }
