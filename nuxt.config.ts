@@ -1,5 +1,6 @@
 import { defineNuxtConfig } from "nuxt/config"
-import { appDescription } from './constant/index'
+import { LocalScheme } from '@nuxtjs/auth-next'
+import { appDescription } from './constant'
 
 export default defineNuxtConfig({
   ssr: false,
@@ -18,6 +19,7 @@ export default defineNuxtConfig({
   modules: [
     '@sidebase/nuxt-auth',
     '@nuxtjs/i18n',
+    '@nuxtjs/auth-next'
   ],
   build: {
     transpile: ["vuetify"],
@@ -31,6 +33,17 @@ export default defineNuxtConfig({
     serveStatic: true,
   },
   devServerHandlers: [],
+  auth: {
+    strategies: {
+      local: {
+        scheme: LocalScheme
+      },
+      github: {
+        clientId: process.env.GithubClientID,
+        clientSecret: process.env.GithubClientSecret,
+      },
+    }
+  },
   hooks: {},
   app: {
     head: {
