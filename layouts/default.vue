@@ -3,13 +3,13 @@
 import { ref } from "vue";
 
 
-const title = ref("Modernize - Nuxt3 Typescript based Free Admin Dashboard Template");
+const title = ref("Peace2074 Homepage");
 useHead({
     meta: [{ content: title }],
     titleTemplate: (titleChunk) => {
         return titleChunk
-            ? `${titleChunk} - Nuxt3 Typescript based Free Admin Dashboard Template`
-            : "Modernize - Nuxt3 Typescript based Free Admin Dashboard Template";
+            ? `${titleChunk} - Blog and other tools`
+            : "Blog and other tools";
     },
 });
 </script>

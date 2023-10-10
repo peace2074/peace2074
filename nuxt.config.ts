@@ -48,6 +48,7 @@ export default defineNuxtConfig({
       script: [
         {
           // eslint-disable-next-line n/prefer-global/process
+          type: 'text/javascript',
           src: `https://www.googletagmanager.com/gtag/js?id=${process.env.GOOGLE_ANALYTICS_ID}`,
           async: true,
         },
