@@ -1,1 +1,5 @@
-export const appDescription = 'Peace2074'
+const appDescription = 'Peace2074';
+
+export {
+  appDescription,
+}

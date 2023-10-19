@@ -106,3 +106,4 @@ export class UCORE {
 }
 const core = new UCORE()
 export { core };
+export default { core };
