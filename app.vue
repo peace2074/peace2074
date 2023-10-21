@@ -1,8 +1,9 @@
 <template>
-  <NuxtExampleLayout >
+  <NuxtExampleLayout>
     <NuxtLoadingIndicator />
     <NuxtLayout>
-      <NuxtPage/>
+      <VitePwaManifest />
+      <NuxtPage />
     </NuxtLayout>
   </NuxtExampleLayout>
 </template>

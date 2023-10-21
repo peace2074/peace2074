@@ -19,6 +19,7 @@
     "@nuxt/vite-builder": "^3.8.0",
     "@nuxtjs/i18n": "8.0.0-rc.5",
     "@sidebase/nuxt-auth": "^0.4.4",
+    "@vite-pwa/nuxt": "^0.1.1",
     "apexcharts": "3.36.3",
     "nuxt": "^3.8.0",
     "vue-gtag-next": "^1.14.0",

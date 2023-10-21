@@ -1,5 +1,6 @@
 import { defineNuxtConfig } from "nuxt/config";
 import { appDescription } from "./constant/index";
+import { pwa } from "./config/pwa";
 
 export default defineNuxtConfig({
   ssr: false,
@@ -20,7 +21,7 @@ export default defineNuxtConfig({
       google_analytics_id: process.env.GOOGLE_ANALYTICS_ID,
     },
   },
-  modules: ["@nuxtjs/i18n", "@nuxt/content", "@nuxt/ui"],
+  modules: ["@nuxtjs/i18n", "@nuxt/content", "@nuxt/ui", "@vite-pwa/nuxt"],
   build: {
     transpile: ["vuetify"],
   },
@@ -31,6 +32,16 @@ export default defineNuxtConfig({
   },
   nitro: {
     serveStatic: true,
+    esbuild: {
+      options: {
+        target: "esnext",
+      },
+    },
+    prerender: {
+      crawlLinks: false,
+      routes: ["/"],
+      ignore: ["/blog"],
+    },
   },
   content: {},
   app: {
