@@ -9,14 +9,14 @@
   },
   "dependencies": {
     "@nuxt/ui": "^2.9.0",
-    "next-auth": "^4.23.2",
-    "sass": "^1.69.3",
+    "next-auth": "^4.24.3",
+    "sass": "^1.69.4",
     "vue": "3.3.4"
   },
   "devDependencies": {
     "@mdi/font": "^6.9.96",
     "@nuxt/content": "^2.8.5",
-    "@nuxt/vite-builder": "^3.7.4",
+    "@nuxt/vite-builder": "^3.8.0",
     "@nuxtjs/i18n": "8.0.0-rc.5",
     "@sidebase/nuxt-auth": "^0.4.4",
     "apexcharts": "3.36.3",
