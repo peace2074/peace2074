@@ -1,11 +1,4 @@
 <script setup lang="ts">
-// file: e.g ~/pages/login.vue
-// const { status, data, signIn, signOut } = useAuth()
-//status.value // Session status: `unauthenticated`, `loading`, `authenticated`
-//data.value // Session data, e.g., expiration, user.email, ...
-//await signIn() // Sign in the user
-//await signOut() // Sign out the use
-
 /*Call Components*/
 import SalesOverview from '@/components/dashboard/SalesOverview.vue';
 import YearlyBreakup from '@/components/dashboard/YearlyBreakup.vue';

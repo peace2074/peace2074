@@ -8,6 +8,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@nuxt/ui": "^2.9.0",
     "next-auth": "^4.23.2",
     "sass": "^1.69.3",
     "vue": "3.3.4"
@@ -19,7 +20,7 @@
     "@nuxtjs/i18n": "8.0.0-rc.5",
     "@sidebase/nuxt-auth": "^0.4.4",
     "apexcharts": "3.36.3",
-    "nuxt": "^3.7.4",
+    "nuxt": "^3.8.0",
     "vue-gtag-next": "^1.14.0",
     "vue-tabler-icons": "2.9.0",
     "vue3-apexcharts": "1.4.1",

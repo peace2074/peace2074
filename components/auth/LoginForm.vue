@@ -3,13 +3,7 @@ import { ref, watch } from 'vue';
 const router = useRouter()
 const checkbox = ref(true);
 const loginUser = ref({ username: '', password: '' })
-const { data, status, signIn } = useAuth()
-watch(data, async (newData, oldeData) => {
-    if (newData?.user) {
-        localStorage.setItem('user', JSON.stringify(newData.user))
-        router.push('/')
-    }
-})
+
 </script>
 
 <template>
@@ -36,10 +30,10 @@ watch(data, async (newData, oldeData) => {
             </div>
         </v-col>
         <v-col cols="12" class="pt-0">
-            <v-btn @click.prevent="signIn('credintials')" color="primary" size="large" block flat>Sign in</v-btn>
+            <v-btn color="primary" size="large" block flat>Sign in</v-btn>
         </v-col>
         <v-col cols="12" class="pt-0">
-            <v-btn @click.prevent="signIn('github')" color="black" size="large" block flat>Sign in with GitHub</v-btn>
+            <v-btn color="black" size="large" block flat>Sign in with GitHub</v-btn>
         </v-col>
     </v-row>
 </template>
