@@ -3,7 +3,26 @@ import { ref, watch } from 'vue';
 const router = useRouter()
 const checkbox = ref(true);
 const loginUser = ref({ username: '', password: '' })
+const client = useSupabaseClient()
+const user = useSupabaseUser()
+const { setUser, currentUser } = useAuth()
+const luser = currentUser
+watchEffect(() => {
+    if (user.value) {
+        setUser(user.value)
+        return navigateTo('/')
+    }
+})
 
+const login = async (prov: any) => {
+    const { data, error } = await client.auth.signInWithOAuth({
+        provider: prov,
+        // @ts-ignore
+        redirectTo: window.location.origin
+    })
+    console.log(data);
+    console.log(error);
+}
 </script>
 
 <template>
@@ -33,7 +52,8 @@ const loginUser = ref({ username: '', password: '' })
             <v-btn color="primary" size="large" block flat>Sign in</v-btn>
         </v-col>
         <v-col cols="12" class="pt-0">
-            <v-btn color="black" size="large" block flat>Sign in with GitHub</v-btn>
+            <v-btn color="#000000" size="large" @click="login('GitHub')" block flat>Sign
+                in with GitHub</v-btn>
         </v-col>
     </v-row>
 </template>

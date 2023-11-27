@@ -7,6 +7,23 @@ export default defineNuxtConfig({
   typescript: {
     shim: false,
   },
+  pages: true,
+  imports: {
+    autoImport: true,
+    collectMeta: true,
+  },
+  modules: [
+    "nuxt-icon",
+    "nuxt-lodash",
+    "@pinia/nuxt",
+    "@pinia-plugin-persistedstate/nuxt",
+    "@nuxtjs/i18n",
+    "@nuxt/content",
+    "@nuxt/ui",
+    "@vite-pwa/nuxt",
+    "@nuxtjs/supabase",
+    "nuxt-mongoose",
+  ],
   alias: {
     "micromark/lib/preprocess.js": "micromark",
     "micromark/lib/postprocess.js": "micromark",
@@ -21,7 +38,12 @@ export default defineNuxtConfig({
       google_analytics_id: process.env.GOOGLE_ANALYTICS_ID,
     },
   },
-  modules: ["@nuxtjs/i18n", "@nuxt/content", "@nuxt/ui", "@vite-pwa/nuxt"],
+  mongoose: {
+    uri: process.env.DATABASE_URL,
+    options: {},
+    modelsDir: "models",
+  },
+  pwa: pwa,
   build: {
     transpile: ["vuetify"],
   },
@@ -64,6 +86,13 @@ export default defineNuxtConfig({
         {
           type: "text/javascript",
           src: `https://www.googletagmanager.com/gtag/js?id='G-XN9FGVQBKX'`,
+          async: true,
+          defer: true,
+        },
+        {
+          type: "text/javascript",
+          src: "https://js.stripe.com/v3/",
+          defer: true,
           async: true,
         },
       ],

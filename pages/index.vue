@@ -8,7 +8,8 @@ import ProductPerformance from '~/components/dashboard/ProductPerformance.vue';
 import ProductCards from '~/components/dashboard/ProductCards.vue';
 
 const { $_Conf, $_Core } = useNuxtApp()
-
+const { currentUser } = useAuth()
+const luser = currentUser
 </script>
 <template>
     <v-row>
