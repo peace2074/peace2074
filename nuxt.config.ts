@@ -74,9 +74,9 @@ export default defineNuxtConfig({
       workboxPluginMode: "GenerateSW", // 'GenerateSW' or 'InjectManifest'
       workboxOptions: {}, // only for GenerateSW
       manifest: {
-        name: "Quasar Shopping",
-        short_name: "Quasar Shopping",
-        description: "An open source Quasar Shopping cart template!",
+        name: "Peace Shopping",
+        short_name: "Peace Shopping",
+        description: "An open source Peace Shopping cart template!",
         display: "standalone",
         orientation: "portrait",
         background_color: "#ffffff",

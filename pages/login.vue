@@ -10,15 +10,15 @@
             :style="{ 'height': (win_height - 270) + 'px' }" horizontal>
             <div class="text-center full-width">
               <div><img src="images/logo.png" style="width: 33%" /></div>
-              <div class="text-weight-bolder text-white text-h6">Quasar Shopping</div>
-              <div class="text-caption text-white">Quasar Shopping - One stop solution</div>
+              <div class="text-weight-bolder text-white text-h6">Peace Shopping</div>
+              <div class="text-caption text-white">Peace Shopping - One stop solution</div>
             </div>
           </q-card-section>
           <q-card-section class="col-md-8 col-lg-8 col-sm-12 sol-xs-12 float-left">
             <q-card-section class="items-center">
               <div>
                 <div v-if="!$q.platform.is.desktop" class="text-weight-bolder text-center q-mb-md text-primary text-h6">
-                  Quasar Shopping</div>
+                  Peace Shopping</div>
                 <q-form :style="$q.platform.is.desktop ? 'width:55%;margin: auto;' : 'margin: auto;'" class="q-gutter-md">
                   <span class="text-subtitle1 text-weight-bold text-grey-7">Welcome Aboard</span>
                   <q-input dense outlined v-model="username" label="Username" lazy-rules />

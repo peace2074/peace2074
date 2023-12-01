@@ -39,7 +39,7 @@
         <!--          <q-btn @click="left = !left" flat round dense icon="menu" class="q-mr-sm" />-->
         <img @click="$router.push('/home')" class="cursor-pointer" src="images/logo.png" style="width: 3%" />
         <q-toolbar-title>
-          <span class="float-left q-mt-xs text-h6 text-weight-bold" style="font-size: 17px;">Quasar Shopping</span>
+          <span class="float-left q-mt-xs text-h6 text-weight-bold" style="font-size: 17px;">Peace Shopping</span>
           <q-input class="float-left q-ml-xl" style="width: 650px;" square bg-color="white" dense outlined v-model="text"
             label="Search for products, brands and more" />
         </q-toolbar-title>
