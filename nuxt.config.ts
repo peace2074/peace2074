@@ -1,101 +1,147 @@
-import { defineNuxtConfig } from "nuxt/config";
-import { appDescription } from "./constant/index";
-import { pwa } from "./config/pwa";
+import vuetify, { transformAssetUrls } from "vite-plugin-vuetify";
 
+// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  ssr: false,
-  typescript: {
-    shim: false,
-  },
-  pages: true,
-  imports: {
-    autoImport: true,
-    collectMeta: true,
-  },
+  devtools: { enabled: true },
   modules: [
-    "nuxt-icon",
-    "nuxt-lodash",
-    "@pinia/nuxt",
-    "@pinia-plugin-persistedstate/nuxt",
-    "@nuxtjs/i18n",
-    "@nuxt/content",
-    "@nuxt/ui",
-    "@vite-pwa/nuxt",
-    "@nuxtjs/supabase",
-    "nuxt-mongoose",
-  ],
-  alias: {
-    "micromark/lib/preprocess.js": "micromark",
-    "micromark/lib/postprocess.js": "micromark",
-    "./": "~",
-  },
-  runtimeConfig: {
-    GithubAppID: process.env.GithubAppID,
-    GithubClientID: process.env.GithubClientID,
-    GithubClientSecret: process.env.GithubClientSecret,
-    AuthSecret: process.env.AUTH_SECRET,
-    public: {
-      google_analytics_id: process.env.GOOGLE_ANALYTICS_ID,
+    "nuxt-quasar-ui",
+    (_options, nuxt) => {
+      nuxt.hooks.hook("vite:extendConfig", (config) => {
+        // @ts-expect-error
+        config.plugins.push(vuetify({ autoImport: true }));
+      });
     },
-  },
-  mongoose: {
-    uri: process.env.DATABASE_URL,
-    options: {},
-    modelsDir: "models",
-  },
-  pwa: pwa,
+    ,
+  ],
   build: {
     transpile: ["vuetify"],
   },
   vite: {
-    define: {
-      "process.env.DEBUG": true,
-    },
-  },
-  nitro: {
-    serveStatic: true,
-    esbuild: {
-      options: {
-        target: "esnext",
+    vue: {
+      template: {
+        transformAssetUrls,
       },
     },
-    prerender: {
-      crawlLinks: false,
-      routes: ["/"],
-      ignore: ["/blog"],
-    },
   },
-  content: {},
-  app: {
-    head: {
-      viewport: "width=device-width,initial-scale=1",
-      link: [
-        { rel: "icon", href: "/favicon.ico", sizes: "any" },
-        { rel: "icon", type: "image/svg+xml", href: "/nuxt.svg" },
-        { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
-      ],
-      meta: [
-        { name: "viewport", content: "width=device-width, initial-scale=1" },
-        { name: "description", content: appDescription },
-        {
-          name: "apple-mobile-web-app-status-bar-style",
-          content: "black-translucent",
-        },
-      ],
-      script: [
-        {
-          type: "text/javascript",
-          src: `https://www.googletagmanager.com/gtag/js?id='G-XN9FGVQBKX'`,
-          async: true,
-          defer: true,
-        },
-        {
-          type: "text/javascript",
-          src: "https://js.stripe.com/v3/",
-          defer: true,
-          async: true,
-        },
-      ],
+  // @ts-ignore
+  quasar: {
+    // @ts-ignore
+    extras: [
+      // 'ionicons-v4',
+      // 'mdi-v4',
+      "fontawesome-v5",
+      // 'eva-icons',
+      // 'themify',
+      // 'line-awesome',
+      // 'roboto-font-latin-ext', // this or either 'roboto-font', NEVER both!
+
+      "roboto-font", // optional, you are not bound to it
+      "material-icons", // optional, you are not bound to it
+    ],
+
+    // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-framework
+    framework: {
+      iconSet: "material-icons", // Quasar icon set
+      lang: "en-us", // Quasar language pack
+      all: "auto",
+
+      components: [],
+      directives: [],
+
+      // Quasar plugins
+      plugins: ["QIcon", "QScrollArea"],
+    },
+
+    // https://quasar.dev/quasar-cli/cli-documentation/supporting-ie
+    supportIE: true,
+
+    // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build
+    build: {
+      scopeHoisting: true,
+      vueRouterMode: "history", // available values: 'hash', 'history'
+      showProgress: true,
+      gzip: false,
+      analyze: false,
+      extendWebpack(cfg) {},
+    },
+    animations: "all", // --- includes all animations
+    ssr: {
+      pwa: false,
+    },
+
+    // https://quasar.dev/quasar-cli/developing-pwa/configuring-pwa
+    pwa: {
+      workboxPluginMode: "GenerateSW", // 'GenerateSW' or 'InjectManifest'
+      workboxOptions: {}, // only for GenerateSW
+      manifest: {
+        name: "Quasar Shopping",
+        short_name: "Quasar Shopping",
+        description: "An open source Quasar Shopping cart template!",
+        display: "standalone",
+        orientation: "portrait",
+        background_color: "#ffffff",
+        theme_color: "#027be3",
+        icons: [
+          {
+            src: "icons/icon-128x128.png",
+            sizes: "128x128",
+            type: "image/png",
+          },
+          {
+            src: "icons/icon-192x192.png",
+            sizes: "192x192",
+            type: "image/png",
+          },
+          {
+            src: "icons/icon-256x256.png",
+            sizes: "256x256",
+            type: "image/png",
+          },
+          {
+            src: "icons/icon-384x384.png",
+            sizes: "384x384",
+            type: "image/png",
+          },
+          {
+            src: "icons/icon-512x512.png",
+            sizes: "512x512",
+            type: "image/png",
+          },
+        ],
+      },
+    },
+
+    // Full list of options: https://quasar.dev/quasar-cli/developing-cordova-apps/configuring-cordova
+    cordova: {
+      // noIosLegacyBuildFlag: true, // uncomment only if you know what you are doing
+      id: "org.cordova.quasar.app",
+    },
+
+    // Full list of options: https://quasar.dev/quasar-cli/developing-capacitor-apps/configuring-capacitor
+    capacitor: {
+      hideSplashscreen: true,
+    },
+
+    // Full list of options: https://quasar.dev/quasar-cli/developing-electron-apps/configuring-electron
+    electron: {
+      bundler: "packager", // 'packager' or 'builder'
+
+      packager: {
+        // https://github.com/electron-userland/electron-packager/blob/master/docs/api.md#options
+        // OS X / Mac App Store
+        // appBundleId: '',
+        // appCategoryType: '',
+        // osxSign: '',
+        // protocol: 'myapp://path',
+      },
+
+      builder: {
+        appId: "Quasar_Shopping",
+      },
+
+      nodeIntegration: true,
+
+      extendWebpack(cfg) {},
     },
   },
 });

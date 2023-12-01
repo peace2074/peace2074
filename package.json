@@ -1,6 +1,7 @@
 {
+  "name": "nuxt-app",
   "private": true,
-  "version": "0.0.2",
+  "type": "module",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
@@ -9,35 +10,38 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@nuxt/ui": "^2.9.0",
-    "next-auth": "^4.24.3",
-    "sass": "^1.69.4",
-    "vue": "3.3.4",
-    "@pinia-plugin-persistedstate/nuxt": "^1.1.1",
-    "@pinia/nuxt": "^0.4.8",
-    "@stripe/stripe-js": "^1.52.0",
-    "nuxt-lodash": "^2.4.1",
-    "nuxt-mongoose": "^1.0.3",
-    "pinia": "^2.0.34",
-    "stripe": "^12.0.0"
+    "@mdi/font": "^7.3.67",
+    "@quasar/extras": "^1.16.8",
+    "apexcharts": "^3.25.0",
+    "echarts": "^5.0.2",
+    "quasar": "^2.14.0",
+    "roboto-fontface": "*",
+    "vue-apexcharts": "^1.6.0",
+    "vue-echarts-v3": "^2.0.1",
+    "vue-gtag-next": "^1.14.0",
+    "vue-winwheel": "^1.0.0",
+    "vuedraggable": "^2.24.3"
   },
   "devDependencies": {
-    "@mdi/font": "^6.9.96",
-    "@nuxt/content": "^2.8.5",
-    "@nuxt/vite-builder": "^3.8.0",
-    "@nuxtjs/i18n": "8.0.0-rc.5",
-    "@nuxtjs/supabase": "^0.3.5",
-    "@sidebase/nuxt-auth": "^0.4.4",
-    "@vite-pwa/nuxt": "^0.1.1",
-    "apexcharts": "3.36.3",
-    "nuxt-icon": "^0.3.3",
-    "mongoose": "^8.0.0",
-    "nuxt": "^3.8.0",
-    "vue-gtag-next": "^1.14.0",
-    "vue-tabler-icons": "2.9.0",
-    "vue3-apexcharts": "1.4.1",
-    "vue3-perfect-scrollbar": "1.6.0",
-    "vuetify": "3.3.19",
-    "vue-stripe-js": "^1.0.1"
-  }
+    "@nuxt/devtools": "latest",
+    "nuxt": "^3.8.2",
+    "nuxt-quasar-ui": "^2.0.6",
+    "sass": "^1.60.0",
+    "unplugin-fonts": "^1.0.3",
+    "vite-plugin-vuetify": "^1.0.2",
+    "vue": "^3.3.8",
+    "vue-i18n": "^9.8.0",
+    "vue-tabler-icons": "^2.21.0",
+    "vue3-apexcharts": "^1.4.4",
+    "vue3-perfect-scrollbar": "^1.6.1",
+    "vuetify": "^3.4.4"
+  },
+  "engines": {
+    "node": ">= 10.18.1",
+    "npm": ">= 6.13.4",
+    "yarn": ">= 1.21.1"
+  },
+  "browserslist": [
+    "last 1 version, not dead, ie >= 11"
+  ]
 }

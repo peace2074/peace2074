@@ -1,48 +1,75 @@
-# Modernize-nuxtjs-free
-Free Nuxt 3 Admin Template with vuetify 3 + Typescript
-<img src="https://adminmart.com/wp-content/uploads/2023/02/modernize-free-vuetify-dashboard.png" alt="Free Nuxt 3 Admin Template with vuetify 3 + Typescript"/>
-# <a href="https://modernize-nuxtjs-free.netlify.app">Live Demo </a>
+# Nuxt 3 Minimal Starter
 
-
-# Nuxt 3 Starter
-
-> 💚 A Better Nuxt 3 starter template
-
-## Use the Template
-
-### Clone to local
-
-```bash
-
-$>    💿  Install dependencies with `npm install` or `yarn install`
-$>
-$>    🚀  Start development server with `npm run dev` or `yarn dev`
-```
+Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
 ## Setup
 
-### Installation
-
-Make sure to install the dependencies
+Make sure to install the dependencies:
 
 ```bash
+# npm
+npm install
+
+# pnpm
+pnpm install
+
+# yarn
 yarn install
+
+# bun
+bun install
 ```
 
-### Development
+## Development Server
 
-Start the development server on http://localhost:3088
+Start the development server on `http://localhost:3000`:
 
 ```bash
+# npm
+npm run dev
+
+# pnpm
+pnpm run dev
+
+# yarn
 yarn dev
+
+# bun
+bun run dev
 ```
 
-### Production
+## Production
 
 Build the application for production:
 
 ```bash
+# npm
+npm run build
+
+# pnpm
+pnpm run build
+
+# yarn
 yarn build
+
+# bun
+bun run build
 ```
 
+Locally preview production build:
 
+```bash
+# npm
+npm run preview
+
+# pnpm
+pnpm run preview
+
+# yarn
+yarn preview
+
+# bun
+bun run preview
+```
+
+Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
