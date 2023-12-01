@@ -1,3 +1,13 @@
+<script lang="ts" setup>
+const $q = useQuasar()
+const left = ref(false)
+const menu_cat_elc = ref(false)
+const menu_cat_tvs = ref(false)
+const menu_cat_men = ref(false)
+const text = ref('')
+
+</script>
+
 <template>
   <q-layout view="lHh LpR lFf" style="font-family: Lato;">
     <!-- <q-header reveal elevated style="background-color: #1f509e;"> -->
@@ -199,24 +209,10 @@
   </q-layout>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      left: false,
-      menu_cat_elc: false,
-      menu_cat_tvs: false,
-      menu_cat_men: false,
-      text: ''
-    }
-  }
-}
-</script>
-
 <style>
 .q-drawer {
   /*background-image: url(https://demos.creative-tim.com/vue-material-dashboard/img/sidebar-2.32103624.jpg) !important;*/
-  background-image: url('/images/lake.jpg') !important;
+  background-image: url('images/lake.jpg') !important;
   background-size: cover !important;
 }
 
