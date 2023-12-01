@@ -17,7 +17,7 @@ const text = ref('')
         <div class="row">
           <div class="col-sm-12 col-xs-12">
             <q-toolbar-title>
-              <img @click="$router.push('/home')" class="cursor-pointer float-left" src="images/logo.png"
+              <img @click="$router.push('/')" class="cursor-pointer float-left" src="images/logo.png"
                 style="width: 12%" />
               <span class="float-left q-mt-xs q-ml-md text-h6 text-weight-bold" style="font-size: 17px;">Quasar
                 Shopping</span>
@@ -47,7 +47,7 @@ const text = ref('')
       </q-toolbar>
       <q-toolbar v-if="$q.platform.is.desktop" class="q-py-sm">
         <!--          <q-btn @click="left = !left" flat round dense icon="menu" class="q-mr-sm" />-->
-        <img @click="$router.push('/home')" class="cursor-pointer" src="images/logo.png" style="width: 3%" />
+        <img @click="$router.push('/')" class="cursor-pointer" src="images/logo.png" style="width: 3%" />
         <q-toolbar-title>
           <span class="float-left q-mt-xs text-h6 text-weight-bold" style="font-size: 17px;">Peace Shopping</span>
           <q-input class="float-left q-ml-xl" style="width: 650px;" square bg-color="white" dense outlined v-model="text"
