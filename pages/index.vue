@@ -33,7 +33,7 @@
               Enter your pincode to check availability and faster options
             </div>
             <div class="q-mt-sm">
-              <q-input dense outlined placeholder="Enter pincode"></q-input>
+              <q-input dense outlined v-model="zipCode" placeholder="Enter pincode"></q-input>
             </div>
             <div class="q-mt-xs">
               <div style="display:block; height:22px;">
@@ -202,7 +202,7 @@
 const slide = ref("first")
 const trending_slide = ref(1)
 const latest_slide = ref(1)
-
+const zipCode = ref(null)
 </script>
 
 <style lang="sass" scoped>

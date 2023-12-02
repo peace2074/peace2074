@@ -1,5 +1,8 @@
 <script lang="ts" setup>
+import { useI18n } from "vue-i18n"
+
 const $q = useQuasar()
+const { t } = useI18n()
 const stars = ref(4)
 const class_val = ref("shadow-1 my-card")
 const filters_list = ref([
@@ -118,6 +121,7 @@ const filters_list = ref([
 ])
 const win_width = computed(() => $q.screen.width - 59);
 const win_height = computed(() => $q.screen.height - 0);
+const show_load_more = ref(false)
 </script>
 
 <template>
@@ -134,7 +138,7 @@ const win_height = computed(() => $q.screen.height - 0);
               <q-item class="q-pa-none" v-for="it in item.items" :key="it.model" tag="label" v-ripple dense>
                 <q-item-section side class="q-px-md text-caption">
                   <q-checkbox @input="searched_results = [], show_load_more = false, log_offset = 0, do_search()" dense
-                    v-model="it[it.model]">
+                    v-model="$t[it.model]">
                     {{ it.label }}({{ it.count }})
                   </q-checkbox>
                 </q-item-section>

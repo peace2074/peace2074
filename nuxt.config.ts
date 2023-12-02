@@ -44,7 +44,11 @@ export default defineNuxtConfig({
       iconSet: "material-icons", // Quasar icon set
       lang: "en-us", // Quasar language pack
       all: "auto",
-
+      config: {
+        screen: {
+          bodyClasses: true, // <<< add this
+        },
+      },
       components: [],
       directives: [],
 
@@ -57,17 +61,14 @@ export default defineNuxtConfig({
 
     // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build
     build: {
+      rtl: true,
       scopeHoisting: true,
       vueRouterMode: "history", // available values: 'hash', 'history'
       showProgress: true,
       gzip: false,
       analyze: false,
-      extendWebpack(cfg) {},
     },
     animations: "all", // --- includes all animations
-    ssr: {
-      pwa: false,
-    },
 
     // https://quasar.dev/quasar-cli/developing-pwa/configuring-pwa
     pwa: {
