@@ -5,12 +5,12 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: [
     "nuxt-quasar-ui",
-    (_options, nuxt) => {
-      nuxt.hooks.hook("vite:extendConfig", (config) => {
-        // @ts-expect-error
-        config.plugins.push(vuetify({ autoImport: true }));
-      });
-    },
+    // (_options, nuxt) => {
+    //   nuxt.hooks.hook("vite:extendConfig", (config) => {
+    //     // @ts-expect-error
+    //     config.plugins.push(vuetify({ autoImport: true }));
+    //   });
+    // },
     ,
   ],
   build: {
@@ -42,17 +42,15 @@ export default defineNuxtConfig({
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-framework
     framework: {
       iconSet: "material-icons", // Quasar icon set
-      lang: "en-us", // Quasar language pack
+      lang: "en-us",
       all: "auto",
       config: {
         screen: {
-          bodyClasses: true, // <<< add this
+          bodyClasses: true,
         },
       },
       components: [],
       directives: [],
-
-      // Quasar plugins
       plugins: ["QIcon", "QScrollArea"],
     },
 
@@ -61,7 +59,7 @@ export default defineNuxtConfig({
 
     // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build
     build: {
-      rtl: true,
+      // rtl: true,
       scopeHoisting: true,
       vueRouterMode: "history", // available values: 'hash', 'history'
       showProgress: true,
@@ -142,7 +140,7 @@ export default defineNuxtConfig({
 
       nodeIntegration: true,
 
-      extendWebpack(cfg) {},
+      // extendWebpack(cfg) {},
     },
   },
 });
