@@ -59,7 +59,7 @@ devDependencies:
     specifier: ^1.0.2
     version: 1.0.2(vite@4.5.0)(vue@3.3.9)(vuetify@3.4.4)
   vue:
-    specifier: ^3.3.8
+    specifier: ^3.3.9
     version: 3.3.9
   vue-i18n:
     specifier: ^9.8.0

@@ -17,14 +17,14 @@ const leftDrawer = ref(false)
         <div class="row">
           <div class="col-sm-12 col-xs-12">
             <q-toolbar-title>
-              <img @click="$router.push('/')" class="cursor-pointer float-left" src="images/logo.png"
+              <img @click="$router.push('/')" class="cursor-pointer float-left" src="/images/logo.png"
                 style="width: 12%" />
               <span class="float-left q-mt-xs q-ml-md text-h6 text-weight-bold" style="font-size: 17px;">Quasar
                 Shopping</span>
             </q-toolbar-title>
           </div>
           <div class="col-sm-12 col-xs-12 q-mt-md">
-            <q-input class="float-left q-mx-md full-width" square bg-color="white" dense outlined v-model="text"
+            <q-input class="float-left q-mx-md full-width sm" square bg-color="white" dense outlined v-model="text"
               label="Search for products, brands and more" />
           </div>
           <div class="col-sm-12 col-xs-12 q-mt-md">
@@ -47,10 +47,10 @@ const leftDrawer = ref(false)
       </q-toolbar>
       <q-toolbar v-if="$q.platform.is.desktop" class="q-py-sm">
         <!--          <q-btn @click="left = !left" flat round dense icon="menu" class="q-mr-sm" />-->
-        <img @click="$router.push('/')" class="cursor-pointer" src="images/logo.png" style="width: 3%" />
+        <img @click="$router.push('/')" class="cursor-pointer" src="/images/logo.png" style="width: 3%" />
         <q-toolbar-title>
           <span class="float-left q-mt-xs text-h6 text-weight-bold" style="font-size: 17px;">Peace Shopping</span>
-          <q-input class="float-left q-ml-xl" style="width: 650px;" square bg-color="white" dense outlined v-model="text"
+          <q-input class="float-left st-md" style="width: 650px;" square bg-color="white" dense outlined v-model="text"
             label="Search for products, brands and more" />
         </q-toolbar-title>
 
@@ -218,7 +218,7 @@ const leftDrawer = ref(false)
 <style>
 .q-drawer {
   /*background-image: url(https://demos.creative-tim.com/vue-material-dashboard/img/sidebar-2.32103624.jpg) !important;*/
-  background-image: url('images/lake.jpg') !important;
+  background-image: url('/images/lake.jpg') !important;
   background-size: cover !important;
 }
 

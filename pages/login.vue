@@ -9,7 +9,7 @@
             class="col-md-4 col-lg-4 col-sm-12 sol-xs-12 items-center float-left" style="background-color: #1f509e"
             :style="{ 'height': (win_height - 270) + 'px' }" horizontal>
             <div class="text-center full-width">
-              <div><img src="images/logo.png" style="width: 33%" /></div>
+              <div><img src="/images/logo.png" style="width: 33%" /></div>
               <div class="text-weight-bolder text-white text-h6">Peace Shopping</div>
               <div class="text-caption text-white">Peace Shopping - One stop solution</div>
             </div>
@@ -45,9 +45,9 @@
 
 <script lang="ts" setup>
 const $q = useQuasar()
-const username = ('mayur')
-const password = ('mayur@qu')
-const remember_me = (false)
+const username = ref('mayur')
+const password = ref('mayur@qu')
+const remember_me = ref(false)
 const win_width = computed(() => $q.screen.width - 59);
 const win_height = computed(() => $q.screen.height - 0);
 </script>
