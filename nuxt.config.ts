@@ -3,8 +3,19 @@ import vuetify, { transformAssetUrls } from "vite-plugin-vuetify";
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
+  pages: true,
+  imports: {
+    autoImport: true,
+    collectMeta: true,
+  },
   modules: [
     "nuxt-quasar-ui",
+    "nuxt-icon",
+    "nuxt-lodash",
+    "@pinia/nuxt",
+    "@pinia-plugin-persistedstate/nuxt",
+    "@nuxtjs/supabase",
+    "nuxt-mongoose",
     (_options, nuxt) => {
       nuxt.hooks.hook("vite:extendConfig", (config) => {
         // @ts-expect-error
@@ -22,6 +33,17 @@ export default defineNuxtConfig({
         transformAssetUrls,
       },
     },
+  },
+  runtimeConfig: {
+    public: {
+      stripePk: process.env.STRIPE_PK_KEY,
+    },
+    dbUrl: process.env.DATABASE_URL,
+  },
+  mongoose: {
+    uri: process.env.DATABASE_URL,
+    options: {},
+    modelsDir: "models",
   },
   // @ts-ignore
   quasar: {
@@ -141,6 +163,11 @@ export default defineNuxtConfig({
       nodeIntegration: true,
 
       // extendWebpack(cfg) {},
+    },
+  },
+  app: {
+    head: {
+      script: [{ src: "https://js.stripe.com/v3/", defer: true }],
     },
   },
 });

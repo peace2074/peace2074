@@ -7,13 +7,14 @@ export const useAuth = () => {
     if (!newUser) return;
     switch (typeof newUser) {
       case "object":
-        useUser.value = { ...newUser };
+        // @ts-ignore
+        useUser.value = newUser;
         break;
       case "string":
         useUser.value = newUser;
         break;
       default:
-        useUser.value = { ...newUser };
+        useUser.value = newUser;
 
         break;
     }

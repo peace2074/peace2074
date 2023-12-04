@@ -2,12 +2,12 @@
   <q-layout>
     <q-page-container>
       <q-page class="flex flex-center" style="font-family: Lato;">
-        <!--        <div id="particles-js"></div>-->
+        <div id="particles-js"></div>
         <q-card :style="$q.platform.is.desktop ? 'width:55%;' : ''"
           class="row my-card items-center q-pa-none q-ma-none shadow-24">
           <q-card-section v-if="$q.platform.is.desktop"
             class="col-md-4 col-lg-4 col-sm-12 sol-xs-12 items-center float-left" style="background-color: #1f509e"
-            :style="{ 'height': (win_height - 270) + 'px' }" horizontal>
+            horizontal>
             <div class="text-center full-width">
               <div><img src="/images/logo.png" style="width: 33%" /></div>
               <div class="text-weight-bolder text-white text-h6">Peace Shopping</div>
@@ -44,12 +44,13 @@
 </template>
 
 <script lang="ts" setup>
-const $q = useQuasar()
-const username = ref('mayur')
-const password = ref('mayur@qu')
+debugger;
+// const $q = useQuasar()
+const username = ref('peace2074')
+const password = ref('peacem@gmail.com')
 const remember_me = ref(false)
-const win_width = computed(() => $q.screen.width - 59);
-const win_height = computed(() => $q.screen.height - 0);
+// // const win_width = computed(() => $q.screen.width - 59);
+// const win_height = computed(() => $q.screen.height - 0);
 </script>
 <style>
 .my-card {

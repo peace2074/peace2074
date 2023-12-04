@@ -199,10 +199,18 @@
 </template>
 
 <script lang="ts" setup>
+import { useUserStore } from '~/stores/user';
+const userStore = useUserStore()
+let products = ref(null)
+
 const slide = ref("first")
 const trending_slide = ref(1)
 const latest_slide = ref(1)
 const zipCode = ref(null)
+onMounted(async () => {
+  products.value = await $fetch('/api/prisma/get-all-products')
+  setTimeout(() => userStore.isLoading = false, 1000)
+})
 </script>
 
 <style lang="sass" scoped>
