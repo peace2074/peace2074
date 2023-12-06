@@ -14,7 +14,6 @@ export default defineNuxtConfig({
     "nuxt-lodash",
     "@pinia/nuxt",
     "@pinia-plugin-persistedstate/nuxt",
-    "@nuxtjs/supabase",
     "nuxt-mongoose",
     (_options, nuxt) => {
       nuxt.hooks.hook("vite:extendConfig", (config) => {
@@ -25,7 +24,7 @@ export default defineNuxtConfig({
     ,
   ],
   build: {
-    transpile: ["vuetify"],
+    transpile: ["vuetify", "hellojs"],
   },
   vite: {
     vue: {
@@ -39,6 +38,7 @@ export default defineNuxtConfig({
       stripePk: process.env.STRIPE_PK_KEY,
     },
     dbUrl: process.env.DATABASE_URL,
+    githubClientId: process.env.GITHUB_CLIENT_ID,
   },
   mongoose: {
     uri: process.env.DATABASE_URL,
@@ -167,7 +167,10 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      script: [{ src: "https://js.stripe.com/v3/", defer: true }],
+      script: [
+        { src: "https://js.stripe.com/v3/", defer: true },
+        { src: "/node_modules/hellojs/dist/hello.all.js", defer: true },
+      ],
     },
   },
 });

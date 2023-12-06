@@ -6,7 +6,7 @@
           <q-card-section horizontal>
             <q-card-section class="q-pt-xs">
               <div class="text-overline">US Region</div>
-              <div class="text-h5 q-mt-sm q-mb-xs">Mayur Patel</div>
+              <div class="text-h5 q-mt-sm q-mb-xs">Peace Marshal</div>
               <div class="text-caption text-grey">
                 Sales and Marketing Executive | Graduate and past committee | Keynote speaker on Selling and Recruiting
                 Topics
@@ -53,11 +53,11 @@
 
 <script>
 const user = reactive({
-  first_name: 'Mayur',
-  last_name: 'Patel',
+  first_name: 'Peace',
+  last_name: 'Marshal',
   age: 30,
-  email: 'm******@****.com',
-  phone: '97******92'
+  email: 'p********@gmail.com',
+  phone: '97******17'
 })
 </script>
 

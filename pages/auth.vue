@@ -50,8 +50,9 @@
 </template>
 
 <script setup>
-const client = useSupabaseClient()
 // const user = useSupabaseUser()
+
+import hello from "hellojs";
 
 // watchEffect(() => {
 //     if (user.value) {
@@ -60,11 +61,9 @@ const client = useSupabaseClient()
 // })
 
 const login = async (prov) => {
-    // const { data, error } = await client.auth.signInWithOAuth({
-    //     provider: prov,
-    //     redirectTo: window.location.origin
-    // })
-    // console.log(data);
-    console.log(error);
+    const { data, error } = hello(prov).login()
+    console.log(data);
+    console.log(error)
+    return data
 }
 </script>

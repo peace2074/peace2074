@@ -1,3 +1,19 @@
+<script lang="ts" setup>
+import { useUserStore } from '~/stores/user';
+const userStore = useUserStore()
+const products = ref(null)
+const $router = useRouter()
+
+const slide = ref("first")
+const trending_slide = ref(1)
+const latest_slide = ref(1)
+const zipCode = ref(null)
+// onMounted(async () => {
+//   products.value = await $fetch('/api/prisma/get-all-products')
+//   setTimeout(() => userStore.isLoading = false, 1000)
+// })
+</script>
+
 <template>
   <q-page class="q-mt-sm">
     <div class="row q-col-gutter-sm">
@@ -25,7 +41,7 @@
       </div>
       <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
         <q-card class="bg-white q-pt-sm" :class="$q.platform.is.desktop ? 'q-mr-sm' : ''">
-          <img src="https://www.graphicsprings.com/filestorage/stencils/d3dd5cb632e0826d9e6136af3241b28e.png"
+          <img :src="`https://www.graphicsprings.com/filestorage/stencils/d3dd5cb632e0826d9e6136af3241b28e.png`"
             style="margin:auto;width:66%;" />
           <q-card-section class="q-pt-xs">
             <div class="text-caption text-center text-grey-7">Your Delivery Pincode</div>
@@ -58,7 +74,7 @@
                 <div @click="$router.push('/details')"
                   class="col-lg-2 col-md-2 col-sm-12 col-xs-12 hover_border_grey text-center full-height">
                   <q-img style="" class="rounded-borders"
-                    src="https://www.graphicsprings.com/filestorage/stencils/d3dd5cb632e0826d9e6136af3241b28e.png">
+                    :src="`https://www.graphicsprings.com/filestorage/stencils/d3dd5cb632e0826d9e6136af3241b28e.png`">
                   </q-img>
                   <div>Redmi 8</div>
                   <div class="text-caption text-weight-bold text-green">5000h mAh Battery</div>
@@ -198,20 +214,6 @@
   </q-page>
 </template>
 
-<script lang="ts" setup>
-import { useUserStore } from '~/stores/user';
-const userStore = useUserStore()
-let products = ref(null)
-
-const slide = ref("first")
-const trending_slide = ref(1)
-const latest_slide = ref(1)
-const zipCode = ref(null)
-onMounted(async () => {
-  products.value = await $fetch('/api/prisma/get-all-products')
-  setTimeout(() => userStore.isLoading = false, 1000)
-})
-</script>
 
 <style lang="sass" scoped>
 .custom-caption

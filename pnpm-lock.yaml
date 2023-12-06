@@ -26,12 +26,15 @@ dependencies:
   echarts:
     specifier: ^5.4.3
     version: 5.4.3
+  hellojs:
+    specifier: ^1.20.0
+    version: 1.20.0
   mongoose:
     specifier: ^8.0.2
     version: 8.0.2
   nuxt-mongoose:
     specifier: ^1.0.3
-    version: 1.0.3(@nuxt/devtools@1.0.4)(@vue/compiler-core@3.3.10)(nuxt@3.8.2)(postcss@8.4.32)(vite@4.5.1)(vue@3.3.10)(webpack@5.89.0)
+    version: 1.0.3(@nuxt/devtools@1.0.4)(@vue/compiler-core@3.3.10)(jwt-decode@4.0.0)(nuxt@3.8.2)(postcss@8.4.32)(vite@4.5.1)(vue@3.3.10)(webpack@5.89.0)
   pinia:
     specifier: ^2.1.7
     version: 2.1.7(vue@3.3.10)
@@ -64,12 +67,18 @@ devDependencies:
   '@nuxt/devtools':
     specifier: latest
     version: 1.0.4(nuxt@3.8.2)(vite@4.5.1)
-  '@nuxtjs/supabase':
-    specifier: ^1.1.4
-    version: 1.1.4
+  '@types/hellojs':
+    specifier: ^1.19.5
+    version: 1.19.5
+  '@types/jwt-decode':
+    specifier: ^3.1.0
+    version: 3.1.0
   '@vueuse/core':
     specifier: ^10.6.1
     version: 10.6.1(vue@3.3.10)
+  jwt-decode:
+    specifier: ^4.0.0
+    version: 4.0.0
   nuxt:
     specifier: ^3.8.2
     version: 3.8.2(sass@1.69.5)(vite@4.5.1)
@@ -1086,7 +1095,7 @@ packages:
       - rollup
       - supports-color
 
-  /@nuxt/devtools-ui-kit@1.0.0(@nuxt/devtools@1.0.4)(@vue/compiler-core@3.3.10)(nuxt@3.8.2)(postcss@8.4.32)(vite@4.5.1)(vue@3.3.10)(webpack@5.89.0):
+  /@nuxt/devtools-ui-kit@1.0.0(@nuxt/devtools@1.0.4)(@vue/compiler-core@3.3.10)(jwt-decode@4.0.0)(nuxt@3.8.2)(postcss@8.4.32)(vite@4.5.1)(vue@3.3.10)(webpack@5.89.0):
     resolution: {integrity: sha512-uAIF9+8yYiMd/Fqh2KOqCX1ndqZWoFk9GQ9HQyY38BTVlttFk6c/GeCWKi5GaK93YzckJRfDOGhK/PcQmCNzIQ==}
     peerDependencies:
       '@nuxt/devtools': 1.0.0
@@ -1106,7 +1115,7 @@ packages:
       '@unocss/preset-mini': 0.56.5
       '@unocss/reset': 0.56.5
       '@vueuse/core': 10.6.1(vue@3.3.10)
-      '@vueuse/integrations': 10.6.1(focus-trap@7.5.4)(vue@3.3.10)
+      '@vueuse/integrations': 10.6.1(focus-trap@7.5.4)(jwt-decode@4.0.0)(vue@3.3.10)
       '@vueuse/nuxt': 10.6.1(nuxt@3.8.2)(vue@3.3.10)
       defu: 6.1.3
       focus-trap: 7.5.4
@@ -1361,20 +1370,6 @@ packages:
       - rollup
       - supports-color
     dev: false
-
-  /@nuxtjs/supabase@1.1.4:
-    resolution: {integrity: sha512-Sbcg43Ywv9qTL+HGHrPWGWPfGLg4Eclxj+tJsK2fJ8pP4PoTJmP3SZnHv+oxxRM6igcTukEgEGhFASk8KJbHJw==}
-    dependencies:
-      '@nuxt/kit': 3.8.2
-      '@supabase/supabase-js': 2.38.4
-      defu: 6.1.3
-      pathe: 1.1.1
-    transitivePeerDependencies:
-      - bufferutil
-      - rollup
-      - supports-color
-      - utf-8-validate
-    dev: true
 
   /@parcel/watcher-android-arm64@2.3.0:
     resolution: {integrity: sha512-f4o9eA3dgk0XRT3XhB0UWpWpLnKgrh1IwNJKJ7UJek7eTYccQ8LR7XUWFKqw6aEq5KUNlCcGvSzKqSX/vtWVVA==}
@@ -1797,63 +1792,6 @@ packages:
     resolution: {integrity: sha512-R1PwtDvUfs99cAjfuQ/WpwJ3c92+DAMy9xGApjqlWQMj0FKQabUAys2swfTRNzuYAYJh7NqK2dzcYVNkKLEKUg==}
     dev: false
 
-  /@supabase/functions-js@2.1.5:
-    resolution: {integrity: sha512-BNzC5XhCzzCaggJ8s53DP+WeHHGT/NfTsx2wUSSGKR2/ikLFQTBCDzMvGz/PxYMqRko/LwncQtKXGOYp1PkPaw==}
-    dependencies:
-      '@supabase/node-fetch': 2.6.15
-    dev: true
-
-  /@supabase/gotrue-js@2.58.0:
-    resolution: {integrity: sha512-cDslIiiPUzS8DQQqYxK9kT+Ngbrbx0a68e+AsU3H4+eLyAfq+m9aAqKXHHr3H5jqeFvIprSe87r4SeyOYyMnrQ==}
-    dependencies:
-      '@supabase/node-fetch': 2.6.15
-    dev: true
-
-  /@supabase/node-fetch@2.6.15:
-    resolution: {integrity: sha512-1ibVeYUacxWYi9i0cf5efil6adJ9WRyZBLivgjs+AUpewx1F3xPi7gLgaASI2SmIQxPoCEjAsLAzKPgMJVgOUQ==}
-    engines: {node: 4.x || >=6.0.0}
-    dependencies:
-      whatwg-url: 5.0.0
-    dev: true
-
-  /@supabase/postgrest-js@1.9.0:
-    resolution: {integrity: sha512-axP6cU69jDrLbfihJKQ6vU27tklD0gzb9idkMN363MtTXeJVt5DQNT3JnJ58JVNBdL74hgm26rAsFNvHk+tnSw==}
-    dependencies:
-      '@supabase/node-fetch': 2.6.15
-    dev: true
-
-  /@supabase/realtime-js@2.9.0:
-    resolution: {integrity: sha512-e/SI+/eqFJorAKAgVAwKQ9hSDQSBp86Yh7XbQmfJJ90LEfpM52HlTfJt/03lcepRu6BmH5h1uYn1b4zta7ghdw==}
-    dependencies:
-      '@supabase/node-fetch': 2.6.15
-      '@types/phoenix': 1.6.4
-      '@types/websocket': 1.0.10
-      ws: 8.14.2
-    transitivePeerDependencies:
-      - bufferutil
-      - utf-8-validate
-    dev: true
-
-  /@supabase/storage-js@2.5.5:
-    resolution: {integrity: sha512-OpLoDRjFwClwc2cjTJZG8XviTiQH4Ik8sCiMK5v7et0MDu2QlXjCAW3ljxJB5+z/KazdMOTnySi+hysxWUPu3w==}
-    dependencies:
-      '@supabase/node-fetch': 2.6.15
-    dev: true
-
-  /@supabase/supabase-js@2.38.4:
-    resolution: {integrity: sha512-bYwxm/GosvRqOMIv6YP7qUTZWi/trgHtDWUEZDEmyRHW24d0JYIb1GOt6RaO2hsWlecn88DAJIpjoNbprocgRA==}
-    dependencies:
-      '@supabase/functions-js': 2.1.5
-      '@supabase/gotrue-js': 2.58.0
-      '@supabase/node-fetch': 2.6.15
-      '@supabase/postgrest-js': 1.9.0
-      '@supabase/realtime-js': 2.9.0
-      '@supabase/storage-js': 2.5.5
-    transitivePeerDependencies:
-      - bufferutil
-      - utf-8-validate
-    dev: true
-
   /@trysound/sax@0.2.0:
     resolution: {integrity: sha512-L7z9BgrNEcYyUYtF+HaEfiS5ebkh9jXqbszz7pC0hRBPaatV0XjSD3+eHrpqFemQfgwiFF0QPIarnIihIDn7OA==}
     engines: {node: '>=10.13.0'}
@@ -1886,6 +1824,10 @@ packages:
   /@types/estree@1.0.5:
     resolution: {integrity: sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw==}
 
+  /@types/hellojs@1.19.5:
+    resolution: {integrity: sha512-7QWbsR0Qna/DwSg6uDMswD2Ds5IlzeKCtINwDNTGa+LBBZcQYVOiI9/a0oOjKT7SRVUSctI6H9SX8gtO2LVwMQ==}
+    dev: true
+
   /@types/http-proxy@1.17.14:
     resolution: {integrity: sha512-SSrD0c1OQzlFX7pGu1eXxSEjemej64aaNPRhhVYUGqXh0BtldAAx37MG8btcumvpgKyZp1F5Gn3JkktdxiFv6w==}
     dependencies:
@@ -1894,6 +1836,13 @@ packages:
   /@types/json-schema@7.0.15:
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
     dev: false
+
+  /@types/jwt-decode@3.1.0:
+    resolution: {integrity: sha512-tthwik7TKkou3mVnBnvVuHnHElbjtdbM63pdBCbZTirCt3WAdM73Y79mOri7+ljsS99ZVwUFZHLMxJuJnv/z1w==}
+    deprecated: This is a stub types definition. jwt-decode provides its own type definitions, so you do not need this installed.
+    dependencies:
+      jwt-decode: 4.0.0
+    dev: true
 
   /@types/lodash-es@4.17.12:
     resolution: {integrity: sha512-0NgftHUcV4v34VhXm8QBSftKVXtbkBG3ViCjs6+eJ5a6y6Mi/jiFGPc1sC7QK+9BFhWrURE3EOggmWaSxL9OzQ==}
@@ -1910,10 +1859,6 @@ packages:
     dependencies:
       undici-types: 5.26.5
 
-  /@types/phoenix@1.6.4:
-    resolution: {integrity: sha512-B34A7uot1Cv0XtaHRYDATltAdKx0BvVKNgYNqE4WjtPUa4VQJM7kxeXcVKaH+KS+kCmZ+6w+QaUdcljiheiBJA==}
-    dev: true
-
   /@types/resolve@1.20.2:
     resolution: {integrity: sha512-60BCwRFOZCQhDncwQdxxeOEEkbc5dIMccYLwbxsS4TUNeVECQ/pBJ0j09mrHOl/JJvpRPGwO9SvE4nR2Nb/a4Q==}
 
@@ -1923,12 +1868,6 @@ packages:
   /@types/webidl-conversions@7.0.3:
     resolution: {integrity: sha512-CiJJvcRtIgzadHCYXw7dqEnMNRjhGZlYK05Mj9OyktqV8uVT8fD2BFOB7S1uwBE3Kj2Z+4UyPmFw/Ixgw/LAlA==}
     dev: false
-
-  /@types/websocket@1.0.10:
-    resolution: {integrity: sha512-svjGZvPB7EzuYS94cI7a+qhwgGU1y89wUgjT6E2wVUfmAGIvRfT7obBvRtnhXCSsoMdlG4gBFGE7MfkIXZLoww==}
-    dependencies:
-      '@types/node': 20.10.3
-    dev: true
 
   /@types/whatwg-url@8.2.2:
     resolution: {integrity: sha512-FtQu10RWgn3D9U4aazdwIE2yzphmTJREDqNdODHrbrZmmMqI0vMheC/6NE/J1Yveaj8H+ela+YwWTjq5PGmuhA==}
@@ -2406,7 +2345,7 @@ packages:
       - '@vue/composition-api'
       - vue
 
-  /@vueuse/integrations@10.6.1(focus-trap@7.5.4)(vue@3.3.10):
+  /@vueuse/integrations@10.6.1(focus-trap@7.5.4)(jwt-decode@4.0.0)(vue@3.3.10):
     resolution: {integrity: sha512-mPDupuofMJ4DPmtX/FfP1MajmWRzYDv8WSaTCo8LQ5kFznjWgmUQ16ApjYqgMquqffNY6+IRMdMgosLDRZOSZA==}
     peerDependencies:
       async-validator: '*'
@@ -2450,6 +2389,7 @@ packages:
       '@vueuse/core': 10.6.1(vue@3.3.10)
       '@vueuse/shared': 10.6.1(vue@3.3.10)
       focus-trap: 7.5.4
+      jwt-decode: 4.0.0
       vue-demi: 0.14.6(vue@3.3.10)
     transitivePeerDependencies:
       - '@vue/composition-api'
@@ -4075,6 +4015,10 @@ packages:
     dependencies:
       function-bind: 1.1.2
 
+  /hellojs@1.20.0:
+    resolution: {integrity: sha512-zfZGRt0J0OpJHnw2GJz4uh+rzMNAMWpIymiaRbSmCqCvqDMLSx2/qR5JucqnHPsZHUEjyKj5aLJ8K54kyHHjLQ==}
+    dev: false
+
   /hookable@5.5.3:
     resolution: {integrity: sha512-Yc+BQe8SvoXH1643Qez1zqLRmbA5rCL+sSmk6TVos0LWVfNIB7PGncdlId77WzLGSIB5KaWgTaNTs2lNVEI6VQ==}
 
@@ -4427,6 +4371,10 @@ packages:
   /jsonparse@1.3.1:
     resolution: {integrity: sha512-POQXvpdL69+CluYsillJ7SUhKvytYjW9vG/GKpnf+xP8UWgYEM/RaMzHHofbALDiKbbP1W8UEYmgGl39WkPZsg==}
     engines: {'0': node >= 0.2.0}
+
+  /jwt-decode@4.0.0:
+    resolution: {integrity: sha512-+KJGIyHgkGuIq3IEBNftfhW/LfWhXUIY6OmyVWjliu5KH1y0fw7VQ8YndE2O4qZdMSd9SqbnC8GOcZEy0Om7sA==}
+    engines: {node: '>=18'}
 
   /kareem@2.5.1:
     resolution: {integrity: sha512-7jFxRVm+jD+rkq3kY0iZDJfsO2/t4BBPeEb2qKn2lR/9KhuksYk5hxzfRYWMPV8P/x2d0kHD306YyWLzjjH+uA==}
@@ -5221,11 +5169,11 @@ packages:
       - supports-color
     dev: true
 
-  /nuxt-mongoose@1.0.3(@nuxt/devtools@1.0.4)(@vue/compiler-core@3.3.10)(nuxt@3.8.2)(postcss@8.4.32)(vite@4.5.1)(vue@3.3.10)(webpack@5.89.0):
+  /nuxt-mongoose@1.0.3(@nuxt/devtools@1.0.4)(@vue/compiler-core@3.3.10)(jwt-decode@4.0.0)(nuxt@3.8.2)(postcss@8.4.32)(vite@4.5.1)(vue@3.3.10)(webpack@5.89.0):
     resolution: {integrity: sha512-Nmr8/uOGmnVN6y0nnyohQ5F8kQODrOM/knveL72kdgv/O8XWi+GrCelBZWG6OsMrPHMg0LOkyx/LF2En8BJhCA==}
     dependencies:
       '@nuxt/devtools-kit': 1.0.0(nuxt@3.8.2)(vite@4.5.1)
-      '@nuxt/devtools-ui-kit': 1.0.0(@nuxt/devtools@1.0.4)(@vue/compiler-core@3.3.10)(nuxt@3.8.2)(postcss@8.4.32)(vite@4.5.1)(vue@3.3.10)(webpack@5.89.0)
+      '@nuxt/devtools-ui-kit': 1.0.0(@nuxt/devtools@1.0.4)(@vue/compiler-core@3.3.10)(jwt-decode@4.0.0)(nuxt@3.8.2)(postcss@8.4.32)(vite@4.5.1)(vue@3.3.10)(webpack@5.89.0)
       '@nuxt/kit': 3.8.2
       '@vueuse/core': 10.6.1(vue@3.3.10)
       defu: 6.1.3

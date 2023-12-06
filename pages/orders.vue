@@ -47,11 +47,11 @@ onBeforeMount(async () => {
     orders.value = await useFetch(`/api/prisma/get-all-orders-by-user/${user.value.id}`)
 })
 
-onMounted(() => {
-    if (!user.value) {
-        return navigateTo('/auth')
-    }
+// onMounted(() => {
+//     if (!user.value) {
+//         return navigateTo('/auth')
+//     }
 
-    setTimeout(() => userStore.isLoading = false, 200)
-})
+//     setTimeout(() => userStore.isLoading = false, 200)
+// })
 </script>

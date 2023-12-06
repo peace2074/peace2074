@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 const $q = useQuasar()
-const left = ref(false)
+const $router = useRouter()
 const menu_cat_elc = ref(false)
 const menu_cat_tvs = ref(false)
 const menu_cat_men = ref(false)
@@ -10,15 +10,15 @@ const leftDrawer = ref(false)
 
 <template>
   <q-layout view="lHh LpR lFf" style="font-family: Lato;">
-    <!-- <q-header reveal elevated style="background-color: #1f509e;"> -->
-
-    <q-header reveal elevated style="background-color: #1f509e;">
+    <q-header reveal elevated style="background-color:bg-primary">
       <q-toolbar v-if="!$q.platform.is.desktop" class="q-py-sm">
+        <q-space />
         <div class="row">
           <div class="col-sm-12 col-xs-12">
-            <q-toolbar-title>
-              <img @click="$router.push('/')" class="cursor-pointer float-left" src="/images/logo.png"
-                style="width: 12%" />
+            <q-toolbar-title class="bg-primary">
+              <nuxt-link to="/">
+                <img class="cursor-pointer float-left" src="/images/logo.png" style="width: 12%" />
+              </nuxt-link>
               <span class="float-left q-mt-xs q-ml-md text-h6 text-weight-bold" style="font-size: 17px;">Quasar
                 Shopping</span>
             </q-toolbar-title>
@@ -205,7 +205,7 @@ const leftDrawer = ref(false)
             <a target="_blank" class="text-blue-1 hover_underline_white" style="text-decoration: none"
               href="https://quasar-framework.org">&nbsp;Quasar&nbsp;</a> by
             <a target="_blank" class="text-blue-1 hover_underline_white" style="text-decoration: none"
-              href="https://github.com/mayur091193">Mayur</a>.
+              href="https://github.com/peace2074">Peeace Marshal</a>.
           </div>
         </div>
       </div>
