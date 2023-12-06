@@ -17,7 +17,6 @@
     "@stripe/stripe-js": "^1.54.2",
     "apexcharts": "^3.44.1",
     "echarts": "^5.4.3",
-    "hellojs": "^1.20.0",
     "mongoose": "^8.0.2",
     "nuxt-mongoose": "^1.0.3",
     "pinia": "^2.1.7",
@@ -28,7 +27,8 @@
     "vue-echarts-v3": "^2.0.1",
     "vue-gtag-next": "^1.14.0",
     "vue-winwheel": "^1.0.0",
-    "vuedraggable": "^2.24.3"
+    "vuedraggable": "^2.24.3",
+    "worker-auth-providers": "0.0.13-beta.4"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
@@ -46,6 +46,7 @@
     "vue": "^3.3.10",
     "vue-i18n": "^9.8.0",
     "vue-icon": "^2.3.0",
+    "vue-router": "^4.2.5",
     "vue-stripe-js": "^1.0.1",
     "vue-tabler-icons": "^2.21.0",
     "vue3-apexcharts": "^1.4.4",

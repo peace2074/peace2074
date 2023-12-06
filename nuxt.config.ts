@@ -135,7 +135,7 @@ export default defineNuxtConfig({
     // Full list of options: https://quasar.dev/quasar-cli/developing-cordova-apps/configuring-cordova
     cordova: {
       // noIosLegacyBuildFlag: true, // uncomment only if you know what you are doing
-      id: "org.cordova.quasar.app",
+      id: "org.waelio.peace2074.app",
     },
 
     // Full list of options: https://quasar.dev/quasar-cli/developing-capacitor-apps/configuring-capacitor
@@ -157,20 +157,14 @@ export default defineNuxtConfig({
       },
 
       builder: {
-        appId: "Quasar_Shopping",
+        appId: "Peaace_Shopping",
       },
-
       nodeIntegration: true,
-
-      // extendWebpack(cfg) {},
     },
   },
   app: {
     head: {
-      script: [
-        { src: "https://js.stripe.com/v3/", defer: true },
-        { src: "/node_modules/hellojs/dist/hello.all.js", defer: true },
-      ],
+      script: [{ src: "https://js.stripe.com/v3/", defer: true }],
     },
   },
 });

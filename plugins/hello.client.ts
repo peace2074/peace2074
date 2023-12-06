@@ -1,13 +1,23 @@
-import hello from "hellojs";
-export default defineNuxtPlugin(({ provide }) => {
-  const config = useRuntimeConfig();
-  hello.init({
-    github: config.githubClientId,
-  });
+import {
+  github,
+  google,
+  twilio,
+  facebook,
+  discord,
+  spotify,
+} from "worker-auth-providers";
 
-  return {
-    provide: {
-      hello,
+export default defineNuxtPlugin(async({ provide }) => {
+  const config = useRuntimeConfig();
+  const githubLoginUrl = await github.redirect({
+    options: {
+      config.githubClientId,
     },
-  };
+});
+return {
+    status: 302,
+    headers: {
+        location: githubLoginUrl,
+    },
+};
 });
