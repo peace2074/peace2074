@@ -19,7 +19,7 @@ const leftDrawer = ref(false)
               <nuxt-link to="/">
                 <img class="cursor-pointer float-left" src="/images/logo.png" style="width: 12%" />
               </nuxt-link>
-              <span class="float-left q-mt-xs q-ml-md text-h6 text-weight-bold" style="font-size: 17px;">Quasar
+              <span class="float-left q-mt-xs q-ml-md text-h6 text-weight-bold" style="font-size: 17px;">Peace
                 Shopping</span>
             </q-toolbar-title>
           </div>
@@ -40,10 +40,6 @@ const leftDrawer = ref(false)
           </div>
         </div>
         <!--          <q-btn @click="left = !left" flat round dense icon="menu" class="q-mr-sm" />-->
-
-
-        <q-btn flat dense icon="shopping_cart" class="text-capitalize q-mr-md text-bold" label="Cart" />
-
       </q-toolbar>
       <q-toolbar v-if="$q.platform.is.desktop" class="q-py-sm">
         <!--          <q-btn @click="left = !left" flat round dense icon="menu" class="q-mr-sm" />-->

@@ -41,7 +41,7 @@ const zipCode = ref(null)
       </div>
       <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
         <q-card class="bg-white q-pt-sm" :class="$q.platform.is.desktop ? 'q-mr-sm' : ''">
-          <img :src="`https://www.graphicsprings.com/filestorage/stencils/d3dd5cb632e0826d9e6136af3241b28e.png`"
+          <img :src="`https://unsplash.com/photos/man-in-green-jacket-walking-on-sidewalk-during-daytime-BTKF6G-O8fU`"
             style="margin:auto;width:66%;" />
           <q-card-section class="q-pt-xs">
             <div class="text-caption text-center text-grey-7">Your Delivery Pincode</div>
