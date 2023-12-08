@@ -1,3 +1,4 @@
+import client from "~/config/client";
 import {
   github,
   // google,
@@ -7,14 +8,14 @@ import {
   // spotify,
 } from "worker-auth-providers";
 // @ts-ignore
-export default defineNuxtPlugin(async (_nuxtApp) => {
+export default defineNuxtPlugin(async (nuxtApp) => {
   const runtimeConfig = useRuntimeConfig();
   const redirectTo = location.href.substring(
     0,
     location.href.trim().indexOf("?")
   );
-  const clientId = runtimeConfig.githubClientId;
-  console.log("clientId", clientId);
+  const clientId = client.Credentials.github.clientId;
+  console.log("ClientId", clientId);
 
   const githubLoginUrl = await github.redirect({
     options: {
