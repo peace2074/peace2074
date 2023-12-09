@@ -1,6 +1,7 @@
 <script lang="ts" setup>
-import { useUserStore } from '~/stores/user';
-import type { ProductI } from '~/types';
+import { useUserStore } from '~/stores/user'
+import { rootStore } from '~/stores/root'
+import type { ProductI } from '~/types'
 const userStore = useUserStore()
 const products: Ref<ProductI[]> = ref([])
 const $router = useRouter()
@@ -16,6 +17,7 @@ onMounted(async () => {
     products.value = data as ProductI[]
     trending_slide.value = products.value[1].title
     latest_slide.value = products.value[3].title
+    rootStore().$state.products = data
     setTimeout(() => userStore.isLoading = false, 1000)
   }
 })
@@ -113,7 +115,11 @@ onMounted(async () => {
             <q-carousel-slide v-for="product in products" :key="product._id" :name="product.title" :img-src="product.url"
               class="column no-wrap">
               <div class="row fit justify-start items-center q-gutter-xs q-col-gutter no-wrap">
-                <q-img @click="$router.push('/category')" style="border:1px solid lightgrey;"
+                <q-img @click="$router.push(`/item/${product._id}`,
+                  params: {
+                  id: product._id
+                }
+                )" style="border:1px solid lightgrey;"
                   class="rounded-borders col-lg-3 col-md-3 col-sm-12 col-xs-12 cursor-pointer full-height"
                   :src="product.url" :srcSet="product.url" :placeholderSrc="product.title">
                   <div class="absolute-bottom custom-caption" style="background-color:rgba(0, 0, 0, .5);">

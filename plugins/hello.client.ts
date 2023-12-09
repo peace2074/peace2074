@@ -16,8 +16,6 @@ export default defineNuxtPlugin(async (nuxtApp) => {
       location.href.trim().indexOf("?")
     );
     const clientId = client.Credentials.github.clientId;
-    console.log("ClientId", clientId);
-
     const githubLoginUrl = await github.redirect({
       options: {
         clientId,

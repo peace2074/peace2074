@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { reactive } from "vue";
-import { useAuthStore } from "~/stores/auth.pinia";
+import { useAuthStore } from "~/stores/auth";
 import { useTitle } from "@vueuse/core";
 useTitle("Login Page");
 const { user } = useAuthStore()

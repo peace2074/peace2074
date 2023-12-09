@@ -1,11 +1,11 @@
-<script setup>
+<script lang="ts" setup>
+import type { ProductI } from '~/types';
 import { useUserStore } from '~/stores/user';
 const userStore = useUserStore()
-
 const route = useRoute()
-
-let product = ref(null)
-let currentImage = ref(null)
+const images = ref([''])
+const product: Ref<ProductI | null> = ref(null)
+let currentImage: Ref<string> = ref('')
 
 onBeforeMount(async () => {
     const { data } = await useFetch(`/api/prisma/get-product-by-id/${route.params.id}`)
@@ -13,9 +13,10 @@ onBeforeMount(async () => {
 })
 
 watchEffect(() => {
-    if (product.value && product.value.length) {
-        currentImage.value = product.value.url
-        images.value[0] = product.value.url
+    if (product.value) {
+        // @ts-ignore
+        currentImage.value = product.value.url || product.value.url[0]
+        images.value = [...product.value.url]
         userStore.isLoading = false
     }
 })
@@ -31,23 +32,16 @@ const isInCart = computed(() => {
 })
 
 const priceComputed = computed(() => {
-    if (product.value && product.value.data) {
-        return product.value.data.price / 100
+    if (product.value) {
+        return product.value.price / 100
     }
     return '0.00'
 })
 
-const images = ref([
-    '',
-    'https://picsum.photos/id/212/800/800',
-    'https://picsum.photos/id/233/800/800',
-    'https://picsum.photos/id/165/800/800',
-    'https://picsum.photos/id/99/800/800',
-    'https://picsum.photos/id/144/800/800',
-])
+
 
 const addToCart = () => {
-    userStore.cart.push(product.value.data)
+    userStore.cart.push(product)
 }
 </script>
 
@@ -95,7 +89,7 @@ const addToCart = () => {
                 </div>
 
                 <p class="text-[#009A66] text-xs font-semibold pt-1">
-                    Free 11-day delivery over ￡8.28
+                    Free 11-day delivery over $8.28
                 </p>
 
                 <p class="text-[#009A66] text-xs font-semibold pt-1">
