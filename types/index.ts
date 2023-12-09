@@ -252,3 +252,11 @@ export type TReshreshToken = {
   updatedAt?: Date;
   createdAt?: Date;
 };
+
+export interface ProductI {
+  _id: string;
+  title: string;
+  description: string;
+  price: number;
+  url: string | string[];
+}

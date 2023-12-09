@@ -8,6 +8,7 @@
       "vitest/importMeta",
       "@pinia/nuxt",
       "@prisma/client",
+      "/quasar/ui/types/*",
       "/types/*"
     ]
   },

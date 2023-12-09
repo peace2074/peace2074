@@ -1,3 +1,56 @@
+<script setup>
+import { useUserStore } from '~/stores/user';
+const userStore = useUserStore()
+
+const route = useRoute()
+
+let product = ref(null)
+let currentImage = ref(null)
+
+onBeforeMount(async () => {
+    const { data } = await useFetch(`/api/prisma/get-product-by-id/${route.params.id}`)
+    product.value = data
+})
+
+watchEffect(() => {
+    if (product.value && product.value.length) {
+        currentImage.value = product.value.url
+        images.value[0] = product.value.url
+        userStore.isLoading = false
+    }
+})
+
+const isInCart = computed(() => {
+    let res = false
+    userStore.cart.forEach(prod => {
+        if (route.params.id == prod.id) {
+            res = true
+        }
+    })
+    return res
+})
+
+const priceComputed = computed(() => {
+    if (product.value && product.value.data) {
+        return product.value.data.price / 100
+    }
+    return '0.00'
+})
+
+const images = ref([
+    '',
+    'https://picsum.photos/id/212/800/800',
+    'https://picsum.photos/id/233/800/800',
+    'https://picsum.photos/id/165/800/800',
+    'https://picsum.photos/id/99/800/800',
+    'https://picsum.photos/id/144/800/800',
+])
+
+const addToCart = () => {
+    userStore.cart.push(product.value.data)
+}
+</script>
+
 <template>
     <div id="ItemPage" class="mt-4 max-w-[1200px] mx-auto px-2">
         <div class="md:flex gap-4 justify-between mx-auto w-full">
@@ -70,54 +123,3 @@
     </div>
 </template>
 
-<script setup>
-import { useUserStore } from '~/stores/user';
-const userStore = useUserStore()
-
-const route = useRoute()
-
-let product = ref(null)
-let currentImage = ref(null)
-
-onBeforeMount(async () => {
-    product.value = await useFetch(`/api/prisma/get-product-by-id/${route.params.id}`)
-})
-
-watchEffect(() => {
-    if (product.value && product.value.data) {
-        currentImage.value = product.value.data.url
-        images.value[0] = product.value.data.url
-        userStore.isLoading = false
-    }
-})
-
-const isInCart = computed(() => {
-    let res = false
-    userStore.cart.forEach(prod => {
-        if (route.params.id == prod.id) {
-            res = true
-        }
-    })
-    return res
-})
-
-const priceComputed = computed(() => {
-    if (product.value && product.value.data) {
-        return product.value.data.price / 100
-    }
-    return '0.00'
-})
-
-const images = ref([
-    '',
-    'https://picsum.photos/id/212/800/800',
-    'https://picsum.photos/id/233/800/800',
-    'https://picsum.photos/id/165/800/800',
-    'https://picsum.photos/id/99/800/800',
-    'https://picsum.photos/id/144/800/800',
-])
-
-const addToCart = () => {
-    userStore.cart.push(product.value.data)
-}
-</script>

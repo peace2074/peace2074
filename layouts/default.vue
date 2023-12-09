@@ -50,7 +50,6 @@ const leftDrawer = ref(false)
             label="Search for products, brands and more" />
         </q-toolbar-title>
 
-        <!--<q-btn flat dense icon="shopping_cart" class="text-capitalize q-mr-md text-bold" label="Cart"/>-->
         <q-btn class="q-mr-md" dense round flat icon="shopping_cart">
           <q-badge color="red" class="text-bold" floating transparent>
             4
@@ -152,7 +151,9 @@ const leftDrawer = ref(false)
 
 
     <q-page-container style="background-color:#f1f2f6">
-      <slot />
+      <ClientOnly>
+        <slot />
+      </ClientOnly>
       <div class="q-mt-sm">
         <div class="row q-pa-md bg-primary">
           <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>

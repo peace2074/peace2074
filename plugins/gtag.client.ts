@@ -10,13 +10,14 @@ export default defineNuxtPlugin(({ vueApp }) => {
       },
     });
   }
-
-  function gtag() {
-    window?.dataLayer.push(arguments);
+  if (process.client) {
+    function gtag() {
+      window.dataLayer.push(arguments);
+    }
+    window["dataLayer"] = window.dataLayer || [];
+    gtag("js", new Date());
+    gtag("config", gtagId);
   }
-  window["dataLayer"] = window.dataLayer || [];
-  gtag("js", new Date());
-  gtag("config", gtagId);
 
   useHead({
     script: [

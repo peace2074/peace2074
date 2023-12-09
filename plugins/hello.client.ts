@@ -9,25 +9,27 @@ import {
 } from "worker-auth-providers";
 // @ts-ignore
 export default defineNuxtPlugin(async (nuxtApp) => {
-  const runtimeConfig = useRuntimeConfig();
-  const redirectTo = location.href.substring(
-    0,
-    location.href.trim().indexOf("?")
-  );
-  const clientId = client.Credentials.github.clientId;
-  console.log("ClientId", clientId);
+  if (process.client) {
+    // const { clientId } = useRuntimeConfig();
+    const redirectTo = location.href.substring(
+      0,
+      location.href.trim().indexOf("?")
+    );
+    const clientId = client.Credentials.github.clientId;
+    console.log("ClientId", clientId);
 
-  const githubLoginUrl = await github.redirect({
-    options: {
-      clientId,
-      redirectTo,
-    },
-  });
+    const githubLoginUrl = await github.redirect({
+      options: {
+        clientId,
+        redirectTo,
+      },
+    });
 
-  return {
-    status: 302,
-    headers: {
-      location: await githubLoginUrl,
-    },
-  };
+    return {
+      status: 302,
+      headers: {
+        location: await githubLoginUrl,
+      },
+    };
+  }
 });

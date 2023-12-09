@@ -1,23 +1,31 @@
 <script lang="ts" setup>
 import { useUserStore } from '~/stores/user';
+import type { ProductI } from '~/types';
 const userStore = useUserStore()
-const products = ref(null)
+const products: Ref<ProductI[]> = ref([])
 const $router = useRouter()
-
-const slide = ref("first")
-const trending_slide = ref(1)
-const latest_slide = ref(1)
+const slide = ref("style")
+const trending_slide = ref('')
+const latest_slide = ref('')
 const zipCode = ref(null)
-// onMounted(async () => {
-//   products.value = await $fetch('/api/prisma/get-all-products')
-//   setTimeout(() => userStore.isLoading = false, 1000)
-// })
+const discount = ref(1.2)
+onMounted(async () => {
+  // @ts-ignore
+  const { data } = await $fetch('/api/prisma/get-all-products') as Promise<ProductI[] | unknown | null>
+  if (await data && await data.length) {
+    products.value = data as ProductI[]
+    trending_slide.value = products.value[1].title
+    latest_slide.value = products.value[3].title
+    setTimeout(() => userStore.isLoading = false, 1000)
+  }
+})
 </script>
 
 <template>
   <q-page class="q-mt-sm">
     <div class="row q-col-gutter-sm">
       <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+        <!-- first carousel -->
         <q-carousel :class="$q.platform.is.desktop ? 'q-ml-sm' : ''" arrows animated v-model="slide" height="250px">
           <q-carousel-slide name="first" img-src="https://cdn.quasar.dev/img/mountains.jpg">
             <div class="absolute-bottom custom-caption">
@@ -40,6 +48,7 @@ const zipCode = ref(null)
         </q-carousel>
       </div>
       <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+        <!-- Collect Address -->
         <q-card class="bg-white q-pt-sm" :class="$q.platform.is.desktop ? 'q-mr-sm' : ''">
           <img :src="`https://unsplash.com/photos/man-in-green-jacket-walking-on-sidewalk-during-daytime-BTKF6G-O8fU`"
             style="margin:auto;width:66%;" />
@@ -60,6 +69,7 @@ const zipCode = ref(null)
         </q-card>
       </div>
     </div>
+    <!-- Latest Lancunches -->
     <div class="text-grey-9 text-weight-bold">
       <div class="row items-center q-mx-sm">
         <div class="col-12 q-mt-sm">
@@ -67,83 +77,27 @@ const zipCode = ref(null)
             <span class="text-grey-9 text-h6 text-weight-bold">Latest Launches</span>
             <a class="text-primary q-ml-sm cursor-pointer">[see all]</a>
           </div>
-          <q-carousel v-model="latest_slide" transition-prev="slide-right" transition-next="slide-left" swipeable animated
-            control-color="primary" navigation padding arrows height="260px" class="rounded-borders">
-            <q-carousel-slide v-for="(val, idx) in [1, 2, 3]" :name="val" :key="idx" class="column no-wrap">
-              <div class="row fit justify-start items-center q-gutter-xs q-col-gutter no-wrap">
-                <div @click="$router.push('/details')"
-                  class="col-lg-2 col-md-2 col-sm-12 col-xs-12 hover_border_grey text-center full-height">
-                  <q-img style="" class="rounded-borders"
-                    :src="`https://www.graphicsprings.com/filestorage/stencils/d3dd5cb632e0826d9e6136af3241b28e.png`">
-                  </q-img>
-                  <div>Redmi 8</div>
-                  <div class="text-caption text-weight-bold text-green">5000h mAh Battery</div>
-                  <div>
-                    <span>₹8,499</span><span class="q-ml-sm text-grey-6"
-                      style="text-decoration: line-through">₹10,999</span>
-                  </div>
-                </div>
+          <q-carousel v-model="latest_slide" v-if="products" transition-prev="slide-right" transition-next="slide-left"
+            swipeable animated control-color="primary" navigation padding arrows height="260px" class="rounded-borders">
+            <q-carousel-slide v-for="product in products" :key="product._id" :name="product.title" :img-src="product.url"
+              class="column no-wrap">
+              <q-image :src="product.url" :srcSet="product.url" :placeholderSrc="product.title" />
+              <q-btn class="q-mt-md text-center" :title="product.title" :href="`/item/${product._id}`">
+                <q-image :ratio="1" :src="product.url" :srcSet="product.url" :placeholderSrc="product.title" />
                 <div @click="$router.push('/details')"
                   class="col-lg-2 col-md-2 col-sm-12 col-xs-12 hover_border_grey text-center full-height">
                   <q-img style="" class="rounded-borders"
                     src="https://www.graphicsprings.com/filestorage/stencils/d3dd5cb632e0826d9e6136af3241b28e.png">
                   </q-img>
-                  <div>Redmi 8</div>
-                  <div class="text-caption text-weight-bold text-green">5000h mAh Battery</div>
+                  <div>{{ product.title }}</div>
+                  <div class="text-caption text-weight-bold text-green">{{ product.description }}</div>
                   <div>
-                    <span>₹8,499</span><span class="q-ml-sm text-grey-6"
-                      style="text-decoration: line-through">₹10,999</span>
+                    <span>{{ product.price }}</span><span class="q-ml-sm text-grey-6"
+                      style="text-decoration: line-through">{{ product.price * discount }}</span>
                   </div>
                 </div>
-                <div @click="$router.push('/details')"
-                  class="col-lg-2 col-md-2 col-sm-12 col-xs-12 hover_border_grey text-center full-height">
-                  <q-img style="" class="rounded-borders"
-                    src="https://www.graphicsprings.com/filestorage/stencils/d3dd5cb632e0826d9e6136af3241b28e.png">
-                  </q-img>
-                  <div>Redmi 8</div>
-                  <div class="text-caption text-weight-bold text-green">5000h mAh Battery</div>
-                  <div>
-                    <span>₹8,499</span><span class="q-ml-sm text-grey-6"
-                      style="text-decoration: line-through">₹10,999</span>
-                  </div>
-                </div>
-                <div @click="$router.push('/details')"
-                  class="col-lg-2 col-md-2 col-sm-12 col-xs-12 hover_border_grey text-center full-height">
-                  <q-img style="" class="rounded-borders"
-                    src="https://www.graphicsprings.com/filestorage/stencils/d3dd5cb632e0826d9e6136af3241b28e.png">
-                  </q-img>
-                  <div>Redmi 8</div>
-                  <div class="text-caption text-weight-bold text-green">5000h mAh Battery</div>
-                  <div>
-                    <span>₹8,499</span><span class="q-ml-sm text-grey-6"
-                      style="text-decoration: line-through">₹10,999</span>
-                  </div>
-                </div>
-                <div @click="$router.push('/details')"
-                  class="col-lg-2 col-md-2 col-sm-12 col-xs-12 hover_border_grey text-center full-height">
-                  <q-img style="" class="rounded-borders"
-                    src="https://www.graphicsprings.com/filestorage/stencils/d3dd5cb632e0826d9e6136af3241b28e.png">
-                  </q-img>
-                  <div>Redmi 8</div>
-                  <div class="text-caption text-weight-bold text-green">5000h mAh Battery</div>
-                  <div>
-                    <span>₹8,499</span><span class="q-ml-sm text-grey-6"
-                      style="text-decoration: line-through">₹10,999</span>
-                  </div>
-                </div>
-                <div @click="$router.push('/details')"
-                  class="col-lg-2 col-md-2 col-sm-12 col-xs-12 hover_border_grey text-center full-height">
-                  <q-img style="" class="rounded-borders"
-                    src="https://www.graphicsprings.com/filestorage/stencils/d3dd5cb632e0826d9e6136af3241b28e.png">
-                  </q-img>
-                  <div>Redmi 8</div>
-                  <div class="text-caption text-weight-bold text-green">5000h mAh Battery</div>
-                  <div>
-                    <span>₹8,499</span><span class="q-ml-sm text-grey-6"
-                      style="text-decoration: line-through">₹10,999</span>
-                  </div>
-                </div>
-              </div>
+              </q-btn>
+
             </q-carousel-slide>
           </q-carousel>
         </div>
@@ -156,34 +110,14 @@ const zipCode = ref(null)
           </div>
           <q-carousel v-model="trending_slide" transition-prev="slide-right" transition-next="slide-left" swipeable
             animated control-color="primary" navigation padding arrows height="260px" class="rounded-borders">
-            <q-carousel-slide v-for="(val, idx) in [1, 2, 3]" :name="val" :key="idx" class="column no-wrap">
+            <q-carousel-slide v-for="product in products" :key="product._id" :name="product.title" :img-src="product.url"
+              class="column no-wrap">
               <div class="row fit justify-start items-center q-gutter-xs q-col-gutter no-wrap">
                 <q-img @click="$router.push('/category')" style="border:1px solid lightgrey;"
                   class="rounded-borders col-lg-3 col-md-3 col-sm-12 col-xs-12 cursor-pointer full-height"
-                  src="https://www.graphicsprings.com/filestorage/stencils/1cdf3eae16b6d0da3f16ff12f7650a24.png">
+                  :src="product.url" :srcSet="product.url" :placeholderSrc="product.title">
                   <div class="absolute-bottom custom-caption" style="background-color:rgba(0, 0, 0, .5);">
-                    <div class="text-caption text-weight-bolder">Electronics</div>
-                  </div>
-                </q-img>
-                <q-img @click="$router.push('/category')" style="border:1px solid lightgrey;"
-                  class="rounded-borders col-lg-3 col-md-3 col-sm-12 col-xs-12 cursor-pointer full-height"
-                  src="https://www.graphicsprings.com/filestorage/stencils/d3dd5cb632e0826d9e6136af3241b28e.png">
-                  <div class="absolute-bottom custom-caption" style="background-color:rgba(0, 0, 0, .5);">
-                    <div class="text-caption text-weight-bolder">TVs and Appliances</div>
-                  </div>
-                </q-img>
-                <q-img @click="$router.push('/category')" style="border:1px solid lightgrey;"
-                  class="rounded-borders col-lg-3 col-md-3 col-sm-12 col-xs-12 cursor-pointer full-height"
-                  src="https://www.graphicsprings.com/filestorage/stencils/1cdf3eae16b6d0da3f16ff12f7650a24.png">
-                  <div class="absolute-bottom custom-caption" style="background-color:rgba(0, 0, 0, .5);">
-                    <div class="text-caption text-weight-bolder">Men</div>
-                  </div>
-                </q-img>
-                <q-img @click="$router.push('/category')" style="border:1px solid lightgrey;"
-                  class="rounded-borders col-lg-3 col-md-3 col-sm-12 col-xs-12 cursor-pointer full-height"
-                  src="https://www.graphicsprings.com/filestorage/stencils/d3dd5cb632e0826d9e6136af3241b28e.png">
-                  <div class="absolute-bottom custom-caption" style="background-color:rgba(0, 0, 0, .5);">
-                    <div class="text-caption text-weight-bolder">Women</div>
+                    <div class="text-caption text-weight-bolder">{{ product.title }}</div>
                   </div>
                 </q-img>
               </div>
