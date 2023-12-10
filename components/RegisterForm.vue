@@ -1,80 +1,55 @@
+<script lang="ts" setup>
+import { reactive } from "vue";
+import { useAuthStore } from "~/stores/auth";
+import { useTitle } from "@vueuse/core";
+useTitle("Login Page");
+const { user } = useAuthStore()
+const router = useRouter();
+
+const emit = defineEmits(["loginSuccess"]);
+const authUser = reactive({
+  username: "",
+  password: "",
+  loading: false,
+});
+function onReset() {
+  authUser.username = "";
+  authUser.password = "";
+}
+async function handleRegister() {
+  const { register } = useAuth();
+  authUser.loading = true;
+  try {
+    await register({
+      username: authUser.username,
+      user_email: string;
+      password: authUser.password,
+      first_name: string;
+      last_name: string;
+    });
+    emit("loginSuccess", { username: authUser.username });
+    authUser.username = "";
+    authUser.password = "";
+  } catch (error) {
+    console.log(error);
+  } finally {
+    authUser.loading = false;
+    router.push("/");
+  }
+}
+</script>
+
 <template>
   <div class="q-pa-lg border-2">
-    <q-form @submit="onSubmit" @reset="onReset" class="q-pa-xl q-my-md q-gutter-md">
-      <h4 class="text-center">Register</h4>
-      <q-input
-        type="text"
-        placeholder="email"
-        label="Email"
-        name="email"
-        v-model="newUser.email"
-      />
-      <q-input
-        type="text"
-        placeholder="username"
-        label="Username"
-        name="username"
-        v-model="newUser.username"
-      />
-      <q-input
-        type="text"
-        placeholder="first Name"
-        label="First Name"
-        name="username"
-        v-model="newUser.firstName"
-      />
-      <q-input
-        type="text"
-        placeholder="last name"
-        label="Last Name"
-        name="username"
-        v-model="newUser.lastName"
-      />
-      <q-input
-        type="password"
-        placeholder="password"
-        label="Password"
-        name="password"
-        v-model="newUser.password"
-      />
-      <q-input
-        type="password"
-        placeholder="repeat password"
-        label="Reapeat password"
-        name="password"
-        v-model="newUser.password"
-      />
-      <q-btn label="Register" type="submit" color="positive" text-color="white" />
-      <q-btn
-        label="Reset"
-        type="reset"
-        color="warning"
-        text-color="white"
-        class="q-ml-sm"
-      />
+    <q-form @submit="handleLogin" @reset="onReset" class="q-my-md q-gutter-md">
+      <h4 class="text-center">Login</h4>
+      <q-input type="text" placeholder="username" label="Username" name="username" autocomplete="current-password"
+        v-model="authUser.username" />
+      <q-input type="password" placeholder="password" label="Password" name="password" autocomplete="off"
+        v-model="authUser.password" />
+      <q-btn label="Login" type="submit" color="positive" text-color="white" />
+      <q-btn label="Reset" type="reset" color="warning" text-color="white" class="q-ml-sm" />
     </q-form>
   </div>
 </template>
 
-<script lang="ts" setup>
-import { useTitle } from "@vueuse/core";
-const title = useTitle("Signup Page");
-
-const newUser = reactive({
-  email: "",
-  username: "",
-  firstName: "",
-  lastName: "",
-  password: "",
-  repeatPassword: "",
-});
-function onReset() {
-  newUser.email = "";
-  newUser.username = "";
-  newUser.firstName = "";
-  newUser.lastName = "";
-  newUser.password = "";
-  newUser.repeatPassword = "";
-}
-function onSubmit() {}
-</script>

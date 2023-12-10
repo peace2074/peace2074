@@ -1,32 +1,35 @@
 import { defineStore } from "pinia";
-import { TUSER, CaslActionE, eCaslSubject } from "../types";
+import type { UserI } from "../types";
+import { CaslActionE, CaslSubjectE } from "../types";
+
 export const useAuthStore = defineStore("auth", {
   state: () => ({
-    _user: {} as TUSER,
+    _user: {} as UserI,
     _permissions: [
-      { action: eCaslAction.READ, subject: eCaslSubject.CATEGORY },
-      { action: eCaslAction.UPDATE, subject: eCaslSubject.CATEGORY },
-      { action: eCaslAction.CREATE, subject: eCaslSubject.CATEGORY },
+      { action: CaslActionE.READ, subject: CaslSubjectE.CATEGORY },
+      { action: CaslActionE.UPDATE, subject: CaslSubjectE.CATEGORY },
+      { action: CaslActionE.CREATE, subject: CaslSubjectE.CATEGORY },
       // POST
 
-      { action: eCaslAction.READ, subject: eCaslSubject.POST },
-      { action: eCaslAction.UPDATE, subject: eCaslSubject.POST },
-      { action: eCaslAction.CREATE, subject: eCaslSubject.POST },
+      { action: CaslActionE.READ, subject: CaslSubjectE.POST },
+      { action: CaslActionE.UPDATE, subject: CaslSubjectE.POST },
+      { action: CaslActionE.CREATE, subject: CaslSubjectE.POST },
 
       // User Permissions
-      { action: eCaslAction.CREATE, subject: eCaslSubject.USER },
-      { action: eCaslAction.UPDATE, subject: eCaslSubject.USER },
-      { action: eCaslAction.READ, subject: eCaslSubject.USER },
+      { action: CaslActionE.CREATE, subject: CaslSubjectE.USER },
+      { action: CaslActionE.UPDATE, subject: CaslSubjectE.USER },
+      { action: CaslActionE.READ, subject: CaslSubjectE.USER },
     ],
   }),
   getters: {
-    user: (state) => state._user,
-    authenticated: (state) =>
+    user: (state: { _user: any }) => state._user,
+    authenticated: (state: { _user: {} }) =>
       Boolean(state._user && Object.keys(state._user).length),
-    permissions: (state) => state._permissions,
+    permissions: (state: { _permissions: any }) => state._permissions,
   },
   actions: {
-    async setUserInfo(info: TUSER) {
+    async setUserInfo(info: UserI) {
+      // @ts-ignore
       this._user = info;
     },
   },

@@ -180,7 +180,7 @@ export type Transaction = TransactionInterface & {
 };
 export type Transactions = Transaction[];
 
-export interface IUSER {
+export interface UserI {
   id?: string;
   email: string;
   username: string;
@@ -204,7 +204,7 @@ export interface IUSER {
   // MediaFiles
   mediaFiles?: string[];
 }
-export type TUSER = IUSER;
+export type UserT = UserI;
 
 export interface IPermession {
   id?: string;
@@ -259,4 +259,49 @@ export interface ProductI {
   description: string;
   price: number;
   url: string | string[];
+}
+export enum CaslActionE {
+  CREATE = "create",
+  READ = "read",
+  UPDATE = "update",
+  DELETE = "delete",
+  MANAGE = "manage",
+}
+export enum CaslSubjectE {
+  ALL = "all",
+  ADMIN = "admin",
+  CATEGORY = "category",
+  LIKES = "likes",
+  MEDIAFILE = "mediafile",
+  PERMISSIONS = "permissions",
+  POST = "post",
+  ROLES = "roles",
+  REFRESH_TOKEN = "reshresh_token",
+  TWEET = "tweet",
+  USER = "user",
+}
+
+// CASL
+export type CaslActionsT =
+  | CaslActionE.CREATE
+  | CaslActionE.READ
+  | CaslActionE.UPDATE
+  | CaslActionE.DELETE;
+
+export type CaslSubjectsT =
+  | CaslSubjectE.CATEGORY
+  | CaslSubjectE.LIKES
+  | CaslSubjectE.MEDIAFILE
+  | CaslSubjectE.PERMISSIONS
+  | CaslSubjectE.POST
+  | CaslSubjectE.ROLES
+  | CaslSubjectE.TWEET
+  | CaslSubjectE.USER
+  | CaslSubjectE.ADMIN;
+
+export interface CaslActionsI {
+  actions: CaslActionsT;
+}
+export interface CaslSubjectsI {
+  actions: CaslSubjectsT;
 }

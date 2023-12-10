@@ -1,4 +1,4 @@
-import client from "~/config/client";
+import client from "~~/server/config/server";
 import {
   github,
   // google,

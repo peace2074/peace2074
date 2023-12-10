@@ -1,12 +1,11 @@
 // import jwt_decode from "jwt-decode";
 // @ts-ignore
 import type { JwtPayload } from "jwt-decode";
-import type { IUSER, TUSER } from "~/types";
-import hello from "hellojs";
+import type { UserI, UserT } from "~/types";
 export default () => {
   const useAuthToken = () => useState("auth_token") as Ref<JwtPayload>;
-  const useAuthUser = () => useState("auth_user") as Ref<IUSER>;
-  const useAuthUsers = () => useState("auth_users") as Ref<IUSER[]>;
+  const useAuthUser = () => useState("auth_user") as Ref<UserI>;
+  const useAuthUsers = () => useState("auth_users") as Ref<UserI[]>;
   const useAuthLoading = () =>
     useState("auth_loading", () => true) as Ref<boolean>;
 
@@ -52,7 +51,7 @@ export default () => {
           const { user, access_token } = data;
           if (user && access_token) {
             setToken(access_token);
-            setUser(user as TUSER);
+            setUser(user as UserT);
             note.success("Successful login");
             resolve(true);
           } else {
@@ -78,7 +77,7 @@ export default () => {
           const { user, access_token } = data;
           if (user && access_token) {
             setToken(access_token);
-            setUser(user as TUSER);
+            setUser(user as UserT);
             note.success("Successful login");
             resolve(true);
           } else {
@@ -93,9 +92,9 @@ export default () => {
     }
   };
 
-  const setUsers = (newUser: IUSER[]) => {
+  const setUsers = (newUser: UserI[]) => {
     const authUsers = useAuthUsers();
-    authUsers.value = [...newUser] as TUSER[];
+    authUsers.value = [...newUser] as UserT[];
   };
 
   const setIsAuthLoading = (value: boolean) => {

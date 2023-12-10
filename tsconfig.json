@@ -1,17 +1,4 @@
 {
-  "compilerOptions": {
-    "jsx": "preserve",
-    "esModuleInterop": true,
-    "strict": true,
-    "types": [
-      "@types/jwt-decode",
-      "vitest/importMeta",
-      "@pinia/nuxt",
-      "@prisma/client",
-      "/quasar/ui/types/*",
-      "/types/*"
-    ]
-  },
   // https://nuxt.com/docs/guide/concepts/typescript
   "extends": "./.nuxt/tsconfig.json"
 }
