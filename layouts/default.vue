@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script  setup>
 const $q = useQuasar()
 const $router = useRouter()
 const menu_cat_elc = ref(false)
@@ -6,9 +6,9 @@ const menu_cat_tvs = ref(false)
 const menu_cat_men = ref(false)
 const text = ref('')
 const dimensions = ref($q ? $q.screen : { height: 1000 })
-const draggingFab: Ref<boolean> = ref(true)
-let fabPos: Ref<number[]> = ref([18, 18])
-const moveFab = (ev: Event): void => {
+const draggingFab = ref(true)
+let fabPos = ref([18, 18])
+const moveFab = (ev) => {
     draggingFab.value = ev.isFirst !== true && ev.isFinal !== true;
     fabPos.value = [fabPos.value[0] - ev.delta.x, fabPos[1] - ev.delta.y];
 }
