@@ -4,6 +4,9 @@ const $router = useRouter()
 const menu_cat_elc = ref(false)
 const menu_cat_tvs = ref(false)
 const menu_cat_men = ref(false)
+const notifications = ref(0)
+const isSearching = ref(false)
+const openRightDrawer = ref(false)
 const text = ref('')
 const dimensions = ref($q ? $q.screen : { height: 1000 })
 const draggingFab = ref(true)
@@ -18,55 +21,56 @@ const leftDrawer = ref(false)
 <template>
     <q-layout view="lHh LpR lFf" style="font-family: Lato;">
         <q-header reveal elevated style="background-color:bg-primary">
+            <!-- Mobile & Tablets -->
             <q-toolbar v-if="!$q.platform.is.desktop" class="q-py-sm">
                 <q-space />
                 <div class="row">
                     <div class="col-sm-12 col-xs-12">
                         <q-toolbar-title class="bg-primary">
-                            <nuxt-link to="/">
+                            <nuxt-link to="/" class="flex inline-block">
                                 <img class="cursor-pointer float-left" src="/images/logo.png" style="width: 12%" />
+                                <span class="q-mt-xs q-ml-md text-h6 text-weight-bold" style="font-size: 17px;">Peace
+                                    Shopping1</span>
                             </nuxt-link>
-                            <span class="float-left q-mt-xs q-ml-md text-h6 text-weight-bold" style="font-size: 17px;">Peace
-                                Shopping</span>
+                            <span class="q-mt-md q-ml-lg inline-block">
+                                <q-input v-if="isSearching" class="q-mx-md" square bg-color="white" dense outlined
+                                    v-model="text" label="Search for products, brands and more" />
+                                <q-icon v-else class="text-h5" name="search" />
+                            </span>
                         </q-toolbar-title>
                     </div>
 
                     <div class="col-sm-12 col-xs-12 q-mt-md">
-                        <q-input class="float-left q-mx-md full-width sm" square bg-color="white" dense outlined
-                            v-model="text" label="Search for products, brands and more" />
-                    </div>
-                    <div class="col-sm-12 col-xs-12 q-mt-md">
                         <div>
-                            <q-btn class="q-mr-md" dense round flat fab-mini icon="shopping_cart">
-                                <q-badge color="red" class="text-bold" floating transparent>
-                                    4
-                                </q-badge>
-                            </q-btn>
                             <q-btn flat round dense icon="settings" class="q-mr-md" />
-                            <q-btn flat round dense icon="fas fa-sign-out-alt" to="/" />
+                            <q-btn flat round dense icon="fas fa-sign-out-alt"
+                                @click="openRightDrawer = !openRightDrawer" />
                         </div>
                     </div>
                 </div>
                 <!--          <q-btn @click="left = !left" flat round dense icon="menu" class="q-mr-sm" />-->
             </q-toolbar>
+            <!-- Desktop -->
             <q-toolbar v-if="$q.platform.is.desktop" class="q-py-sm">
                 <!--          <q-btn @click="left = !left" flat round dense icon="menu" class="q-mr-sm" />-->
                 <img @click="$router.push('/')" class="cursor-pointer" src="/images/logo.png" style="width: 3%" />
                 <q-toolbar-title>
-                    <span class="float-left q-mt-xs text-h6 text-weight-bold" style="font-size: 17px;">Peace Shopping</span>
-                    <q-input class="float-left st-md" style="width: 650px;" square bg-color="white" dense outlined
+                    <span class="float-left q-mt-xs text-h6 text-weight-bold" style="font-size: 17px;">Peace
+                        Shopping2</span>
+                    <q-input class="q-mx-auto st-md" style="width: 650px;" square bg-color="white" dense outlined
                         v-model="text" label="Search for products, brands and more" />
                 </q-toolbar-title>
 
                 <q-btn class="q-mr-md" dense round flat icon="shopping_cart">
                     <q-badge color="red" class="text-bold" floating transparent>
-                        4
+                        {{ notifications }}
                     </q-badge>
                 </q-btn>
                 <q-btn flat round dense icon="settings" class="q-mr-md" />
                 <q-btn flat round dense icon="fas fa-sign-out-alt" to="/" />
 
             </q-toolbar>
+            <!-- Menu -->
             <div class="gt-sm">
                 <div class="bg-white text-grey-9 text-weight-bold shadow-transition">
                     <div class="row text-center items-center" :style="$q.platform.is.desktop ? 'height: 38px' : ''">
@@ -155,10 +159,16 @@ const leftDrawer = ref(false)
                     </div>
                 </div>
             </div>
-            <div class="lt-sm">
-                <q-btn flat dense roundn icon="menu" @click="leftDrawer = !leftDrawer"></q-btn>
-            </div>
+
         </q-header>
+        <q-drawer v-model="openRightDrawer" side="right" show-if-above :width="200" :breakpoint="700" elevated
+            class="bg-primary text-white">
+            <q-scroll-area class="fit">
+                <div class="q-pa-sm">
+                    <div v-for="n in 50" :key="n">Drawer {{ n }} / 50</div>
+                </div>
+            </q-scroll-area>
+        </q-drawer>
         <q-footer reveal elevated style="background-color:bg-primary">
             <div class="flex">
                 <div class="q-mt-sm col justify-center align-between">
