@@ -193,14 +193,7 @@ const leftDrawer = ref(false)
                     <div class="text-caption hover_underline_white">Cancellation & Returns</div>
                     <div class="text-caption hover_underline_white">FAQ</div>
                 </div>
-                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12  text-white"
-                    :class="$q.platform.is.desktop ? 'q-pl-xl' : ''"
-                    :style="$q.platform.is.desktop ? 'border-left: 1px solid grey;' : ''">
-                    <div class="text-subtitle1 text-weight-bold">Registered Office Address:</div>
-                    <div class="text-caption q-mt-sm">3 Tchernchovsky St.</div>
-                    <div class="text-caption">Haifa</div>
-                    <div class="text-caption">Israel</div>
-                </div>
+
             </div>
 
 
