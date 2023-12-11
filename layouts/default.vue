@@ -37,7 +37,7 @@ const leftDrawer = ref(false)
                     </div>
                     <div class="col-sm-12 col-xs-12 q-mt-md">
                         <div>
-                            <q-btn class="q-mr-md" dense round flat icon="shopping_cart">
+                            <q-btn class="q-mr-md" dense round flat fab-mini icon="shopping_cart">
                                 <q-badge color="red" class="text-bold" floating transparent>
                                     4
                                 </q-badge>
@@ -161,9 +161,7 @@ const leftDrawer = ref(false)
         </q-header>
         <q-footer reveal elevated style="background-color:bg-primary">
             <div class="flex">
-                <div class="q-mt-sm xs col justify-center align-between">
-
-
+                <div class="q-mt-sm col justify-center align-between">
                     <div class="text-subtitle1 text-weight-bold">About</div>
                     <div class="text-caption hover_underline_white q-mt-sm">Contact us</div>
                     <div class="text-caption hover_underline_white">About Us</div>
@@ -171,9 +169,8 @@ const leftDrawer = ref(false)
                     <div class="text-caption hover_underline_white">Our Stories</div>
                     <div class="text-caption hover_underline_white">Press</div>
                 </div>
-                <div class="q-mt-sm xs col justify-center align-between">
-
-                    <div class="text-subtitle1 text-weight-bold">Connect with Us</div>
+                <div class="q-mt-sm col justify-center align-between wrap">
+                    <div class="text-subtitle1 text-weight-bold">Connect</div>
                     <div class="text-caption hover_underline_white q-mt-sm">Facebook</div>
                     <div class="text-caption hover_underline_white">Instagram</div>
                     <div class="text-caption hover_underline_white">Twitter</div>
