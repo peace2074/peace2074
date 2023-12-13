@@ -305,3 +305,9 @@ export interface CaslActionsI {
 export interface CaslSubjectsI {
   actions: CaslSubjectsT;
 }
+
+export enum eLangs {
+  "en" = "enUS",
+  "he" = "heIL",
+  "ar" = "arIL",
+}

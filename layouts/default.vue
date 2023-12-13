@@ -1,5 +1,8 @@
 <script  setup>
 const $q = useQuasar()
+const localePath = useLocalePath()
+const { locale } = useI18n()
+
 const $router = useRouter()
 const menu_cat_elc = ref(false)
 const menu_cat_tvs = ref(false)
@@ -15,6 +18,7 @@ const moveFab = (ev) => {
     draggingFab.value = ev.isFirst !== true && ev.isFinal !== true;
     fabPos.value = [fabPos.value[0] - ev.delta.x, fabPos[1] - ev.delta.y];
 }
+
 const leftDrawer = ref(false)
 </script>
 
@@ -29,8 +33,8 @@ const leftDrawer = ref(false)
                         <q-toolbar-title class="bg-primary">
                             <nuxt-link to="/" class="flex inline-block">
                                 <img class="cursor-pointer float-left" src="/images/logo.png" style="width: 12%" />
-                                <span class="q-mt-xs q-ml-md text-h6 text-weight-bold" style="font-size: 17px;">Peace
-                                    Shopping1</span>
+                                <span class="q-mt-xs q-ml-md text-h6 text-weight-bold"
+                                    style="font-size: 17px;">{{ $t('general/SiteTitle') }}</span>
                             </nuxt-link>
                             <span class="q-mt-md q-ml-lg inline-block">
                                 <q-input v-if="isSearching" class="q-mx-md" square bg-color="white" dense outlined
@@ -39,7 +43,7 @@ const leftDrawer = ref(false)
                             </span>
                         </q-toolbar-title>
                     </div>
-
+                    <laguage-switcher />
                     <div class="col-sm-12 col-xs-12 q-mt-md">
                         <div>
                             <q-btn flat round dense icon="settings" class="q-mr-md" />
@@ -55,12 +59,13 @@ const leftDrawer = ref(false)
                 <!--          <q-btn @click="left = !left" flat round dense icon="menu" class="q-mr-sm" />-->
                 <img @click="$router.push('/')" class="cursor-pointer" src="/images/logo.png" style="width: 3%" />
                 <q-toolbar-title>
-                    <span class="float-left q-mt-xs text-h6 text-weight-bold" style="font-size: 17px;">Peace
-                        Shopping2</span>
+                    <span class="float-left q-mt-xs text-h6 text-weight-bold" style="font-size: 17px;">
+                        {{ $t('general.SiteTitle') }}</span>
                     <q-input class="q-mx-auto st-md" style="width: 650px;" square bg-color="white" dense outlined
-                        v-model="text" label="Search for products, brands and more" />
+                        v-model="text" v-if="isSearching" label="Search for products, brands and more" />
+                    <q-icon v-else name="search" class="text-h4 q-mx-auto q-px-sm" @click="isSearching = !isSearching" />
                 </q-toolbar-title>
-
+                <laguage-switcher />
                 <q-btn class="q-mr-md" dense round flat icon="shopping_cart">
                     <q-badge color="red" class="text-bold" floating transparent>
                         {{ notifications }}
@@ -80,20 +85,20 @@ const leftDrawer = ref(false)
                             <q-menu fit @mouseleave="menu_cat_elc = false" v-model="menu_cat_elc"
                                 transition-show="flip-right" transition-hide="flip-left">
                                 <q-list dense class="text-grey-9 text-caption">
-                                    <q-item @click="$router.push('/category')" clickable>
+                                    <q-item @click="$router.push(localePath('category'))" clickable>
                                         <q-item-section>Mobiles</q-item-section>
                                     </q-item>
-                                    <q-item @click="$router.push('/category')" clickable>
+                                    <q-item @click="$router.push(localePath('category'))" clickable>
                                         <q-item-section>Laptops</q-item-section>
                                     </q-item>
-                                    <q-item @click="$router.push('/category')" clickable>
+                                    <q-item @click="$router.push(localePath('category'))" clickable>
                                         <q-item-section>Health Care Appliances</q-item-section>
                                     </q-item>
                                     <!--<q-separator/>-->
-                                    <q-item @click="$router.push('/category')" clickable>
+                                    <q-item @click="$router.push(localePath('category'))" clickable>
                                         <q-item-section>Speakers</q-item-section>
                                     </q-item>
-                                    <q-item @click="$router.push('/category')" clickable>
+                                    <q-item @click="$router.push(localePath('category'))" clickable>
                                         <q-item-section>Smart Home Automation</q-item-section>
                                     </q-item>
                                 </q-list>
@@ -106,20 +111,20 @@ const leftDrawer = ref(false)
                             <q-menu fit @mouseleave="menu_cat_tvs = false" v-model="menu_cat_tvs"
                                 transition-show="flip-right" transition-hide="flip-left">
                                 <q-list dense class="text-grey-9 text-caption">
-                                    <q-item @click="$router.push('/category')" clickable>
+                                    <q-item @click="$router.push(localePath('category'))" clickable>
                                         <q-item-section>Television</q-item-section>
                                     </q-item>
-                                    <q-item @click="$router.push('/category')" clickable>
+                                    <q-item @click="$router.push(localePath('category'))" clickable>
                                         <q-item-section>Air Conditioners</q-item-section>
                                     </q-item>
-                                    <q-item @click="$router.push('/category')" clickable>
+                                    <q-item @click="$router.push(localePath('category'))" clickable>
                                         <q-item-section>Health Care Appliances</q-item-section>
                                     </q-item>
                                     <!--<q-separator/>-->
-                                    <q-item @click="$router.push('/category')" clickable>
+                                    <q-item @click="$router.push(localePath('category'))" clickable>
                                         <q-item-section>Shop By Screen Size</q-item-section>
                                     </q-item>
-                                    <q-item @click="$router.push('/category')" clickable>
+                                    <q-item @click="$router.push(localePath('category'))" clickable>
                                         <q-item-section>Smart Home Appliances</q-item-section>
                                     </q-item>
                                 </q-list>
@@ -132,13 +137,13 @@ const leftDrawer = ref(false)
                             <q-menu fit @mouseleave="menu_cat_men = false" v-model="menu_cat_men"
                                 transition-show="flip-right" transition-hide="flip-left">
                                 <q-list dense class="text-grey-9 text-caption">
-                                    <q-item @click="$router.push('/category')" clickable>
+                                    <q-item @click="$router.push(localePath('category'))" clickable>
                                         <q-item-section>Footwear</q-item-section>
                                     </q-item>
-                                    <q-item @click="$router.push('/category')" clickable>
+                                    <q-item @click="$router.push(localePath('category'))" clickable>
                                         <q-item-section>Clothing</q-item-section>
                                     </q-item>
-                                    <q-item @click="$router.push('/category')" clickable>
+                                    <q-item @click="$router.push(localePath('category'))" clickable>
                                         <q-item-section>Sports & Fitness Store</q-item-section>
                                     </q-item>
                                 </q-list>
