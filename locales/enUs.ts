@@ -1,4 +1,4 @@
-export default {
+export const messages = {
   name: "Peace 2074",
   general: {
     Home: "Home",
@@ -254,3 +254,5 @@ export default {
       "As long as the website and the information and services on the website are provided free of charge, we will not be liable for any loss or damage of any nature.",
   },
 };
+export type enUsT = typeof messages;
+export default JSON.stringify(messages as enUsT);

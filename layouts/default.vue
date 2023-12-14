@@ -1,8 +1,5 @@
 <script  setup>
 const $q = useQuasar()
-const localePath = useLocalePath()
-const { locale } = useI18n()
-
 const $router = useRouter()
 const menu_cat_elc = ref(false)
 const menu_cat_tvs = ref(false)
@@ -34,7 +31,7 @@ const leftDrawer = ref(false)
                             <nuxt-link to="/" class="flex inline-block">
                                 <img class="cursor-pointer float-left" src="/images/logo.png" style="width: 12%" />
                                 <span class="q-mt-xs q-ml-md text-h6 text-weight-bold"
-                                    style="font-size: 17px;">{{ $t('general/SiteTitle') }}</span>
+                                    style="font-size: 17px;">{{ $t('general.SiteTitle') }}</span>
                             </nuxt-link>
                             <span class="q-mt-md q-ml-lg inline-block">
                                 <q-input v-if="isSearching" class="q-mx-md" square bg-color="white" dense outlined
@@ -60,7 +57,7 @@ const leftDrawer = ref(false)
                 <img @click="$router.push('/')" class="cursor-pointer" src="/images/logo.png" style="width: 3%" />
                 <q-toolbar-title>
                     <span class="float-left q-mt-xs text-h6 text-weight-bold" style="font-size: 17px;">
-                        {{ $t('general.SiteTitle') }}</span>
+                        {{ $t('name') }}</span>
                     <q-input class="q-mx-auto st-md" style="width: 650px;" square bg-color="white" dense outlined
                         v-model="text" v-if="isSearching" label="Search for products, brands and more" />
                     <q-icon v-else name="search" class="text-h4 q-mx-auto q-px-sm" @click="isSearching = !isSearching" />

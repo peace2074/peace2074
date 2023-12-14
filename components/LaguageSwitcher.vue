@@ -6,21 +6,19 @@
     </div>
 </template>``
 <script lang="ts" setup>
-import { useI18n } from "vue-i18n"
+import { ref, watch, useI18n } from "#imports"
 const { locale } = useI18n()
 
 const localeOptions = ref([
-    { key: 'en', value: 'enUs', label: 'English' },
-    { key: 'he', value: 'heIl', label: 'Hebrew' },
-    { key: 'ar', value: 'arIl', label: 'Arabic' }
+    { key: 'enUS', value: 'en', label: 'English' },
+    { key: 'he', value: 'he', label: 'Hebrew' },
+    { key: 'ar', value: 'ar', label: 'Arabic' }
 ])
 const LocalKeys = ['en', 'he', 'ar']
 // const LocalValues = ['enUs', 'heIL', 'arIL']
 watch(locale, async (newLocal, oldLocal) => {
     if (LocalKeys.includes(newLocal)) {
-        if (newLocal != oldLocal)
-            locale.value = newLocal
-
+        locale.value = newLocal
     }
 })
 </script>

@@ -1,4 +1,4 @@
-export default {
+export const messages = {
   name: "שלום2074",
   general: {
     Home: "בית",
@@ -223,3 +223,5 @@ export default {
       "כל עוד האתר והמידע והשירותים באתר מסופקים ללא תשלום, לא נהיה אחראים לכל אובדן או נזק מכל סוג שהוא.",
   },
 };
+export type heIlT = typeof messages;
+export default JSON.stringify(messages as heIlT);
