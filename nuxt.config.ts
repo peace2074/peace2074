@@ -1,7 +1,4 @@
-import en from "./locales/enUs";
-import ar from "./locales/arIl";
-import he from "./locales/heIl";
-
+import { en, ar, he } from "./locales/index";
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
@@ -11,12 +8,12 @@ export default defineNuxtConfig({
   modules: ["nuxt-quasar-ui", "@vueuse/nuxt", "@pinia/nuxt", "@nuxtjs/i18n"],
   i18n: {
     legacy: false,
-    locale: "en",
+    locale: "ar-il",
     globalInjection: true,
     messages: {
-      en: en,
-      ar: ar,
-      he: he,
+      ["en-US"]: en,
+      ["ar-Il"]: ar,
+      ["he-Il"]: he,
     },
   },
   runtimeConfig: {

@@ -7,16 +7,17 @@
 </template>``
 <script lang="ts" setup>
 import { ref, watch, useI18n } from "#imports"
+
 const { locale } = useI18n()
 
+
 const localeOptions = ref([
-    { key: 'enUS', value: 'en', label: 'English' },
-    { key: 'he', value: 'he', label: 'Hebrew' },
-    { key: 'ar', value: 'ar', label: 'Arabic' }
+    { key: 'enUS', value: 'en-US', label: 'English' },
+    { key: 'heIL', value: 'he-IL', label: 'Hebrew' },
+    { key: 'arIL', value: 'ar-IL', label: 'Arabic' }
 ])
-const LocalKeys = ['en', 'he', 'ar']
-// const LocalValues = ['enUs', 'heIL', 'arIL']
-watch(locale, async (newLocal, oldLocal) => {
+const LocalKeys = ['enUS', 'heIL', 'arIL']
+watch(locale, async (newLocal, _oldLocal) => {
     if (LocalKeys.includes(newLocal)) {
         locale.value = newLocal
     }

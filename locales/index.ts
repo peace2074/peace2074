@@ -1,9 +1,10 @@
-import en from "../locales/enUs";
-import he from "../locales/heIl";
-import ar from "../locales/arIl";
-import type { heIlT } from "../locales/heIl";
-import type { arIlT } from "../locales/arIl";
-import type { enUsT } from "../locales/enUs";
+import en from "../locales/enUs.json";
+import he from "../locales/heIl.json";
+import ar from "../locales/arIl.json";
+
+export type heIlT = typeof he;
+export type arIlT = typeof ar;
+export type enUsT = typeof en;
 export type MessagesT = {
   en: enUsT;
   ar: arIlT;
@@ -11,7 +12,8 @@ export type MessagesT = {
 };
 
 export const messages: MessagesT = { en, he, ar };
+
+export { en };
+export { ar };
+export { he };
 export default messages;
-export type { heIlT };
-export type { arIlT };
-export type { enUsT };
