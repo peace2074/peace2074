@@ -17,9 +17,12 @@ const localeOptions = ref([
     { key: 'ar', value: 'ar-IL', label: 'Arabic' }
 ])
 const LocalKeys = ['en-US', 'he-IL', 'ar-IL']
-watch(locale, async (newLocal, _oldLocal) => {
+watch(locale, async (newLocal, oldLocal) => {
     if (LocalKeys.includes(newLocal)) {
         locale.value = newLocal
+        const body = document.querySelector('body')
+        body.classList.remove(oldLocal)
+        body.classList.add(newLocal)
     }
 })
 </script>

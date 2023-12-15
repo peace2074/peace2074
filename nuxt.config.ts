@@ -6,7 +6,13 @@ export default defineNuxtConfig({
   imports: {
     autoImport: true,
   },
-  modules: ["nuxt-quasar-ui", "@vueuse/nuxt", "@pinia/nuxt", "@nuxtjs/i18n"],
+  modules: [
+    "nuxt-quasar-ui",
+    "@vueuse/nuxt",
+    "@pinia/nuxt",
+    "@nuxtjs/color-mode",
+    "@nuxtjs/i18n",
+  ],
   i18n: {
     vueI18n: "./i18n.config.ts",
     legacy: true,

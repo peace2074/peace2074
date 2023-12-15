@@ -311,3 +311,12 @@ export enum eLangs {
   "he" = "heIL",
   "ar" = "arIL",
 }
+export enum NoteAcionsE {
+  Show = "show",
+  Hide = "hide",
+  success = "success",
+  Info = "info",
+  warning = "warning",
+  Errror = "error",
+  Loading = "loading",
+}

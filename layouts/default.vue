@@ -168,7 +168,7 @@ const leftDrawer = ref(false)
             <q-scroll-area class="fit">
                 <div class="q-pa-sm">
                     <div class="flex">
-                        <div class="q-mt-sm col justify-center align-between">
+                        <div class="q-mt-sm col justify-center align-between ד">
                             <div class="text-subtitle1 text-weight-bold">About</div>
                             <div class="text-caption hover_underline_white q-mt-sm">Contact us</div>
                             <div class="text-caption hover_underline_white">About Us</div>
@@ -203,31 +203,22 @@ const leftDrawer = ref(false)
             </q-scroll-area>
         </q-drawer>
         <q-footer reveal elevated style="background-color:bg-primary">
-            <div class="flex">
-                <div class="q-mt-sm col justify-center align-between">
-                    <div class="text-subtitle1 text-weight-bold">About</div>
-                    <div class="text-caption hover_underline_white q-mt-sm">Contact us</div>
-                    <div class="text-caption hover_underline_white">About Us</div>
-                    <div class="text-caption hover_underline_white">Careers</div>
-                    <div class="text-caption hover_underline_white">Our Stories</div>
-                    <div class="text-caption hover_underline_white">Press</div>
+            <div class="flex space-around q-px-md align-center">
+                <div class="q-mt-sm col justify-center">
+                    <div class="text-subtitle1 text-weight-bold">{{ $t('navigation.AboutPageTitle') }}</div>
+                    <div class="text-caption hover_underline_white">{{ $t('navigation.ContactPageTitle') }}</div>
+                    <div class="text-caption hover_underline_white">{{ $t('navigation.TermsPageTitle') }}</div>
+                    <div class="text-caption hover_underline_white">{{ $t('navigation.PrivacyPageTitle') }}</div>
                 </div>
-                <div class="q-mt-sm col justify-center align-between wrap">
-                    <div class="text-subtitle1 text-weight-bold">Connect</div>
-                    <div class="text-caption hover_underline_white q-mt-sm">Facebook</div>
-                    <div class="text-caption hover_underline_white">Instagram</div>
-                    <div class="text-caption hover_underline_white">Twitter</div>
-                </div>
-                <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 text-white">
+                <div class="q-mt-sm col justify-center">
                     <div class="text-subtitle1 text-weight-bold">Policy</div>
-                    <div class="text-caption hover_underline_white q-mt-sm">Return Policy</div>
                     <div class="text-caption hover_underline_white">Terms Of Use</div>
                     <div class="text-caption hover_underline_white">Security</div>
                     <div class="text-caption hover_underline_white">Privacy</div>
                     <div class="text-caption hover_underline_white">Sitemap</div>
                 </div>
-                <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 text-white">
-                    <div class="text-subtitle1 text-weight-bold">Help</div>
+                <div class="q-mt-sm col justify-center">
+                    <div class="text-subtitle1 text-weight-bold">עזרה</div>
                     <div class="text-caption hover_underline_white q-mt-sm">Payments</div>
                     <div class="text-caption hover_underline_white">Shipping</div>
                     <div class="text-caption hover_underline_white">Cancellation & Returns</div>

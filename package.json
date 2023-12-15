@@ -11,6 +11,7 @@
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
+    "@nuxtjs/color-mode": "^3.3.2",
     "@nuxtjs/i18n": "8.0.0-rc.9",
     "@types/vue-i18n": "^7.0.0",
     "@vueuse/core": "^10.7.0",
