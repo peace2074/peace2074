@@ -1,4 +1,5 @@
-import { en, ar, he } from "./locales/index";
+import { fileURLToPath } from "url";
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
@@ -7,15 +8,27 @@ export default defineNuxtConfig({
   },
   modules: ["nuxt-quasar-ui", "@vueuse/nuxt", "@pinia/nuxt", "@nuxtjs/i18n"],
   i18n: {
-    legacy: false,
-    locale: "ar-il",
+    vueI18n: "./i18n.config.ts",
+    legacy: true,
+    locale: "he-IL",
     globalInjection: true,
-    messages: {
-      ["en-US"]: en,
-      ["ar-Il"]: ar,
-      ["he-Il"]: he,
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: "i18n_redirected",
+      redirectOn: "root", // recommended
     },
   },
+  alias: {
+    "@": fileURLToPath(new URL("./", import.meta.url)),
+    "@store": fileURLToPath(new URL("./store/", import.meta.url)),
+    "@pages": fileURLToPath(new URL("./pages/", import.meta.url)),
+    "@cmps": fileURLToPath(new URL("./composables/", import.meta.url)),
+  },
+  css: [
+    "@quasar/extras/material-icons/material-icons.css",
+    "quasar/dist/quasar.prod.css",
+    "~/assets/style/quasar.scss",
+  ],
   runtimeConfig: {
     public: {
       stripePk: process.env.STRIPE_PK_KEY,

@@ -5,13 +5,14 @@ import ar from "../locales/arIl.json";
 export type heIlT = typeof he;
 export type arIlT = typeof ar;
 export type enUsT = typeof en;
-export type MessagesT = {
-  en: enUsT;
-  ar: arIlT;
-  he: heIlT;
+let me = {
+  en,
+  ar,
+  he,
 };
+export type MessagesT = typeof me;
 
-export const messages: MessagesT = { en, he, ar };
+export const messages: MessagesT = me;
 
 export { en };
 export { ar };
