@@ -11,6 +11,7 @@ export default defineNuxtConfig({
     "@vueuse/nuxt",
     "@pinia/nuxt",
     "@nuxtjs/color-mode",
+    "@vite-pwa/nuxt",
     "@nuxtjs/i18n",
   ],
   i18n: {
@@ -23,6 +24,9 @@ export default defineNuxtConfig({
       cookieKey: "i18n_redirected",
       redirectOn: "root", // recommended
     },
+  },
+  pwa: {
+    /* PWA options */
   },
   alias: {
     "@": fileURLToPath(new URL("./", import.meta.url)),
