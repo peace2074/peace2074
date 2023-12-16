@@ -61,9 +61,6 @@ devDependencies:
   '@nuxtjs/i18n':
     specifier: 8.0.0-rc.9
     version: 8.0.0-rc.9(rollup@2.79.1)(vue-router@4.2.5)(vue@3.3.11)
-  '@types/vue-i18n':
-    specifier: ^7.0.0
-    version: 7.0.0(vue@3.3.11)
   '@vite-pwa/assets-generator':
     specifier: ^0.2.1
     version: 0.2.1
@@ -85,6 +82,9 @@ devDependencies:
   postcss-rtlcss:
     specifier: ^4.0.9
     version: 4.0.9(postcss@8.4.32)
+  postcss-simple-vars:
+    specifier: ^7.0.1
+    version: 7.0.1(postcss@8.4.32)
   sass:
     specifier: ^1.69.5
     version: 1.69.5
@@ -3761,15 +3761,6 @@ packages:
 
   /@types/trusted-types@2.0.7:
     resolution: {integrity: sha512-ScaPdn1dQczgbl0QFTeTOmVHFULt394XJgOQNoyVhZ6r2vLnMLJfBPd53SB52T/3G36VI1/g2MZaX0cwDuXsfw==}
-    dev: true
-
-  /@types/vue-i18n@7.0.0(vue@3.3.11):
-    resolution: {integrity: sha512-4e3EvN4k+B6eTq1qWDFW1wpzCgz+8nNCn6LAQTkcRoGJx9rVO5iYzyEogFTi9RwBJ588+Rx0nUwRFjKUYPe/BQ==}
-    deprecated: This is a stub types definition for vue-i18n (https://github.com/kazupon/vue-i18n). vue-i18n provides its own type definitions, so you don't need @types/vue-i18n installed!
-    dependencies:
-      vue-i18n: 9.8.0(vue@3.3.11)
-    transitivePeerDependencies:
-      - vue
     dev: true
 
   /@types/web-bluetooth@0.0.20:
@@ -8181,6 +8172,15 @@ packages:
     dependencies:
       cssesc: 3.0.0
       util-deprecate: 1.0.2
+
+  /postcss-simple-vars@7.0.1(postcss@8.4.32):
+    resolution: {integrity: sha512-5GLLXaS8qmzHMOjVxqkk1TZPf1jMqesiI7qLhnlyERalG0sMbHIbJqrcnrpmZdKCLglHnRHoEBB61RtGTsj++A==}
+    engines: {node: '>=14.0'}
+    peerDependencies:
+      postcss: ^8.2.1
+    dependencies:
+      postcss: 8.4.32
+    dev: true
 
   /postcss-svgo@6.0.0(postcss@8.4.32):
     resolution: {integrity: sha512-r9zvj/wGAoAIodn84dR/kFqwhINp5YsJkLoujybWG59grR/IHx+uQ2Zo+IcOwM0jskfYX3R0mo+1Kip1VSNcvw==}

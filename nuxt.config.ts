@@ -55,16 +55,6 @@ export default defineNuxtConfig({
           type: "image/png",
         },
         {
-          src: "/icons/icon-144x144.png",
-          sizes: "144x144",
-          type: "image/png",
-        },
-        {
-          src: "/icons/icon-152x152.png",
-          sizes: "152x152",
-          type: "image/png",
-        },
-        {
           src: "/icons/icon-192x192.png",
           sizes: "192x192",
           type: "image/png",
@@ -89,6 +79,10 @@ export default defineNuxtConfig({
       type: "module",
     },
   },
+  workbox: {
+    dev: true,
+    debug: true,
+  },
   alias: {
     "@": fileURLToPath(new URL("./", import.meta.url)),
     "@store": fileURLToPath(new URL("./store/", import.meta.url)),
@@ -97,9 +91,12 @@ export default defineNuxtConfig({
   },
   css: [
     "@quasar/extras/material-icons/material-icons.css",
-    "quasar/dist/quasar.prod.css",
+    ,
     "~/assets/style/quasar.scss",
   ],
+  postcss: {
+    plugins: {},
+  },
   runtimeConfig: {
     public: {
       stripePk: process.env.STRIPE_PK_KEY,
@@ -152,6 +149,12 @@ export default defineNuxtConfig({
   app: {
     head: {
       script: [{ src: "https://js.stripe.com/v3/", defer: true }],
+      link: [
+        {
+          rel: "stylesheet",
+          href: "https://cdn.jsdelivr.net/npm/quasar@2/dist/quasar.rtl.prod.css",
+        },
+      ],
     },
   },
 });

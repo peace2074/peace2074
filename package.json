@@ -1,5 +1,11 @@
 {
-  "name": "nuxt-app",
+  "name": "peace2074",
+  "description": "peace2074 Market",
+  "author": {
+    "name": "Waelio Wahbeh",
+    "email": "wahbehw@gmail.com",
+    "url": "https://waelio.com"
+  },
   "private": true,
   "type": "module",
   "scripts": {
@@ -8,23 +14,6 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
-  },
-  "devDependencies": {
-    "@nuxt/devtools": "latest",
-    "@nuxtjs/color-mode": "^3.3.2",
-    "@nuxtjs/i18n": "8.0.0-rc.9",
-    "@types/vue-i18n": "^7.0.0",
-    "@vite-pwa/assets-generator": "^0.2.1",
-    "@vite-pwa/nuxt": "^0.3.5",
-    "@vueuse/core": "^10.7.0",
-    "@vueuse/nuxt": "^10.7.0",
-    "nuxt": "^3.8.2",
-    "nuxt-quasar-ui": "^2.0.6",
-    "postcss-rtlcss": "^4.0.9",
-    "sass": "^1.69.5",
-    "vue": "^3.3.11",
-    "vue-router": "^4.2.5",
-    "worker-auth-providers": "0.0.13-beta.4"
   },
   "dependencies": {
     "@pinia/nuxt": "^0.5.1",
@@ -42,5 +31,22 @@
     "vue-gtag-next": "^1.14.0",
     "vue-i18n": "^9.8.0",
     "vuedraggable": "^2.24.3"
+  },
+  "devDependencies": {
+    "@nuxt/devtools": "latest",
+    "@nuxtjs/color-mode": "^3.3.2",
+    "@nuxtjs/i18n": "8.0.0-rc.9",
+    "@vite-pwa/assets-generator": "^0.2.1",
+    "@vite-pwa/nuxt": "^0.3.5",
+    "@vueuse/core": "^10.7.0",
+    "@vueuse/nuxt": "^10.7.0",
+    "nuxt": "^3.8.2",
+    "nuxt-quasar-ui": "^2.0.6",
+    "postcss-rtlcss": "^4.0.9",
+    "postcss-simple-vars": "^7.0.1",
+    "sass": "^1.69.5",
+    "vue": "^3.3.11",
+    "vue-router": "^4.2.5",
+    "worker-auth-providers": "0.0.13-beta.4"
   }
 }

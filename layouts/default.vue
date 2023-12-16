@@ -16,6 +16,7 @@ const moveFab = (ev) => {
     fabPos.value = [fabPos.value[0] - ev.delta.x, fabPos[1] - ev.delta.y];
 }
 const leftDrawer = ref(false)
+const classNav = ref("text-caption hover_underline_white text-white block")
 </script>
 
 <template>
@@ -173,58 +174,60 @@ const leftDrawer = ref(false)
 
                             <div class="text-subtitle1 text-weight-bold">About</div>
                             <div class="text-caption hover_underline_white q-mt-sm">Contact us</div>
-                            <div class="text-caption hover_underline_white">About Us</div>
-                            <div class="text-caption hover_underline_white">Careers</div>
-                            <div class="text-caption hover_underline_white">Our Stories</div>
-                            <div class="text-caption hover_underline_white">Press</div>
+                            <div :class="classNav">About Us</div>
+                            <div :class="classNav">Careers</div>
+                            <div :class="classNav">Our Stories</div>
+                            <div :class="classNav">Press</div>
                         </div>
                         <div class="q-mt-sm col justify-center align-between wrap">
                             <div class="text-subtitle1 text-weight-bold">Connect</div>
                             <div class="text-caption hover_underline_white q-mt-sm">Facebook</div>
-                            <div class="text-caption hover_underline_white">Instagram</div>
-                            <div class="text-caption hover_underline_white">Twitter</div>
+                            <div :class="classNav">Instagram</div>
+                            <div :class="classNav">Twitter</div>
                         </div>
                         <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 text-white">
                             <div class="text-subtitle1 text-weight-bold">Policy</div>
                             <div class="text-caption hover_underline_white q-mt-sm">Return Policy</div>
-                            <div class="text-caption hover_underline_white">Terms Of Use</div>
-                            <div class="text-caption hover_underline_white">Security</div>
-                            <div class="text-caption hover_underline_white">Privacy</div>
-                            <div class="text-caption hover_underline_white">Sitemap</div>
+                            <div :class="classNav">Terms Of Use</div>
+                            <div :class="classNav">Security</div>
+                            <div :class="classNav">Privacy</div>
+                            <div :class="classNav">Sitemap</div>
                         </div>
                         <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 text-white">
                             <div class="text-subtitle1 text-weight-bold">Help</div>
                             <div class="text-caption hover_underline_white q-mt-sm">Payments</div>
-                            <div class="text-caption hover_underline_white">Shipping</div>
-                            <div class="text-caption hover_underline_white">Cancellation & Returns</div>
-                            <div class="text-caption hover_underline_white">FAQ</div>
+                            <div :class="classNav">Shipping</div>
+                            <div :class="classNav">Cancellation & Returns</div>
+                            <div :class="classNav">FAQ</div>
                         </div>
 
                     </div>
                 </div>
             </q-scroll-area>
         </q-drawer>
-        <q-footer reveal elevated style="background-color:bg-primary">
+        <q-footer reveal elevated>
             <div class="flex space-around q-px-md align-center">
                 <div class="q-mt-sm col justify-center">
                     <div class="text-subtitle1 text-weight-bold">{{ $t('navigation.AboutPageTitle') }}</div>
-                    <div class="text-caption hover_underline_white">{{ $t('navigation.ContactPageTitle') }}</div>
-                    <div class="text-caption hover_underline_white">{{ $t('navigation.TermsPageTitle') }}</div>
-                    <div class="text-caption hover_underline_white">{{ $t('navigation.PrivacyPageTitle') }}</div>
+                    <NuxtLink :class="classNav" to="about"> {{ $t("navigation.AboutPageCaption") }} </NuxtLink>
+                    <NuxtLink :class="classNav" to="/contact"> {{ $t('navigation.ContactPageTitle') }} </NuxtLink>
+                    <NuxtLink :class="classNav" to="/terms"> {{ $t('navigation.TermsPageTitle') }} </NuxtLink>
+                    <NuxtLink :class="classNav" to="/privacy"> {{ $t('navigation.PrivacyPageTitle') }} </NuxtLink>
                 </div>
                 <div class="q-mt-sm col justify-center">
                     <div class="text-subtitle1 text-weight-bold">Policy</div>
-                    <div class="text-caption hover_underline_white">Terms Of Use</div>
-                    <div class="text-caption hover_underline_white">Security</div>
-                    <div class="text-caption hover_underline_white">Privacy</div>
-                    <div class="text-caption hover_underline_white">Sitemap</div>
+                    <NuxtLink :class="classNav" :title="$t('navigation.TermsPageTitle')" to="/terms"></NuxtLink>
+                    <div :class="classNav">Security</div>
+                    <NuxtLink :class="classNav" :title="$t('navigation.PrivacyPageTitle')" to="/privacy">
+                        {{ $t('navigation.PrivacyPageTitle') }}</NuxtLink>
+                    <div :class="classNav">Sitemap</div>
                 </div>
                 <div class="q-mt-sm col justify-center">
                     <div class="text-subtitle1 text-weight-bold">עזרה</div>
                     <div class="text-caption hover_underline_white q-mt-sm">Payments</div>
-                    <div class="text-caption hover_underline_white">Shipping</div>
-                    <div class="text-caption hover_underline_white">Cancellation & Returns</div>
-                    <div class="text-caption hover_underline_white">FAQ</div>
+                    <div :class="classNav">Shipping</div>
+                    <div :class="classNav">Cancellation & Returns</div>
+                    <div :class="classNav">FAQ</div>
                 </div>
 
             </div>

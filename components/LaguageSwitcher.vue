@@ -12,7 +12,7 @@ const { locale } = useI18n()
 
 
 const localeOptions = ref([
-    { key: 'en', value: 'en-US', label: 'English' },
+    { key: 'en-US', value: 'en-US', label: 'English' },
     { key: 'he', value: 'he-IL', label: 'Hebrew' },
     { key: 'ar', value: 'ar-IL', label: 'Arabic' }
 ])

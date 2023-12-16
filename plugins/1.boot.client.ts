@@ -8,6 +8,7 @@ import globalMixin from "../mixins";
 export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.mixin(globalMixin);
   Quasar.iconSet.set(iconSet);
+  Quasar.lang.set(Quasar.lang.he);
   return {
     provide: { _Conf: conf, _Core: core },
   };
