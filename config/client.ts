@@ -1,12 +1,12 @@
 export default {
   init: false,
   app: {
-    businessName: "",
-    businessDomain: "",
+    businessName: "Peace2074",
+    businessDomain: "https://peace2074",
     businessAddress: "",
-    businessEmail: "",
+    businessEmail: "Wahbehw@gmail.com",
     businessImage: "",
-    businessDescription: "",
+    businessDescription: "Peace2074 MarketPlace",
   },
   settings: {
     locale: "en-us",

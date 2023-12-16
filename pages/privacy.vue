@@ -1,3 +1,4 @@
+<script setup></script>
 <template>
   <q-page padding class="flex-row gap-1">
     <h1 class="text-h4 text-center"><strong>Privacy Policy for Peace2074.com</strong></h1>
