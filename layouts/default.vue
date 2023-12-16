@@ -209,7 +209,7 @@ const classNav = ref("text-caption hover_underline_white text-white block")
             <div class="flex space-around q-px-md align-center">
                 <div class="q-mt-sm col justify-center">
                     <div class="text-subtitle1 text-weight-bold">{{ $t('navigation.AboutPageTitle') }}</div>
-                    <NuxtLink :class="classNav" to="about"> {{ $t("navigation.AboutPageCaption") }} </NuxtLink>
+                    <NuxtLink :class="classNav" to="/about"> {{ $t("navigation.AboutPageCaption") }} </NuxtLink>
                     <NuxtLink :class="classNav" to="/contact"> {{ $t('navigation.ContactPageTitle') }} </NuxtLink>
                     <NuxtLink :class="classNav" to="/terms"> {{ $t('navigation.TermsPageTitle') }} </NuxtLink>
                     <NuxtLink :class="classNav" to="/privacy"> {{ $t('navigation.PrivacyPageTitle') }} </NuxtLink>
