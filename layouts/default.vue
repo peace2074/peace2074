@@ -15,13 +15,12 @@ const moveFab = (ev) => {
     draggingFab.value = ev.isFirst !== true && ev.isFinal !== true;
     fabPos.value = [fabPos.value[0] - ev.delta.x, fabPos[1] - ev.delta.y];
 }
-
 const leftDrawer = ref(false)
 </script>
 
 <template>
-    <q-layout view="lHh LpR lFf" style="font-family: Lato;">
-        <q-header reveal elevated style="background-color:bg-primary">
+    <q-layout view="lHh LpR lFf">
+        <q-header reveal elevated>
             <!-- Mobile & Tablets -->
             <q-toolbar v-if="!$q.platform.is.desktop" class="q-py-sm">
                 <q-space />
@@ -58,6 +57,7 @@ const leftDrawer = ref(false)
                 <q-toolbar-title>
                     <span class="float-left q-mt-xs text-h6 text-weight-bold" style="font-size: 17px;">
                         {{ $t('name') }}</span>
+                    <q-btn flat color="black" @click="$q.dark.toggle()" icon="light" />
                     <q-input class="q-mx-auto st-md" style="width: 650px;" square bg-color="white" dense outlined
                         v-model="text" v-if="isSearching" label="Search for products, brands and more" />
                     <q-icon v-else name="search" class="text-h4 q-mx-auto q-px-sm" @click="isSearching = !isSearching" />
@@ -168,7 +168,9 @@ const leftDrawer = ref(false)
             <q-scroll-area class="fit">
                 <div class="q-pa-sm">
                     <div class="flex">
-                        <div class="q-mt-sm col justify-center align-between ד">
+                        <div class="q-mt-sm col justify-center align-between">
+                            <NuxtLink :title="$t('navigation.AboutPageTitle')" class="text-subtitle1 text-weight-bold" />
+
                             <div class="text-subtitle1 text-weight-bold">About</div>
                             <div class="text-caption hover_underline_white q-mt-sm">Contact us</div>
                             <div class="text-caption hover_underline_white">About Us</div>
