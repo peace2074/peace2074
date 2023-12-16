@@ -28,11 +28,15 @@ const classNav = ref("text-caption hover_underline_white text-white block")
                 <div class="row">
                     <div class="col-sm-12 col-xs-12">
                         <q-toolbar-title class="bg-primary">
+                            <!-- LOGO -->
                             <nuxt-link to="/" class="flex inline-block">
                                 <img class="cursor-pointer float-left" src="/images/logo.png" style="width: 12%" />
-                                <span class="q-mt-xs q-ml-md text-h6 text-weight-bold"
-                                    style="font-size: 17px;">{{ $t('general.SiteTitle') }}</span>
                             </nuxt-link>
+                            <span class="q-mt-xs q-ml-md text-h6 text-weight-bold"
+                                style="font-size: 17px;">{{ $t('general.SiteTitle') }}</span>
+                            <!-- DARK/LIGHT -->
+                            <q-btn flat color="black" @click="$q.dark.toggle()" icon="light" />
+                            <!-- SEARCH -->
                             <span class="q-mt-md q-ml-lg inline-block">
                                 <q-input v-if="isSearching" class="q-mx-md" square bg-color="white" dense outlined
                                     v-model="text" label="Search for products, brands and more" />
@@ -49,11 +53,10 @@ const classNav = ref("text-caption hover_underline_white text-white block")
                         </div>
                     </div>
                 </div>
-                <!--          <q-btn @click="left = !left" flat round dense icon="menu" class="q-mr-sm" />-->
             </q-toolbar>
             <!-- Desktop -->
             <q-toolbar v-if="$q.platform.is.desktop" class="q-py-sm">
-                <!--          <q-btn @click="left = !left" flat round dense icon="menu" class="q-mr-sm" />-->
+
                 <img @click="$router.push('/')" class="cursor-pointer" src="/images/logo.png" style="width: 3%" />
                 <q-toolbar-title>
                     <span class="float-left q-mt-xs text-h6 text-weight-bold" style="font-size: 17px;">

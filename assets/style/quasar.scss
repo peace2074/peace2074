@@ -1,7 +1,12 @@
-body.at-IL, body.he.IL{
-    direction: ltr!important;
+body{
+    direction: rtl;
+}
+body.ar-IL, body.he.IL{
+    direction: rtl!important;
 }
 
-body.he.US {
+body.en-US {
     direction: rtl !important;
 }
+.rtl{direction: rtl;}
+.ltr{direction: ltr;}
