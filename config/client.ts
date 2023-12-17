@@ -5,7 +5,7 @@ export default {
     businessDomain: "https://peace2074",
     businessAddress: "Israel",
     businessEmail: "Wahbehw@gmail.com",
-    businessImage: "/icons/logo,png",
+    businessImage: "/lg,png",
     businessDescription: "Peace2074 MarketPlace",
   },
   settings: {
