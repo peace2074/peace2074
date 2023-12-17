@@ -20,6 +20,9 @@ dependencies:
   echarts:
     specifier: ^5.4.3
     version: 5.4.3
+  hellojs:
+    specifier: ^1.20.0
+    version: 1.20.0
   mongoose:
     specifier: ^8.0.3
     version: 8.0.3
@@ -6176,6 +6179,10 @@ packages:
     engines: {node: '>= 0.4'}
     dependencies:
       function-bind: 1.1.2
+
+  /hellojs@1.20.0:
+    resolution: {integrity: sha512-zfZGRt0J0OpJHnw2GJz4uh+rzMNAMWpIymiaRbSmCqCvqDMLSx2/qR5JucqnHPsZHUEjyKj5aLJ8K54kyHHjLQ==}
+    dev: false
 
   /hookable@5.5.3:
     resolution: {integrity: sha512-Yc+BQe8SvoXH1643Qez1zqLRmbA5rCL+sSmk6TVos0LWVfNIB7PGncdlId77WzLGSIB5KaWgTaNTs2lNVEI6VQ==}

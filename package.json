@@ -21,6 +21,7 @@
     "@stripe/stripe-js": "^2.2.1",
     "apexcharts": "^3.44.2",
     "echarts": "^5.4.3",
+    "hellojs": "^1.20.0",
     "mongoose": "^8.0.3",
     "nuxt-mongoose": "^1.0.3",
     "quasar": "^2.14.1",
