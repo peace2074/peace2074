@@ -1,5 +1,6 @@
 import { fileURLToPath } from "url";
 import { pwa } from "./config/pwa";
+const lpwa = pwa;
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
@@ -16,7 +17,16 @@ export default defineNuxtConfig({
   i18n: {
     vueI18n: "./i18n.config.ts",
   },
-  pwa,
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@use "~/assets/style/variables.scss" as *;',
+        },
+      },
+    },
+  },
+  pwa: lpwa,
   alias: {
     "@": fileURLToPath(new URL("./", import.meta.url)),
     "@store": fileURLToPath(new URL("./store/", import.meta.url)),

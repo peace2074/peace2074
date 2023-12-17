@@ -3,9 +3,9 @@ export default {
   app: {
     businessName: "Peace2074",
     businessDomain: "https://peace2074",
-    businessAddress: "",
+    businessAddress: "Israel",
     businessEmail: "Wahbehw@gmail.com",
-    businessImage: "",
+    businessImage: "/icons/logo,png",
     businessDescription: "Peace2074 MarketPlace",
   },
   settings: {
