@@ -1,7 +1,7 @@
-// import jwt_decode from "jwt-decode";
-// @ts-ignore
+// @ts-nocheck
 import type { JwtPayload } from "jwt-decode";
 import type { UserI, UserT } from "~/types";
+import { _isString, _isObject } from "waellio-utils";
 export default () => {
   const useAuthToken = () => useState("auth_token") as Ref<JwtPayload>;
   const useAuthUser = () => useState("auth_user") as Ref<UserI>;
@@ -9,23 +9,21 @@ export default () => {
   const useAuthLoading = () =>
     useState("auth_loading", () => true) as Ref<boolean>;
 
-  const useUser = useState("user", () => {});
+  const useUser = useState("user", () => {}) as unknown as Ref<UserI>;
   const getUser = () => {
     return useUser.value;
   };
   const setUser = (newUser: object) => {
     if (!newUser) return;
-    switch (typeof newUser) {
-      case "object":
-        // @ts-ignore
-        useUser.value = newUser;
+    switch (true) {
+      case _isObject(newUser):
+        useUser.value = { ...newUser };
         break;
-      case "string":
+      case _isString(newUser):
         useUser.value = newUser;
         break;
       default:
         useUser.value = newUser;
-
         break;
     }
   };
@@ -42,7 +40,7 @@ export default () => {
     password: string;
     provider?: string | boolean;
   }) => {
-    if (!!provider && isString(provider)) {
+    if (!!provider && _isString(provider)) {
       return new Promise(async (resolve, reject) => {
         try {
           const data = hello(provider).login();
@@ -73,7 +71,6 @@ export default () => {
               password,
             },
           });
-          // @ts-ignore
           const { user, access_token } = data;
           if (user && access_token) {
             setToken(access_token);

@@ -1,9 +1,24 @@
 <script lang="ts" setup>
-const title = ref('Start')
 import { autoClass } from '~/mixins';
 </script>;
 <template>
-    <q-page padding :class="autoClass">
-        <h1 :class="autoClass">{{ title }}</h1>
+    <q-page padding :bind="autoClass">
+        <h1>{{ $t('welcome') }}</h1>
     </q-page>
 </template>
+<style>
+.bg-dark {
+    background-color: black !important;
+    ;
+    color: white;
+}
+
+.bg-white {
+    background-color: white !important;
+}
+
+.text-dark {
+    color: black !important;
+    ;
+}
+</style>

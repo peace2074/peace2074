@@ -35,6 +35,8 @@ export default defineNuxtConfig({
   },
   css: [
     "@quasar/extras/material-icons/material-icons.css",
+    "quasar/dist/quasar.prod.css",
+    "quasar/dist/quasar.rtl.prod.css",
     "~/assets/style/quasar.scss",
   ],
 

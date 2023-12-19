@@ -1,14 +1,14 @@
 <script setup>
-import { openURL } from 'quasar'
+
 const { $_Conf } = useNuxtApp()
-const localName = ref({ localName: $_Conf.get('app:businessName') })
+const localName = ref({ localName: $_Conf.get('app:businessSite') })
 const localUrl = ref($_Conf.get('app:businessDomain'))
 </script>
 <template>
   <q-page padding>
     <h1 class="text-h4 text-center"><strong>{{ $t('navigation.TermsPageTitle') }}</strong></h1>
     <p class="text-justify">{{ $t('terms.caption', localName) }}</p>
-    <p class="text-justify">{{ $t('terms.para1', localName) }}</p>
+    <p class="text-justify">{{ $t('terms.para1', localName, localUrl) }}</p>
     <p class="text-justify">{{ $t('terms.para2', localName) }}</p>
     <p class="text-justify">{{ $t('terms.para3', localName) }}</p>
     <h4 class="text-center"><strong>{{ $t('terms.Cookies') }}</strong></h4>

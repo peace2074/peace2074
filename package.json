@@ -48,6 +48,7 @@
     "sass": "^1.69.5",
     "vue": "^3.3.11",
     "vue-router": "^4.2.5",
+    "waelio-utils": "^5.0.1",
     "worker-auth-providers": "0.0.13-beta.4"
   }
 }

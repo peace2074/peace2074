@@ -1,3 +1,6 @@
+import type { WaelioUtils } from "waelio-utils/types/waelioUtils";
+
+export type waelioUtils = typeof WaelioUtils;
 export type TKey = number;
 export type TColor = string;
 export type TName = string;

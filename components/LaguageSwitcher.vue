@@ -1,17 +1,19 @@
 <script lang="ts" setup>
 import { ref, watch, useI18n, } from "#imports"
 const { locale } = useI18n()
+enum langsE { en = 'es-US', he = 'he-IL', ar = 'ar-IL' }
 // if Dom is Ready!
 if (import.meta.client) {
     const body = document.body
-    body.classList.add('he-IL', 'rtl')
+    body.classList.add(langsE.he, 'rtl')
 
-    const localeOptions = ref([
-        { key: 'enUS', value: 'en-US', dir: 'ltr', label: 'English' },
-        { key: 'heIL', value: 'he-IL', dir: 'rtl', label: 'Hebrew' },
-        { key: 'arIL', value: 'ar-IL', dir: 'rtl', label: 'Arabic' }
+    const localeOptions = reactive([
+        { value: langsE.en, label: 'English', dir: 'ltr' },
+        { value: langsE.he, label: 'Hebrew', dir: 'rtl' },
+        { value: langsE.ar, label: 'Arabic', dir: 'rtl' }
     ])
-    const LocalKeys = ['en-US', 'he-IL', 'ar-IL']
+    const LocalKeys = [langsE.en, langsE.he, langsE.ar,];
+
     watch(locale, async (newLocal, oldLocal) => {
         if (LocalKeys.includes(newLocal)) {
             const filteredNewResult = localeOptions.value.find((e) => e.value == newLocal);
