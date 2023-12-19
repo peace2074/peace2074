@@ -34,6 +34,6 @@ if (import.meta.client) {
 </template>
 <style scoped>
 #lang-switcher {
-    max-width: 200px;
+    max-width: 250px;
 }
 </style>

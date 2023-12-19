@@ -39,7 +39,7 @@ const logo = ref('lg.png')
                         <q-toolbar-title class="bg-primary">
                             <!-- LOGO -->
                             <nuxt-link to="/" class="flex inline-block">
-                                <q-img class="cursor-pointer float-left" :src="logo" />
+                                <imgage class="cursor-pointer" :src="logo" />
                             </nuxt-link>
                             <span class="q-mt-xs q-ml-md text-h6 text-weight-bold"
                                 style="font-size: 17px;">{{ $t('SiteTitle') }}</span>
