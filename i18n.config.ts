@@ -1,4 +1,4 @@
-import { en, ar, he } from "./locales";
+import { enUS, arIL, heIL } from "./locales";
 export default defineI18nConfig(() => ({
   legacy: false,
   locale: "he-IL",
@@ -23,8 +23,8 @@ export default defineI18nConfig(() => ({
     },
   ],
   messages: {
-    en,
-    ar,
-    he,
+    en: enUS,
+    ar: arIL,
+    heIL,
   },
 }));

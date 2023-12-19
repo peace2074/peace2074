@@ -10,17 +10,18 @@ const { locale } = useI18n()
 
 
 const localeOptions = ref([
-    { key: 'en-US', value: 'en-US', dir: 'ltr', label: 'English' },
-    { key: 'he-IL', value: 'he-IL', dir: 'rtl', label: 'Hebrew' },
-    { key: 'ar-IL', value: 'ar-IL', dir: 'rtl', label: 'Arabic' }
+    { key: 'enUS', value: 'en-US', dir: 'ltr', label: 'English' },
+    { key: 'heIL', value: 'he-IL', dir: 'rtl', label: 'Hebrew' },
+    { key: 'arIL', value: 'ar-IL', dir: 'rtl', label: 'Arabic' }
 ])
 const LocalKeys = ['en-US', 'he-IL', 'ar-IL']
+const body = document.querySelector('body')
+body?.classList.add('he-IL', 'rtl')
 watch(locale, async (newLocal, oldLocal) => {
     if (LocalKeys.includes(newLocal)) {
         const filteredNewResult = localeOptions.value.find((e) => e.value == newLocal);
         const filteredOldResult = localeOptions.value.find((e) => e.value == oldLocal);
         locale.value = newLocal
-        const body = document.querySelector('body')
         body?.classList.remove(oldLocal)
         if (filteredOldResult)
             body?.classList.remove(filteredOldResult.dir)

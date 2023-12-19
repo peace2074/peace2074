@@ -1,191 +1,94 @@
-<script setup></script>
+<script lang="ts" setup>
+import { useTitle } from '@vueuse/core'
+import { openURL } from 'quasar'
+const { t } = useI18n()
+const { $_Conf } = useNuxtApp();
+const title = useTitle()
+title.value = t("navigation.PrivacyPageTitle")
+const url = $_Conf.get("client:app:businessDomain")
+
+const includedTranslations = {
+  localName: title,
+  url: $_Conf.get("client:app:businessDomain"),
+}
+useHead({
+  title: t("navigation.PrivacyPageTitle"),
+  description: $_Conf.get("client:app:businessDescription"),
+  url: $_Conf.get("client:app:businessDomain"),
+  image: $_Conf.get("client:app:businessImage")
+});
+
+
+
+</script>
 <template>
-  <q-page padding class="flex-row gap-1">
-    <h1 class="text-h4 text-center"><strong>Privacy Policy for Peace2074.com</strong></h1>
-
+  <q-page padding class="fit scroll q-px-md nf" id="privacy_page">
+    <h1 class="text-h2 text-center"><strong>{{ $t("navigation.PrivacyPageTitle") }}</strong></h1>
     <p class="text-justify">
-      At Peace2074.com, accessible from https://peace2074.com, one of our main priorities is
-      the privacy of our visitors. This Privacy Policy document contains types of
-      information that is collected and recorded by Wael Wahbeh and how we use it.
-    </p>
-
-    <p class="text-justify">
-      If you have additional questions or require more information about our Privacy
-      Policy, do not hesitate to contact us.
-    </p>
-
-    <p class="text-justify">
-      This Privacy Policy applies only to our online activities and is valid for
-      visitors to our website with regards to the information that they shared and/or
-      collect in peace2074.com. This policy is not applicable to any information collected
-      offline or via channels other than this website.
-    </p>
-
-    <h2 class="text-3 text-center">Consent</h2>
-
-    <p class="text-justify">
-      By using our website, you hereby consent to our Privacy Policy and agree to its
-      terms. For our Terms and Conditions, please visit the
-      <router-link to="/terms">Terms & Conditions</router-link>.
-    </p>
-
-    <h2 class="text-3 text-center">Information we collect</h2>
-
-    <p class="text-justify">
-      The personal information that you are asked to provide, and the reasons why you
-      are asked to provide it, will be made clear to you at the point we ask you to
-      provide your personal information.
+      {{ $t("privacy.p1", includedTranslations) }}
     </p>
     <p class="text-justify">
-      If you contact us directly, we may receive additional information about you such
-      as your name, email address, phone number, the contents of the message and/or
-      attachments you may send us, and any other information you may choose to provide.
+      {{ $t("privacy.p2", includedTranslations)
+      }}<span @click="
+openURL.open(`mailto:info@${url}?subjuct=EMail%20from%20${url}`)
+  ">{{ $t("privacy.here", includedTranslations) }}</span>
     </p>
     <p class="text-justify">
-      When you register for an Account, we may ask for your contact information,
-      including items such as name, company name, address, email address, and telephone
-      number.
+      {{ $t("privacy.p3", includedTranslations) }}
     </p>
-
-    <h2 class="text-3 text-center">How we use your information</h2>
-
+    <h4 class="text-center"><strong>{{ $t("privacy.consent", includedTranslations) }}</strong>
+    </h4>
     <p class="text-justify">
-      We use the information we collect in various ways, including to:
+      {{ $t("privacy.p4", includedTranslations) }}
     </p>
-
+    <h4 class="text-center"><strong>{{ $t("privacy.collect", includedTranslations) }}</strong></h4>
+    <p class="text-justify">{{ $t("privacy.p5", includedTranslations) }}</p>
+    <p class="text-justify">{{ $t("privacy.p6", includedTranslations) }}
+      <span
+        @click="openURL.open(`mailto:info@${url}?subjuct=EMail%20from%20${url}`)">{{ $t("privacy.here", includedTranslations) }}</span>
+    </p>
+    <p class="text-justify">
+      {{ $t("privacy.p7", includedTranslations) }}
+    </p>
+    <h4 class="text-center"><strong>{{ $t("privacy.how", includedTranslations) }}</strong></h4>
+    <p class="text-justify">
+      {{ $t("privacy.p8", includedTranslations) }}
+    </p>
     <ul>
-      <li>Provide, operate, and maintain our webste</li>
-      <li>Improve, personalize, and expand our webste</li>
-      <li>Understand and analyze how you use our webste</li>
-      <li>Develop new products, services, features, and functionality</li>
-      <li>
-        Communicate with you, either directly or through one of our partners, including
-        for customer service, to provide you with updates and other information relating
-        to the webste, and for marketing and promotional purposes
-      </li>
-      <li>Send you emails</li>
-      <li>Find and prevent fraud</li>
+      <li>{{ $tc("privacy.p8ul1", includedTranslations) }}</li>
+      <li>{{ $tc("privacy.p8ul2", includedTranslations) }}</li>
+      <li>{{ $tc("privacy.p8ul3", includedTranslations) }}</li>
+      <li>{{ $tc("privacy.p8ul4", includedTranslations) }}</li>
+      <li>{{ $tc("privacy.p8ul5", includedTranslations) }}</li>
+      <li>{{ $tc("privacy.p8ul6", includedTranslations) }}</li>
+      <li>{{ $tc("privacy.p8ul7", includedTranslations) }}</li>
     </ul>
-
-    <h2 class="text-3 text-center">Log Files</h2>
-
-    <p>
-      peace2074.com follows a standard procedure of using log files. These files log
-      visitors when they visit websites. All hosting companies do this and a part of
-      hosting services' analytics. The information collected by log files include
-      internet protocol (IP) addresses, browser type, Internet Service Provider (ISP),
-      date and time stamp, referring/exit pages, and possibly the number of clicks.
-      These are not linked to any information that is personally identifiable. The
-      purpose of the information is for analyzing trends, administering the site,
-      tracking users' movement on the website, and gathering demographic information.
-    </p>
-
-
-
-    <p>
-      At peace2074.com, accessible from https://peace2074.com, one of our main priorities is
-      the privacy of our visitors. This Privacy Policy document contains types of
-      information that is collected and recorded by Wael Wahbeh and how we use it.
-    </p>
-
-    <p>
-      If you have additional questions or require more information about our Privacy
-      Policy, do not hesitate to contact us
-      <a href="mailto:wahbehw@gmail.com?subject=EMail%20from%20peace2074.com">Here</a>.
-    </p>
-
-    <h2 class="text-3">Third Party Privacy Policies</h2>
-
-    <p>
-      peace2074.com's Privacy Policy does not apply to other advertisers or websites. Thus,
-      we are advising you to consult the respective Privacy Policies of these
-      third-party ad servers for more detailed information. It may include their
-      practices and instructions about how to opt-out of certain options.
-    </p>
-
-    <p>
-      You can choose to disable cookies through your individual browser options. To know
-      more detailed information about cookie management with specific web browsers, it
-      can be found at the browsers' respective websites.
-    </p>
-
-    <h2 class="text-3">CCPA Privacy Rights (Do Not Sell My Personal Information)</h2>
-
-    <p>Under the CCPA, among other rights, California consumers have the right to:</p>
-    <p>
-      Request that a business that collects a consumer's personal data disclose the
-      categories and specific pieces of personal data that a business has collected
-      about consumers.
-    </p>
-    <p>
-      Request that a business delete any personal data about the consumer that a
-      business has collected.
-    </p>
-    <p>
-      Request that a business that sells a consumer's personal data, not sell the
-      consumer's personal data.
-    </p>
-    <p>
-      If you make a request, we have one month to respond to you. If you would like to
-      exercise any of these rights, please contact us.
-    </p>
-
-    <h2 class="text-3">GDPR Data Protection Rights</h2>
-
-    <p>
-      We would like to make sure you are fully aware of all of your data protection
-      rights. Every user is entitled to the following:
-    </p>
-    <p>
-      The right to access – You have the right to request copies of your personal data.
-      We may charge you a small fee for this service.
-    </p>
-    <p>
-      The right to rectification – You have the right to request that we correct any
-      information you believe is inaccurate. You also have the right to request that we
-      complete the information you believe is incomplete.
-    </p>
-    <p>
-      The right to erasure – You have the right to request that we erase your personal
-      data, under certain conditions.
-    </p>
-    <p>
-      The right to restrict processing – You have the right to request that we restrict
-      the processing of your personal data, under certain conditions.
-    </p>
-    <p>
-      The right to object to processing – You have the right to object to our processing
-      of your personal data, under certain conditions.
-    </p>
-    <p>
-      The right to data portability – You have the right to request that we transfer the
-      data that we have collected to another organization, or directly to you, under
-      certain conditions.
-    </p>
-    <p>
-      If you make a request, we have one month to respond to you. If you would like to
-      exercise any of these rights, please contact us.
-    </p>
-
-    <h2 class="text-3">Children's Information</h2>
-
-    <p>
-      Another part of our priority is adding protection for children while using the
-      internet. We encourage parents and guardians to observe, participate in, and/or
-      monitor and guide their online activity.
-    </p>
-
-    <p>
-      peace2074.com does not knowingly collect any Personal Identifiable Information from
-      children under the age of 13. If you think that your child provided this kind of
-      information on our website, we strongly encourage you to contact us immediately
-      and we will do our best efforts to promptly remove such information from our
-      records.
-    </p>
-
-
-
-
-
+    <h4 class="text-center"><strong>{{ $tc("privacy.log", includedTranslations) }}</strong></h4>
+    <p>{{ $tc("privacy.p10", includedTranslations) }}</p>
+    <h4 class="text-center"><strong>{{ $tc("privacy.Advertising", includedTranslations) }}</strong></h4>
+    <p>{{ $tc("privacy.p11", includedTranslations) }}</p>
+    <p>{{ $tc("privacy.p12", includedTranslations) }}</p>
+    <p>{{ $tc("privacy.p13", includedTranslations) }}</p>
+    <h4 class="text-center"><strong>{{ $tc("privacy.third", includedTranslations) }}</strong></h4>
+    <p>{{ $tc("privacy.p14", includedTranslations) }}</p>
+    <p>{{ $tc("privacy.p15", includedTranslations) }}</p>
+    <h4 class="text-center"><strong>{{ $tc("privacy.ccpa", includedTranslations) }}</strong></h4>
+    <p>{{ $tc("privacy.p16", includedTranslations) }}</p>
+    <p>{{ $tc("privacy.p17", includedTranslations) }}</p>
+    <p>{{ $tc("privacy.p18", includedTranslations) }}</p>
+    <p>{{ $tc("privacy.p19", includedTranslations) }}</p>
+    <p>{{ $tc("privacy.p20", includedTranslations) }}</p>
+    <h4 class="text-center"><strong>{{ $tc("privacy.gdpr", includedTranslations) }}</strong></h4>
+    <p>{{ $tc("privacy.p21", includedTranslations) }}</p>
+    <p>{{ $tc("privacy.p22", includedTranslations) }}</p>
+    <p>{{ $tc("privacy.p23", includedTranslations) }}</p>
+    <p>{{ $tc("privacy.p24", includedTranslations) }}</p>
+    <p>{{ $tc("privacy.p25", includedTranslations) }}</p>
+    <p>{{ $tc("privacy.p26", includedTranslations) }}</p>
+    <p>{{ $tc("privacy.p27", includedTranslations) }}</p>
+    <p>{{ $tc("privacy.p28", includedTranslations) }}</p>
+    <h4 class="text-center"><strong>{{ $tc("privacy.children", includedTranslations) }}</strong></h4>
+    <p>{{ $tc("privacy.p29", includedTranslations) }}</p>
+    <p>{{ $tc("privacy.p30", includedTranslations) }}</p>
   </q-page>
 </template>

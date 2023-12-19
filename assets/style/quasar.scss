@@ -1,12 +1,13 @@
 body{
     direction: rtl;
 }
-body.ar-IL, body.he.IL{
+body.ar-IL,
+body.he-IL {
     direction: rtl!important;
 }
 
 body.en-US {
-    direction: rtl !important;
+    direction: ltr !important;
 }
-.rtl{direction: rtl;}
-.ltr{direction: ltr;}
+.rtl p, .rtl ul, .rtl .flex {direction: rtl;}
+.ltr p, .ltr ul, .ltr .flex {direction: ltr;}

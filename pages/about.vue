@@ -2,6 +2,6 @@
 </script>
 <template>
   <q-page padding>
-    <h1>{{ $t('general.SiteTitle') }}</h1>
+    <h1 class="text-h3">{{ $t('general.SiteTitle') }}</h1>
   </q-page>
 </template>

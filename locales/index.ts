@@ -1,20 +1,20 @@
-import en from "../locales/enUs.json";
-import he from "../locales/heIl.json";
-import ar from "../locales/arIl.json";
+import enUS from "../locales/enUs.json";
+import heIL from "../locales/heIl.json";
+import arIL from "../locales/arIl.json";
 
-export type heIlT = typeof he;
-export type arIlT = typeof ar;
-export type enUsT = typeof en;
+export type heIlT = typeof heIL;
+export type arIlT = typeof arIL;
+export type enUsT = typeof enUS;
 let me = {
-  en,
-  ar,
-  he,
+  enUS,
+  arIL,
+  heIL,
 };
 export type MessagesT = typeof me;
 
 export const messages: MessagesT = me;
 
-export { en };
-export { ar };
-export { he };
+export { enUS };
+export { arIL };
+export { heIL };
 export default messages;

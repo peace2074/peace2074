@@ -1,4 +1,6 @@
 <script  setup>
+import { autoStyle } from '~/mixins';
+import { links1, links2, links3 } from "~/static/index";
 const $q = useQuasar()
 const $router = useRouter()
 const menu_cat_elc = ref(false)
@@ -7,6 +9,7 @@ const menu_cat_men = ref(false)
 const notifications = ref(0)
 const isSearching = ref(false)
 const openRightDrawer = ref(false)
+const rlinks1 = ref(links1)
 const text = ref('')
 const dimensions = ref($q ? $q.screen : { height: 1000 })
 const draggingFab = ref(true)
@@ -17,11 +20,12 @@ const moveFab = (ev) => {
 }
 const leftDrawer = ref(false)
 const classNav = ref("text-caption hover_underline_white text-white block")
+const logo = ref('lg.png')
 </script>
 
 <template>
     <q-layout view="lHh LpR lFf">
-        <q-header reveal elevated>
+        <q-header reveal elevated :style="autoStyle">
             <!-- Mobile & Tablets -->
             <q-toolbar v-if="!$q.platform.is.desktop" class="q-py-sm">
                 <q-space />
@@ -30,10 +34,10 @@ const classNav = ref("text-caption hover_underline_white text-white block")
                         <q-toolbar-title class="bg-primary">
                             <!-- LOGO -->
                             <nuxt-link to="/" class="flex inline-block">
-                                <img class="cursor-pointer float-left" src="/images/logo.png" style="width: 12%" />
+                                <q-img class="cursor-pointer float-left" :src="logo" />
                             </nuxt-link>
                             <span class="q-mt-xs q-ml-md text-h6 text-weight-bold"
-                                style="font-size: 17px;">{{ $t('general.SiteTitle') }}</span>
+                                style="font-size: 17px;">{{ $t('SiteTitle') }}</span>
                             <!-- DARK/LIGHT -->
                             <q-btn flat color="black" @click="$q.dark.toggle()" icon="light" />
                             <!-- SEARCH -->
@@ -42,6 +46,7 @@ const classNav = ref("text-caption hover_underline_white text-white block")
                                     v-model="text" label="Search for products, brands and more" />
                                 <q-icon v-else class="text-h5" name="search" />
                             </span>
+
                         </q-toolbar-title>
                     </div>
                     <laguage-switcher />
@@ -57,7 +62,7 @@ const classNav = ref("text-caption hover_underline_white text-white block")
             <!-- Desktop -->
             <q-toolbar v-if="$q.platform.is.desktop" class="q-py-sm">
 
-                <img @click="$router.push('/')" class="cursor-pointer" src="/images/logo.png" style="width: 3%" />
+
                 <q-toolbar-title>
                     <span class="float-left q-mt-xs text-h6 text-weight-bold" style="font-size: 17px;">
                         {{ $t('name') }}</span>
@@ -74,7 +79,9 @@ const classNav = ref("text-caption hover_underline_white text-white block")
                 </q-btn>
                 <q-btn flat round dense icon="settings" class="q-mr-md" />
                 <q-btn flat round dense icon="fas fa-sign-out-alt" to="/" />
-
+                <nuxt-link to="/" class="flex inline-block">
+                    <q-img class="cursor-pointer float-left" :src="logo" />
+                </nuxt-link>
             </q-toolbar>
             <!-- Menu -->
             <div class="gt-sm">
@@ -86,20 +93,20 @@ const classNav = ref("text-caption hover_underline_white text-white block")
                             <q-menu fit @mouseleave="menu_cat_elc = false" v-model="menu_cat_elc"
                                 transition-show="flip-right" transition-hide="flip-left">
                                 <q-list dense class="text-grey-9 text-caption">
-                                    <q-item @click="$router.push(localePath('category'))" clickable>
+                                    <q-item @click="$router.push('category')" clickable>
                                         <q-item-section>Mobiles</q-item-section>
                                     </q-item>
-                                    <q-item @click="$router.push(localePath('category'))" clickable>
+                                    <q-item @click="$router.push('category')" clickable>
                                         <q-item-section>Laptops</q-item-section>
                                     </q-item>
-                                    <q-item @click="$router.push(localePath('category'))" clickable>
+                                    <q-item @click="$router.push('category')" clickable>
                                         <q-item-section>Health Care Appliances</q-item-section>
                                     </q-item>
                                     <!--<q-separator/>-->
-                                    <q-item @click="$router.push(localePath('category'))" clickable>
+                                    <q-item @click="$router.push('category')" clickable>
                                         <q-item-section>Speakers</q-item-section>
                                     </q-item>
-                                    <q-item @click="$router.push(localePath('category'))" clickable>
+                                    <q-item @click="$router.push('category')" clickable>
                                         <q-item-section>Smart Home Automation</q-item-section>
                                     </q-item>
                                 </q-list>
@@ -112,20 +119,20 @@ const classNav = ref("text-caption hover_underline_white text-white block")
                             <q-menu fit @mouseleave="menu_cat_tvs = false" v-model="menu_cat_tvs"
                                 transition-show="flip-right" transition-hide="flip-left">
                                 <q-list dense class="text-grey-9 text-caption">
-                                    <q-item @click="$router.push(localePath('category'))" clickable>
+                                    <q-item @click="$router.push('category')" clickable>
                                         <q-item-section>Television</q-item-section>
                                     </q-item>
-                                    <q-item @click="$router.push(localePath('category'))" clickable>
+                                    <q-item @click="$router.push('category')" clickable>
                                         <q-item-section>Air Conditioners</q-item-section>
                                     </q-item>
-                                    <q-item @click="$router.push(localePath('category'))" clickable>
+                                    <q-item @click="$router.push('category')" clickable>
                                         <q-item-section>Health Care Appliances</q-item-section>
                                     </q-item>
                                     <!--<q-separator/>-->
-                                    <q-item @click="$router.push(localePath('category'))" clickable>
+                                    <q-item @click="$router.push('category')" clickable>
                                         <q-item-section>Shop By Screen Size</q-item-section>
                                     </q-item>
-                                    <q-item @click="$router.push(localePath('category'))" clickable>
+                                    <q-item @click="$router.push('category')" clickable>
                                         <q-item-section>Smart Home Appliances</q-item-section>
                                     </q-item>
                                 </q-list>
@@ -138,13 +145,13 @@ const classNav = ref("text-caption hover_underline_white text-white block")
                             <q-menu fit @mouseleave="menu_cat_men = false" v-model="menu_cat_men"
                                 transition-show="flip-right" transition-hide="flip-left">
                                 <q-list dense class="text-grey-9 text-caption">
-                                    <q-item @click="$router.push(localePath('category'))" clickable>
+                                    <q-item @click="$router.push('category')" clickable>
                                         <q-item-section>Footwear</q-item-section>
                                     </q-item>
-                                    <q-item @click="$router.push(localePath('category'))" clickable>
+                                    <q-item @click="$router.push('category')" clickable>
                                         <q-item-section>Clothing</q-item-section>
                                     </q-item>
-                                    <q-item @click="$router.push(localePath('category'))" clickable>
+                                    <q-item @click="$router.push('category')" clickable>
                                         <q-item-section>Sports & Fitness Store</q-item-section>
                                     </q-item>
                                 </q-list>
@@ -167,21 +174,11 @@ const classNav = ref("text-caption hover_underline_white text-white block")
             </div>
 
         </q-header>
-        <q-drawer v-model="openRightDrawer" v-if="!$q.platform.is.desktop" side="right" show-if-above :width="200"
-            :breakpoint="700" elevated class="bg-primary text-white">
+        <q-drawer v-model="openRightDrawer" side="right" show-if-above :width="200" :breakpoint="700" elevated
+            class="bg-primary text-white">
             <q-scroll-area class="fit">
                 <div class="q-pa-sm">
-                    <div class="flex">
-                        <div class="q-mt-sm col justify-center align-between">
-                            <NuxtLink :title="$t('navigation.AboutPageTitle')" class="text-subtitle1 text-weight-bold" />
-
-                            <div class="text-subtitle1 text-weight-bold">About</div>
-                            <div class="text-caption hover_underline_white q-mt-sm">Contact us</div>
-                            <div :class="classNav">About Us</div>
-                            <div :class="classNav">Careers</div>
-                            <div :class="classNav">Our Stories</div>
-                            <div :class="classNav">Press</div>
-                        </div>
+                    <div class="col q-mx-xs">
                         <div class="q-mt-sm col justify-center align-between wrap">
                             <div class="text-subtitle1 text-weight-bold">Connect</div>
                             <div class="text-caption hover_underline_white q-mt-sm">Facebook</div>
@@ -191,7 +188,7 @@ const classNav = ref("text-caption hover_underline_white text-white block")
                         <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 text-white">
                             <div class="text-subtitle1 text-weight-bold">Policy</div>
                             <div class="text-caption hover_underline_white q-mt-sm">Return Policy</div>
-                            <div :class="classNav">Terms Of Use</div>
+                            <NuxtLink to="/terms" :class="classNav">Terms Of Use</NuxtLink>
                             <div :class="classNav">Security</div>
                             <div :class="classNav">Privacy</div>
                             <div :class="classNav">Sitemap</div>
@@ -203,12 +200,11 @@ const classNav = ref("text-caption hover_underline_white text-white block")
                             <div :class="classNav">Cancellation & Returns</div>
                             <div :class="classNav">FAQ</div>
                         </div>
-
                     </div>
                 </div>
             </q-scroll-area>
         </q-drawer>
-        <q-footer reveal elevated>
+        <q-footer reveal elevated v-if="!$q.screen.xs">
             <div class="flex space-around q-px-md align-center">
                 <div class="q-mt-sm col justify-center">
                     <div class="text-subtitle1 text-weight-bold">{{ $t('navigation.AboutPageTitle') }}</div>

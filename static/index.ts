@@ -1,9 +1,17 @@
-import { Style } from "#build/components";
 import { /*fasEarthAmericas,*/ fasFlask } from "@quasar/extras/fontawesome-v6";
 import { QSpinnerGears } from "quasar";
 
-export const links1 = [
-  { icon: "person", text: "navigation.Profile", dist: "/auth/profile" },
+export type linksT = {
+  icon: string;
+  text: string;
+  dist: string;
+};
+export const links1: linksT[] = [
+  {
+    icon: "person",
+    text: "navigation.Profile",
+    dist: "/auth/profile",
+  },
   {
     icon: "star_border",
     text: "navigation.Favorites",
@@ -19,16 +27,22 @@ export const links1 = [
   },
   { icon: "manage_accounts", text: "navigation.AdminPage", dist: "/admin" },
 ];
-export const links2 = [
+export const links2: linksT[] = [
   { icon: "web", text: "Our blog", dist: "/blog" },
   { icon: fasFlask, text: "Science", dist: "/" },
 ];
+
 export const links3 = [
   { icon: "", text: "navigation.SettingsPageTitle", dist: "/settings" },
   { icon: "", text: "Send feedback", dist: "/contact" },
   { icon: "help", text: "Help", dist: "/help" },
 ];
-export const projects = [
+
+export const projects: {
+  key: string;
+  value: string;
+  selected: boolean;
+}[] = [
   { key: "FavsShuffler", value: "FavsShuffler", selected: false },
   { key: "Sudoku17", value: "Sudoku17", selected: false },
   { key: "PicMyMenu.com", value: "PicMyMenu.com", selected: false },
@@ -38,7 +52,11 @@ export const projects = [
   { key: "Waelio.com", value: "Waelio.com Site", selected: false },
 ];
 
-export const sponsors = [
+export const sponsors: {
+  name: string;
+  img: string;
+  url: string;
+}[] = [
   {
     name: "Quasar",
     img: "https://cdn.quasar.dev/logo/svg/quasar-logo.svg",
@@ -75,6 +93,7 @@ export const sponsors = [
     url: "https://material.io/",
   },
 ];
+
 /** Loght Modes */
 export enum LightModesE {
   Dark = "dark",
