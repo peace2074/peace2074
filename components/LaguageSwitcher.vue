@@ -15,7 +15,7 @@ const localeOptions = ref([
     { key: 'arIL', value: 'ar-IL', dir: 'rtl', label: 'Arabic' }
 ])
 const LocalKeys = ['en-US', 'he-IL', 'ar-IL']
-const body = document.querySelector('body')
+const body = document?.querySelector('body')
 body?.classList.add('he-IL', 'rtl')
 watch(locale, async (newLocal, oldLocal) => {
     if (LocalKeys.includes(newLocal)) {
