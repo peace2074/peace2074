@@ -3,21 +3,20 @@ import type { ModuleOptions } from "@vite-pwa/nuxt";
 import Client from "./client";
 const appName = Client.app.businessName;
 const appDescription = Client.app.businessDescription;
-const scope = ".";
+const scope = "/";
 if (process.client) {
 }
 export const pwa: ModuleOptions = {
   registerType: "autoUpdate",
-  base: scope,
   manifest: {
     name: appName,
     short_name: appName,
     description: appDescription,
     display: "standalone",
+    lang: "he-IL",
     orientation: "portrait",
     theme_color: "#1976d2",
     background_color: "#ffffff",
-    scope,
     start_url: scope,
     icons: [
       {

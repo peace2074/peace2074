@@ -1,6 +1,7 @@
 <script  setup>
 import { autoStyle } from '~/mixins';
 import { links1, links2, links3 } from "~/static/index";
+const { locale } = useI18n()
 const $q = useQuasar()
 const $router = useRouter()
 const menu_cat_elc = ref(false)
@@ -8,17 +9,21 @@ const menu_cat_tvs = ref(false)
 const menu_cat_men = ref(false)
 const notifications = ref(0)
 const isSearching = ref(false)
-const openRightDrawer = ref(false)
+const openDrawer = ref(false)
 const rlinks1 = ref(links1)
 const text = ref('')
 const dimensions = ref($q ? $q.screen : { height: 1000 })
 const draggingFab = ref(true)
 let fabPos = ref([18, 18])
+const inRight = ['ar-IL', 'he-IL']
+const direction = computed(() => {
+    return locale == inRight.includes(locale) ? 'right' : 'left'
+})
 const moveFab = (ev) => {
     draggingFab.value = ev.isFirst !== true && ev.isFinal !== true;
     fabPos.value = [fabPos.value[0] - ev.delta.x, fabPos[1] - ev.delta.y];
 }
-const leftDrawer = ref(false)
+
 const classNav = ref("text-caption hover_underline_white text-white block")
 const logo = ref('lg.png')
 </script>
@@ -172,9 +177,8 @@ const logo = ref('lg.png')
                     </div>
                 </div>
             </div>
-
         </q-header>
-        <q-drawer v-model="openRightDrawer" side="right" show-if-above :width="200" :breakpoint="700" elevated
+        <q-drawer v-model="openDrawer" :side="direction" show-if-above :width="200" :breakpoint="700" elevated
             class="bg-primary text-white">
             <q-scroll-area class="fit">
                 <div class="q-pa-sm">
