@@ -7,7 +7,6 @@ const scope = "./";
 
 export const pwa: ModuleOptions = {
   registerType: "autoUpdate",
-  scope,
   base: scope,
   manifest: {
     name: appName,
@@ -17,6 +16,7 @@ export const pwa: ModuleOptions = {
     orientation: "portrait",
     theme_color: "#1976d2",
     background_color: "#ffffff",
+    scope,
     start_url: scope,
     icons: [
       {
