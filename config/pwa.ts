@@ -3,7 +3,7 @@ import type { ModuleOptions } from "@vite-pwa/nuxt";
 import Client from "./client";
 const appName = Client.app.businessName;
 const appDescription = Client.app.businessDescription;
-const scope = "./";
+const scope = ".";
 if (process.client) {
 }
 export const pwa: ModuleOptions = {
