@@ -10,26 +10,30 @@ definePageMeta({ middleware: "auth" })
 
 const stripe = ref(null)
 const elements = ref(null)
-const card = null
+let card = '12ab'
 const form = null
 const total = ref(0)
-const clientSecret = null
-const currentAddress = ref(null)
+let clientSecret = ''
+const currentAddress = ref()
 const isProcessing = ref(false)
 
 onBeforeMount(async () => {
-    if (userStore.checkout.length < 1) {
+    // @ts-expect-error
+    if (userStore.checkout?.length < 1) {
         return navigateTo('/shoppingcart')
     }
 
     total.value = 0.00
-    if (user && user.value) {
+    // @ts-expect-error
+    if (!!user && user.value) {
         currentAddress.value = await useFetch(`/api/prisma/get-address-by-user/${user.value.id}`)
+        // @ts-expect-error
         setTimeout(() => userStore.isLoading = false, 200)
     }
 })
 
 watchEffect(() => {
+    // @ts-expect-error
     if (route.fullPath == '/checkout' && !user.value) {
         return navigateTo('/auth')
     }
@@ -51,7 +55,8 @@ watch(() => total.value, () => {
 
 const stripeInit = async () => {
     const runtimeConfig = useRuntimeConfig()
-    stripe = Stripe(runtimeConfig.stripePk);
+    // @ts-expect-error
+    const stripe = new Stripe(runtimeConfig.stripePk);
 
     let res = await $fetch('/api/stripe/paymentintent', {
         method: 'POST',
@@ -61,7 +66,7 @@ const stripeInit = async () => {
     })
     clientSecret = res.client_secret
 
-    elements = stripe.elements();
+    elements.value = stripe.elements();
     var style = {
         base: {
             fontSize: "18px",
@@ -72,7 +77,7 @@ const stripeInit = async () => {
             iconColor: "#EE4B2B"
         }
     };
-    card = elements.create("card", {
+    card = elements?.value?.create("card", {
         hidePostalCode: true,
         style: style
     });
