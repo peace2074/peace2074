@@ -1,7 +1,9 @@
+@forward './variables.scss';
+
 body{
     direction: rtl;
 }
-body.ar-IL,
+bodyar-IL,
 body.he-IL {
     direction: rtl!important;
 }
@@ -11,3 +13,18 @@ body.en-US {
 }
 .rtl p, .rtl ul, .rtl .flex {direction: rtl;}
 .ltr p, .ltr ul, .ltr .flex {direction: ltr;}
+.bg-dark,
+.bg-dark *{
+    background-color: var(--$primary);    
+    color: var(--$secondary);
+}
+
+.bg-light,
+.bg-light *{
+    background-color: var(--$secondary) !important;
+    color: var(--$primary) !important;
+}
+
+.text-dark {
+    color:var(--$primary) !important;    
+}

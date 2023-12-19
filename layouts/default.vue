@@ -36,7 +36,7 @@ const logo = ref('lg.png')
                 <q-space />
                 <div class="row">
                     <div class="col-sm-12 col-xs-12">
-                        <q-toolbar-title class="bg-primary">
+                        <q-toolbar-title>
                             <!-- LOGO -->
                             <nuxt-link to="/" class="flex inline-block">
                                 <imgage class="cursor-pointer" :src="logo" />
@@ -178,8 +178,8 @@ const logo = ref('lg.png')
                 </div>
             </div>
         </q-header>
-        <q-drawer v-model="openDrawer" :side="direction" show-if-above :width="200" :breakpoint="700" elevated
-            class="bg-primary text-white">
+        <q-drawer v-model="openDrawer" :side="direction" :style="autoStyle" show-if-above :width="200" :breakpoint="700"
+            elevated class="bg-primary text-white">
             <q-scroll-area class="fit">
                 <div class="q-pa-sm">
                     <div class="col q-mx-xs">
@@ -208,7 +208,7 @@ const logo = ref('lg.png')
                 </div>
             </q-scroll-area>
         </q-drawer>
-        <q-footer reveal elevated v-if="!$q.screen.xs">
+        <q-footer reveal elevated :style="autoStyle" v-if="!$q.screen.xs">
             <div class="flex space-around q-px-md align-center">
                 <div class="q-mt-sm col justify-center">
                     <div class="text-subtitle1 text-weight-bold">{{ $t('navigation.AboutPageTitle') }}</div>
@@ -237,9 +237,8 @@ const logo = ref('lg.png')
 
 
         </q-footer>
-
-        <q-page-container style="background-color:#f1f2f6">
-            <ClientOnly>
+        <q-page-container :style="autoStyle">
+            <ClientOnly :style="autoStyle">
                 <slot />
                 <q-page-scroller position="bottom-right" :scroll-offset="150" :offset="fabPos" :draggable="draggingFab"
                     v-touch-pan.prevent.mouse="moveFab">
@@ -248,11 +247,8 @@ const logo = ref('lg.png')
                 </q-page-scroller>
             </ClientOnly>
         </q-page-container>
-
-
     </q-layout>
 </template>
-
 <style>
 .q-drawer {
     /*background-image: url(https://demos.creative-tim.com/vue-material-dashboard/img/sidebar-2.32103624.jpg) !important;*/

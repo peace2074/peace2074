@@ -14,11 +14,11 @@ export const modes = computed(() => {
 export const autoStyle = computed(() => {
   return isDark.value
     ? "background-color:bg-dark;color:text-light;"
-    : "background-color:bg-ligh;color:ttext-dark;";
+    : "background-color:bg-ligh;color:text-dark;";
 });
 
 export const autoClass = computed(() => {
-  return isDark.value ? "bg-dark text-white" : "bg-white text-dark";
+  return isDark.value ? "bg-dark text-light" : "bg-light text-dark";
 });
 
 export const autoColor = computed(() => {
