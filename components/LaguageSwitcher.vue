@@ -2,22 +2,23 @@
 import { ref, watch, useI18n, } from "#imports"
 const { locale } = useI18n()
 enum langsE { en = 'es-US', he = 'he-IL', ar = 'ar-IL' }
+const langs = ['es-US', 'he-IL', 'ar-IL']
+const localeOptions = reactive([
+    { value: langsE.en as string, label: 'English', dir: 'ltr' },
+    { value: langsE.he as string, label: 'Hebrew', dir: 'rtl' },
+    { value: langsE.ar as string, label: 'Arabic', dir: 'rtl' }
+])
 // if Dom is Ready!
 if (import.meta.client) {
     const body = document.body
     body.classList.add(langsE.he, 'rtl')
 
-    const localeOptions = reactive([
-        { value: langsE.en, label: 'English', dir: 'ltr' },
-        { value: langsE.he, label: 'Hebrew', dir: 'rtl' },
-        { value: langsE.ar, label: 'Arabic', dir: 'rtl' }
-    ])
-    const LocalKeys = [langsE.en, langsE.he, langsE.ar,];
+    const LocalKeys = langs;
 
     watch(locale, async (newLocal, oldLocal) => {
         if (LocalKeys.includes(newLocal)) {
-            const filteredNewResult = localeOptions.value.find((e) => e.value == newLocal);
-            const filteredOldResult = localeOptions.value.find((e) => e.value == oldLocal);
+            const filteredNewResult = localeOptions.find((e: { value: string; }) => e.value == newLocal);
+            const filteredOldResult = localeOptions.find((e: { value: string; }) => e.value == oldLocal);
             locale.value = newLocal
             body.classList.remove(oldLocal)
             if (filteredOldResult)

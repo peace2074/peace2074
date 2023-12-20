@@ -54,11 +54,11 @@
 
 import hello from "hellojs";
 
-// watchEffect(() => {
-//     if (user.value) {
-//         return navigateTo('/')
-//     }
-// })
+watchEffect(() => {
+    if (user.value) {
+        return navigateTo('/')
+    }
+})
 
 const login = async (prov) => {
     const { data, error } = hello(prov).login()

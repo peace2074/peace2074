@@ -1,7 +1,9 @@
 <script lang="ts" setup>
+import { Notify } from "#impors";
+
 function checkForUpdates() {
     Notify.create({
-        message: this.$t("general.fetchingUpdates"),
+        message: $t("fetchingUpdates"),
         color: "warning",
         icon: "cloud_download",
         closeBtn: "Update",

@@ -1,28 +1,28 @@
 import type { WaelioUtils } from "waelio-utils/types/waelioUtils";
 
 export type waelioUtils = typeof WaelioUtils;
-export type TKey = number;
-export type TColor = string;
-export type TName = string;
-export type TLink = string;
-export type TYear = string;
-export type TText = string;
-export type TValue = string;
-export type TDescription = string;
+export type KeyT = number;
+export type ColorT = string;
+export type NameT = string;
+export type LinkT = string;
+export type YearT = string;
+export type TextT = string;
+export type ValueT = string;
+export type DescriptionT = string;
 
 export interface Window {
   Etherium: any;
   web3: any;
 }
 /** User Roles from casl */
-export interface IRole {
-  name: TName;
-  subject: TName;
-  actions: TName[];
+export interface RoleT {
+  name: NameT;
+  subject: NameT;
+  actions: NameT[];
   inverted?: boolean;
-  conditions?: TName[];
-  fields?: TName[];
-  reason?: TName;
+  conditions?: NameT[];
+  fields?: NameT[];
+  reason?: NameT;
 }
 
 /** Loght Modes */
@@ -32,23 +32,13 @@ export enum LightModes {
   System = "auto",
 }
 
-/** Enum Note Actions */
-export enum ENoteAcions {
-  Show = "show",
-  Hide = "hide",
-  success = "success",
-  Info = "info",
-  warning = "warning",
-  Errror = "error",
-  Loading = "loading",
-}
 /** Loding Defaults */
-export type TLoadingDefaults = {
+export type LoadingDefaultsT = {
   spinner: string;
   message: string;
 };
 /** Notify Positions */
-export enum EPOSITIONS {
+export enum EPositionsE {
   top = "top",
   topRight = "top-right",
   topLeft = "top-left",
@@ -60,26 +50,26 @@ export enum EPOSITIONS {
   center = "center",
 }
 /** Education History interface */
-export interface IHistory {
-  key: TKey;
-  color: TColor;
-  name: TName;
-  link: LINK;
-  year: TYear;
+export interface HistoryI {
+  key: KeyT;
+  color: ColorT;
+  name: NameT;
+  link: LinkT;
+  year: YearT;
   text: string;
 }
 /** Project interface */
-export interface IProject {
+export interface ProjectI {
   key: string;
-  value: TValue;
+  value: ValueT;
   selected: boolean;
 }
-export interface ISponsor {
+export interface SponsorI {
   name: string;
   img: string;
   url: string;
 }
-export interface IWorkOptions {
+export interface WorkOptionsI {
   name?: "SHA-256" | "PBKDF2";
   encode?: "base64" | "utf8" | "hex";
   salt?: any;
@@ -87,7 +77,7 @@ export interface IWorkOptions {
   length?: number;
 }
 /** Authentication Strategies */
-export enum ENetworksNames {
+export enum NetworksNamesE {
   google = "google",
   facebook = "facebook",
   twitter = "twitter",
@@ -96,23 +86,23 @@ export enum ENetworksNames {
 }
 
 /** Social login user scopes */
-export enum EScopesNames {
+export enum ScopesNamesE {
   profile = "profile",
   social = "social",
   email = "email",
   fullname = "fullname",
 }
 /** Social login scope */
-export interface IScope {
+export interface ScopeI {
   name?: string;
-  network: Partial<ENetworksNames>;
-  scope: Partial<EScopesNames>;
+  network: Partial<NetworksNamesE>;
+  scope: Partial<ScopesNamesE>;
   icon?: string;
   emitName?: string | Function;
 }
-export type TScope = IScope;
+export type TScope = ScopeI;
 
-export interface IHARF {
+export interface HarfI {
   name: string;
   weight: number;
   value: string;
@@ -120,53 +110,56 @@ export interface IHARF {
   color?: string;
   encoding?: string;
 }
-export interface IkALEMAT {
-  horuf: IHARF[];
+export interface KalemaI {
+  horuf: HarfI[];
 }
-export interface IAYA {
-  Kalemat: IkALEMAT[];
-}
-export interface ISURA {
-  Ayat: IAYA[];
-}
-export interface IQuran {
-  Surah: ISURA[];
-}
-export interface ISTATE {
-  quran: IQuran;
-  Surah: ISURA[];
-  Index: IQuran;
+export interface AayI {
+  Kalemat: KalemaI[];
 }
 
-export interface IQ2B {
+export interface SuraI {
+  Ayat: AayI[];
+}
+
+export type SuraT = SuraI[];
+export interface QuranI {
+  Surah: SuraI[];
+}
+export interface ISTATE {
+  quran: QuranI;
+  Surah: SuraI[];
+  Index: QuranI;
+}
+
+export interface Q2BI {
   state: ISTATE;
 }
-export interface LINK {
+export interface LINKI {
   text: string;
   icon: string;
 }
 
-export interface IHistory {
-  key: TKey;
-  color: TColor;
-  name: TName;
-  link: LINK;
-  year: TYear;
+export interface HistoryI {
+  key: KeyT;
+  color: ColorT;
+  name: NameT;
+  link: LinkT;
+  year: YearT;
   text: string;
 }
-export interface IProjects {
+export interface ProjectsI {
   key: string;
-  value: TValue;
+  value: ValueT;
   selected: boolean;
 }
-export type TProjects = IProjects;
-export interface ISponsors {
+export type TProjects = ProjectsI;
+export interface SponsorsI {
   name: string;
   img: string;
   url: string;
 }
-export type TSponsors = ISponsors;
-export interface TransactionInterface {
+export type TSponsors = SponsorsI;
+export interface TransactionInterfaceT {
   addressFrom: string;
   addressTo: string;
   amount: number;
@@ -178,7 +171,7 @@ export interface TransactionInterface {
   receiver: string;
   sender: string;
 }
-export type Transaction = TransactionInterface & {
+export type Transaction = TransactionInterfaceT & {
   id?: string | number;
 };
 export type Transactions = Transaction[];
@@ -209,7 +202,7 @@ export interface UserI {
 }
 export type UserT = UserI;
 
-export interface IPermession {
+export interface PermessionI {
   id?: string;
   action: string | string[];
   subject: string | string[];
@@ -221,14 +214,14 @@ export interface IPermession {
   createdAt?: string;
   updatedAt?: string;
 }
-export type TPermession = IPermession;
+export type PermessionT = PermessionI;
 
-export interface IToken {
+export interface TokenI {
   userId: string;
   iat: number;
   exp: number;
 }
-export type TToken = {
+export type TokenT = {
   id: string;
   token: string;
   createdAt: string;
@@ -236,7 +229,7 @@ export type TToken = {
   userId: string;
 };
 
-export interface ISubscription {
+export interface SubscriptionI {
   id: string;
   endpoint: string;
   expirationTime: string;
@@ -248,7 +241,7 @@ export interface ISubscription {
   user: object;
 }
 
-export type TReshreshToken = {
+export type ReshreshTokenT = {
   id: string;
   token: string;
   userId: string;
@@ -309,7 +302,7 @@ export interface CaslSubjectsI {
   actions: CaslSubjectsT;
 }
 
-export enum eLangs {
+export enum LangsE {
   "en" = "enUS",
   "he" = "heIL",
   "ar" = "arIL",
@@ -322,6 +315,15 @@ export enum NoteAcionsE {
   warning = "warning",
   Errror = "error",
   Loading = "loading",
+}
+export interface NoteActionsI {
+  show: "show";
+  hide: "hide";
+  success: "success";
+  info: "info";
+  warning: "warning";
+  error: "error";
+  loading: "loading";
 }
 export interface PwaInjection {
   /**

@@ -1,14 +1,17 @@
-import { defaultStyles, notifyDefaults } from "~/static/index";
-import type { NoteAcionsE } from "../types";
-import { Notify, Dialog } from "quasar";
+import {
+  defaultStyles,
+  notifyDefaults,
+  notifyDefaults as nfd,
+} from "~/static/index";
+import { NoteAcionsE, type NoteActionsI } from "../types";
+import { Notify } from "quasar";
 function note(
-  action: NoteAcionsE,
-  payload: string | number | object,
-  notifyDefaults: any
+  action: typeof NoteActionsI,
+  payload: string,
+  notifyDefaults?: typeof nfd
 ) {
-  return Notify.create({ type: action, message: payload, ...notifyDefaults });
+  return Notify.create({ type: action, message: payload, notifyDefaults });
 }
-note.dialog = (...{}) => Dialog;
 note.show = function (
   message: string,
   style: string,
@@ -21,9 +24,9 @@ note.show = function (
   const payload = { message, ...newStyle };
   return Notify.create(payload);
 };
-
+const success = NoteAcionsE.success;
 note.success = (message: string, config?: typeof notifyDefaults) =>
-  note.show(message, NoteAcionsE.success, config);
+  note.show(message, success as string, config);
 
 note.info = (message: string, config?: typeof notifyDefaults) =>
   note.show(message, NoteAcionsE.Info, config);
@@ -60,3 +63,8 @@ note.debug = (title: string, err: { message: string }) => {
 };
 
 export { note };
+export const useNote = () => {
+  return {
+    note,
+  };
+};

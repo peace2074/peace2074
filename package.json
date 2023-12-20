@@ -41,6 +41,7 @@
     "@vite-pwa/nuxt": "^0.3.5",
     "@vueuse/core": "^10.7.0",
     "@vueuse/nuxt": "^10.7.0",
+    "lodash": "^4.17.21",
     "nuxt": "^3.8.2",
     "nuxt-quasar-ui": "^2.0.6",
     "postcss-rtlcss": "^4.0.9",
