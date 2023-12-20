@@ -32,7 +32,7 @@ const logo = ref('lg.png')
     <q-layout view="lHh LpR lFf">
         <q-header reveal elevated :style="autoStyle">
             <!-- Mobile & Tablets -->
-            <q-toolbar v-if="!$q.platform.is.desktop" class="q-py-sm">
+            <q-toolbar v-if="!$q.platform.is.desktop" class="q-py-sm" :class="autoClass">
                 <q-space />
                 <div class="row">
                     <div class="col-sm-12 col-xs-12">
@@ -58,14 +58,13 @@ const logo = ref('lg.png')
                     <div class="col-sm-12 col-xs-12 q-mt-md">
                         <div>
                             <q-btn flat round dense icon="settings" class="q-mr-md" />
-                            <q-btn flat round dense icon="fas fa-sign-out-alt"
-                                @click="openRightDrawer = !openRightDrawer" />
+                            <q-btn flat round dense icon="fas fa-sign-out-alt" @click="openDrawer = !openDrawer" />
                         </div>
                     </div>
                 </div>
             </q-toolbar>
             <!-- Desktop -->
-            <q-toolbar v-if="$q.platform.is.desktop" class="q-py-sm">
+            <q-toolbar v-if="$q.platform.is.desktop" class="q-py-sm" :class="autoClass">
 
 
                 <q-toolbar-title>
@@ -90,7 +89,7 @@ const logo = ref('lg.png')
             </q-toolbar>
             <!-- Menu -->
             <div class="gt-sm">
-                <div class="bg-white text-grey-9 text-weight-bold shadow-transition">
+                <div class="text-weight-bold shadow-transition">
                     <div class="row text-center items-center" :style="$q.platform.is.desktop ? 'height: 38px' : ''">
                         <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 cursor-pointer hover-blue"
                             @mouseover="menu_cat_elc = true">
@@ -178,31 +177,12 @@ const logo = ref('lg.png')
                 </div>
             </div>
         </q-header>
-        <q-drawer v-model="openDrawer" :side="direction" :style="autoStyle" show-if-above :width="200" :breakpoint="700"
-            elevated class="bg-primary text-white">
+        <q-drawer v-model="openDrawer" :side="direction" :style="autoStyle" :width="200" :breakpoint="700" elevated
+            :class="autoClass">
             <q-scroll-area class="fit">
                 <div class="q-pa-sm">
                     <div class="col q-mx-xs">
                         <div class="q-mt-sm col justify-center align-between wrap">
-                            <div class="text-subtitle1 text-weight-bold">Connect</div>
-                            <div class="text-caption hover_underline_white q-mt-sm">Facebook</div>
-                            <div :class="classNav">Instagram</div>
-                            <div :class="classNav">Twitter</div>
-                        </div>
-                        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 text-white">
-                            <div class="text-subtitle1 text-weight-bold">Policy</div>
-                            <div class="text-caption hover_underline_white q-mt-sm">Return Policy</div>
-                            <NuxtLink to="/terms" :class="classNav">Terms Of Use</NuxtLink>
-                            <div :class="classNav">Security</div>
-                            <div :class="classNav">Privacy</div>
-                            <div :class="classNav">Sitemap</div>
-                        </div>
-                        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 text-white">
-                            <div class="text-subtitle1 text-weight-bold">Help</div>
-                            <div class="text-caption hover_underline_white q-mt-sm">Payments</div>
-                            <div :class="classNav">Shipping</div>
-                            <div :class="classNav">Cancellation & Returns</div>
-                            <div :class="classNav">FAQ</div>
                         </div>
                     </div>
                 </div>

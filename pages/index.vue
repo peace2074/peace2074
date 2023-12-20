@@ -36,7 +36,6 @@ async function start() {
 }
 
 onBeforeMount(() => {
-
     start();
 })
 

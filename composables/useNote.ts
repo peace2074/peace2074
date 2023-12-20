@@ -1,12 +1,13 @@
+import { NoteAcionsE, type NoteActionsI } from "../types/index";
+
 import {
   defaultStyles,
   notifyDefaults,
   notifyDefaults as nfd,
 } from "~/static/index";
-import { NoteAcionsE, type NoteActionsI } from "../types";
 import { Notify } from "quasar";
 function note(
-  action: typeof NoteActionsI,
+  action: NoteActionsI,
   payload: string,
   notifyDefaults?: typeof nfd
 ) {

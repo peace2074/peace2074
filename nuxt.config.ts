@@ -81,7 +81,7 @@ export default defineNuxtConfig({
       },
       components: [],
       directives: [],
-      plugins: ["QIcon", "QScrollArea", "QNotify"],
+      plugins: ["Icon", "ScrollArea", "Notify"],
     },
     build: {
       rtl: true,

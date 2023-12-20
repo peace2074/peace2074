@@ -14,17 +14,21 @@ body.en-US {
 .rtl p, .rtl ul, .rtl .flex {direction: rtl;}
 .ltr p, .ltr ul, .ltr .flex {direction: ltr;}
 .bg-dark,
+.bg-dark div,
 .bg-dark *{
     background-color: var(--$primary);    
     color: var(--$secondary);
 }
 
 .bg-light,
+.bg-light div,
 .bg-light *{
     background-color: var(--$secondary) !important;
     color: var(--$primary) !important;
 }
 
-.text-dark {
+.text-dark,
+.text-dark div,
+.text-dark * {
     color:var(--$primary) !important;    
 }
