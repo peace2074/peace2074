@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Notify } from "#impors";
+import { Notify } from "#imports";
 
 function checkForUpdates() {
     Notify.create({
