@@ -1,106 +1,64 @@
-import { fileURLToPath } from "url";
-import { pwa } from "./config/pwa";
-const lpwa = pwa;
-// https://nuxt.com/docs/api/configuration/nuxt-config
+import { pwa } from './config/pwa'
+import { appDescription } from './constants/index'
+
 export default defineNuxtConfig({
-  devtools: { enabled: true },
   modules: [
-    "nuxt-quasar-ui",
-    "@vueuse/nuxt",
-    "@pinia/nuxt",
-    "@vite-pwa/nuxt",
-    "@nuxtjs/i18n",
+    '@vueuse/nuxt',
+    '@unocss/nuxt',
+    '@pinia/nuxt',
+    '@nuxtjs/color-mode',
+    '@vite-pwa/nuxt',
   ],
-  i18n: {
-    vueI18n: "./i18n.config.ts",
+
+  experimental: {
+    // when using generate, payload js assets included in sw precache manifest
+    // but missing on offline, disabling extraction it until fixed
+    payloadExtraction: false,
+    inlineSSRStyles: false,
+    renderJsonPayloads: true,
+    typedPages: true,
   },
-  build: {
-    transpile: ["waelio-utils", "@heroicons/vue", "@headlessui/vue"],
-  },
-  vite: {
-    css: {
-      preprocessorOptions: {
-        scss: {
-          additionalData: '@use "~/assets/style/variables.scss" as *;',
-        },
-      },
-    },
-  },
-  pwa: lpwa,
-  alias: {
-    "@": fileURLToPath(new URL("./", import.meta.url)),
-    "@store": fileURLToPath(new URL("./store/", import.meta.url)),
-    "@pages": fileURLToPath(new URL("./pages/", import.meta.url)),
-    "@cmps": fileURLToPath(new URL("./composables/", import.meta.url)),
-  },
+
   css: [
-    "@quasar/extras/material-icons/material-icons.css",
-    "quasar/dist/quasar.prod.css",
-    "quasar/dist/quasar.rtl.prod.css",
-    "~/assets/style/quasar.scss",
+    '@unocss/reset/tailwind.css',
   ],
 
-  postcss: {
-    plugins: {},
-  },
-  runtimeConfig: {
-    public: {
-      stripePk: process.env.STRIPE_PK_KEY,
-    },
-    dbUrl: process.env.DATABASE_URL,
-    githubClientId: process.env.GITHUB_CLIENT_ID,
-  },
-  mongoose: {
-    uri: process.env.DATABASE_URL,
-    options: {},
-    modelsDir: "models",
+  colorMode: {
+    classSuffix: '',
   },
 
-  quasar: {
-    // @ts-ignore
-    extras: [
-      // 'ionicons-v4',
-      // 'mdi-v4',
-      "fontawesome-v5",
-      // 'eva-icons',
-      // 'themify',
-      // 'line-awesome',
-      // 'roboto-font-latin-ext', // this or either 'roboto-font', NEVER both!
-
-      "roboto-font", // optional, you are not bound to it
-      "material-icons", // optional, you are not bound to it
-    ],
-    framework: {
-      iconSet: "material-icons", // Quasar icon set
-      lang: "en-us",
-      all: "auto",
-      config: {
-        screen: {
-          bodyClasses: true,
-        },
+  nitro: {
+    esbuild: {
+      options: {
+        target: 'esnext',
       },
-      components: [],
-      directives: [],
-      plugins: ["Icon", "ScrollArea", "Notify"],
     },
-    build: {
-      rtl: true,
+    prerender: {
+      crawlLinks: false,
+      routes: ['/'],
+      ignore: ['/hi'],
     },
-    builder: {
-      appId: "Peaace_Shopping",
-    },
-    nodeIntegration: true,
   },
 
   app: {
     head: {
-      script: [{ src: "https://js.stripe.com/v3/", defer: true }],
+      viewport: 'width=device-width,initial-scale=1',
       link: [
-        {
-          rel: "stylesheet",
-          href: "https://cdn.jsdelivr.net/npm/quasar@2/dist/quasar.rtl.prod.css",
-        },
+        { rel: 'icon', href: '/favicon.ico', sizes: 'any' },
+        { rel: 'icon', type: 'image/svg+xml', href: '/nuxt.svg' },
+        { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
+      ],
+      meta: [
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { name: 'description', content: appDescription },
+        { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },
       ],
     },
   },
-});
+
+  pwa,
+
+  devtools: {
+    enabled: true,
+  },
+})
