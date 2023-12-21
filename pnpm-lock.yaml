@@ -38,6 +38,9 @@ dependencies:
   stripe:
     specifier: ^14.8.0
     version: 14.8.0
+  uuid:
+    specifier: ^9.0.1
+    version: 9.0.1
   vue-apexcharts:
     specifier: ^1.6.2
     version: 1.6.2(apexcharts@3.44.2)
@@ -56,6 +59,9 @@ dependencies:
   waelio-utils:
     specifier: ^5.0.1
     version: 5.0.1
+  ws:
+    specifier: ^8.15.1
+    version: 8.15.1
 
 devDependencies:
   '@nuxt/devtools':
@@ -67,6 +73,12 @@ devDependencies:
   '@nuxtjs/i18n':
     specifier: 8.0.0-rc.9
     version: 8.0.0-rc.9(rollup@2.79.1)(vue-router@4.2.5)(vue@3.3.11)
+  '@types/uuid':
+    specifier: ^9.0.7
+    version: 9.0.7
+  '@types/ws':
+    specifier: ^8.5.10
+    version: 8.5.10
   '@vite-pwa/assets-generator':
     specifier: ^0.2.1
     version: 0.2.1
@@ -79,6 +91,9 @@ devDependencies:
   '@vueuse/nuxt':
     specifier: ^10.7.0
     version: 10.7.0(nuxt@3.8.2)(rollup@2.79.1)(vue@3.3.11)
+  autoprefixer:
+    specifier: ^10.4.16
+    version: 10.4.16(postcss@8.4.32)
   lodash:
     specifier: ^4.17.21
     version: 4.17.21
@@ -88,6 +103,9 @@ devDependencies:
   nuxt-quasar-ui:
     specifier: ^2.0.6
     version: 2.0.6(@quasar/extras@1.16.9)(quasar@2.14.1)(rollup@2.79.1)
+  postcss:
+    specifier: ^8.4.32
+    version: 8.4.32
   postcss-rtlcss:
     specifier: ^4.0.9
     version: 4.0.9(postcss@8.4.32)
@@ -3772,6 +3790,10 @@ packages:
     resolution: {integrity: sha512-ScaPdn1dQczgbl0QFTeTOmVHFULt394XJgOQNoyVhZ6r2vLnMLJfBPd53SB52T/3G36VI1/g2MZaX0cwDuXsfw==}
     dev: true
 
+  /@types/uuid@9.0.7:
+    resolution: {integrity: sha512-WUtIVRUZ9i5dYXefDEAI7sh9/O7jGvHg7Df/5O/gtH3Yabe5odI3UWopVR1qbPXQtvOxWu3mM4XxlYeZtMWF4g==}
+    dev: true
+
   /@types/web-bluetooth@0.0.20:
     resolution: {integrity: sha512-g9gZnnXVq7gM7v3tJCWV/qw7w+KeOlSHAhgF9RytFyifW6AF61hdT2ucrYhPq9hLs5JIryeupHV3qGk95dH9ow==}
 
@@ -3785,6 +3807,12 @@ packages:
       '@types/node': 20.10.4
       '@types/webidl-conversions': 7.0.3
     dev: false
+
+  /@types/ws@8.5.10:
+    resolution: {integrity: sha512-vmQSUcfalpIq0R9q7uTo2lXs6eGIpt9wtnLdMv9LVpIjCA/+ufZRozlVoVelIYixx1ugCBKDhn89vnsEGOCx9A==}
+    dependencies:
+      '@types/node': 20.10.4
+    dev: true
 
   /@unhead/dom@1.8.9:
     resolution: {integrity: sha512-qY4CUVNKEM7lEAcTz5t71QYca+NXgUY5RwhSzB6sBBzZxQTiFOeTVKC6uWXU0N+3jBUdP/zdD3iN1JIjziDlng==}
@@ -9807,6 +9835,11 @@ packages:
     resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
     hasBin: true
     dev: true
+
+  /uuid@9.0.1:
+    resolution: {integrity: sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==}
+    hasBin: true
+    dev: false
 
   /v-lazy-show@0.2.4(@vue/compiler-core@3.3.11):
     resolution: {integrity: sha512-Lx9Str2i+HTh+zGzs9O3YyhGAZOAAfU+6MUUPcQPPiPxQO1sHBEv9sH3MO9bPc4T09gsjsS2+sbaCWQ1MdhpJQ==}

@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import { onBeforeMount, ref, useOnline } from '#imports';
-import { _to } from 'waelio-utils';
-
 import type { SuraI } from '~/types/index';
 const online = useOnline()
 const { note } = useNote()

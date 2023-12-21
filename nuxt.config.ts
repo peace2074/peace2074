@@ -15,7 +15,7 @@ export default defineNuxtConfig({
     vueI18n: "./i18n.config.ts",
   },
   build: {
-    transpile: ["waelio-utils"],
+    transpile: ["waelio-utils", "@heroicons/vue", "@headlessui/vue"],
   },
   vite: {
     css: {
