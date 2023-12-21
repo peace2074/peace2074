@@ -53,6 +53,9 @@ dependencies:
   vuedraggable:
     specifier: ^2.24.3
     version: 2.24.3
+  waelio-utils:
+    specifier: ^5.0.1
+    version: 5.0.1
 
 devDependencies:
   '@nuxt/devtools':
@@ -100,9 +103,6 @@ devDependencies:
   vue-router:
     specifier: ^4.2.5
     version: 4.2.5(vue@3.3.11)
-  waelio-utils:
-    specifier: ^5.0.1
-    version: 5.0.1
   worker-auth-providers:
     specifier: 0.0.13-beta.4
     version: 0.0.13-beta.4
@@ -5156,7 +5156,7 @@ packages:
 
   /crypto-js@4.2.0:
     resolution: {integrity: sha512-KALDyEYgpY+Rlob/iriUtjV6d5Eq+Y191A5g4UqLAi8CyGP9N1+FdVbkc1SxKc2r4YAYqG8JzO2KGL+AizD70Q==}
-    dev: true
+    dev: false
 
   /crypto-random-string@2.0.0:
     resolution: {integrity: sha512-v1plID3y9r/lPhviJ1wrXpLeyUIGAZ2SHNYTEapm7/8A9nLPoyvVp3RK/EPFqn5kEznyWgYZNsRtYYIWbuG8KA==}
@@ -10187,7 +10187,7 @@ packages:
     resolution: {integrity: sha512-cZznf2CFjw0+jYUViuMrQqm2IRVpReNGT0oUi9trmgpjNXWqZmS5YneOsSjup4su6qmfj/TOVkeMbBdHmFHprQ==}
     dependencies:
       crypto-js: 4.2.0
-    dev: true
+    dev: false
 
   /watchpack@2.4.0:
     resolution: {integrity: sha512-Lcvm7MGST/4fup+ifyKi2hjyIAwcdI4HRgtvTpIUxBRhB+RFtUh8XtDOxUfctVCnhVi+QQj49i91OyvzkJl6cg==}
