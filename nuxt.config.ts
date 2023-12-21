@@ -4,9 +4,6 @@ const lpwa = pwa;
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  imports: {
-    autoImport: true,
-  },
   modules: [
     "nuxt-quasar-ui",
     "@vueuse/nuxt",
@@ -16,6 +13,9 @@ export default defineNuxtConfig({
   ],
   i18n: {
     vueI18n: "./i18n.config.ts",
+  },
+  build: {
+    transpile: ["waelio-utils"],
   },
   vite: {
     css: {

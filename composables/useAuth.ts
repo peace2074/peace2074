@@ -1,7 +1,8 @@
 // @ts-nocheck
 import type { JwtPayload } from "jwt-decode";
 import type { UserI, UserT } from "~/types";
-import { _isString, _isObject } from "waellio-utils";
+import type { isObject, isString } from "waelio-utils/types/utils/";
+import { isString as _isString, isObject as _isObject } from "waelio-utils";
 export default () => {
   const useAuthToken = () => useState("auth_token") as Ref<JwtPayload>;
   const useAuthUser = () => useState("auth_user") as Ref<UserI>;
