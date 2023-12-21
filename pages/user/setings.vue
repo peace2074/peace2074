@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Notify } from "#imports";
+import { Notify } from "quasar";
 
 function checkForUpdates() {
     Notify.create({
