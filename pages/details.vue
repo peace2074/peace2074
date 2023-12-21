@@ -1,7 +1,25 @@
+<script lang="ts" setup>
+import { autoClass } from '~/mixins';
+
+const $q = useQuasar()
+const slide = ref(1)
+const tab = ref('Specifications')
+const rating_point = ref(4.3)
+const rat_5 = ref(5)
+const rat_4 = ref(4)
+const rat_3 = ref(3)
+const rat_2 = ref(2)
+const rat_1 = ref(1)
+const win_width = computed(() => $q.screen.width - 59);
+const win_height = computed(() => $q.screen.height - 0);
+
+</script>
+
+
 <template>
-  <div>
-    <div class="row bg-white q-mt-sm">
-      <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+  <q-page :class="autoClass">
+    <div class="row q-mt-sm dark" :class="autoClass">
+      <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12" :class="autoClass">
         <div class="q-pa-md">
 
           <q-carousel swipeable animated v-model="slide" thumbnails infinite>
@@ -14,9 +32,9 @@
 
         </div>
       </div>
-      <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+      <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12" :class="autoClass">
         <!--<q-scroll-area :style="{'height':(win_height-200)+'px'}">-->
-        <div class="row">
+        <div class="row" :class="autoClass">
           <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12" :class="$q.platform.is.desktop ? '' : 'q-px-md'">
             <div class="text-subtitle1 text-grey-10 q-mt-sm q-pt-xs">Benling C200-BLK Smartwatch (Black Strap Free Size)
             </div>
@@ -111,7 +129,7 @@
         <!--</q-scroll-area>-->
       </div>
     </div>
-    <div class="row q-mt-sm">
+    <div class="row q-mt-sm" :class="autoClass">
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <q-tabs v-model="tab" dense align="left" class="bg-primary text-white shadow-2" :breakpoint="0">
           <q-tab name="Specifications" label="Specifications" />
@@ -407,22 +425,8 @@
         </q-tab-panels>
       </div>
     </div>
-  </div>
+  </q-page>
 </template>
 
-<script lang="ts" setup>
-const $q = useQuasar()
-const slide = ref(1)
-const tab = ref('Specifications')
-const rating_point = ref(4.3)
-const rat_5 = ref(5)
-const rat_4 = ref(4)
-const rat_3 = ref(3)
-const rat_2 = ref(2)
-const rat_1 = ref(1)
-const win_width = computed(() => $q.screen.width - 59);
-const win_height = computed(() => $q.screen.height - 0);
-
-</script>
 
 <style scoped></style>

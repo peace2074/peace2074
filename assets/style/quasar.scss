@@ -13,22 +13,37 @@ body.en-US {
 }
 .rtl p, .rtl ul, .rtl .flex {direction: rtl;}
 .ltr p, .ltr ul, .ltr .flex {direction: ltr;}
+
+body.body--dark,
+.dark,
 .bg-dark,
 .bg-dark div,
 .bg-dark *{
     background-color: var(--$primary);    
     color: var(--$secondary);
 }
-
+body.body--light,
+.light,
 .bg-light,
-.bg-light div,
+.bg-light div *,
 .bg-light *{
     background-color: var(--$secondary) !important;
     color: var(--$primary) !important;
 }
 
+body.body--dark,
+.dark,
 .text-dark,
-.text-dark div,
+.text-dark div *,
 .text-dark * {
     color:var(--$primary) !important;    
 }
+body.body--light,
+.light,
+.text-light,
+.text-light div *,
+.text-light * {
+    color: var(--$secondary) !important;
+}
+.light * {color: var(--$secondary) !important;}
+.dark  * {color: var(--$primary) !important;}
