@@ -1,10 +1,11 @@
 <script setup lang="ts">
+import { autoClass } from '~/mixins'
+
 const online = useOnline()
 </script>
 
 <template>
-  <div>
-    <Logos mb-6 />
+  <q-page padding class="flex" :class="autoClass">
     <Suspense>
       <ClientOnly>
         <PageView v-if="online" />
@@ -18,6 +19,8 @@ const online = useOnline()
         </div>
       </template>
     </Suspense>
-    <InputEntry />
-  </div>
+    <div>
+      <h3>Home</h3>
+    </div>
+  </q-page>
 </template>
