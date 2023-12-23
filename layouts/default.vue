@@ -31,7 +31,9 @@ const links = ref([
         />
 
         <div v-if="$q.screen.gt.xs" class="q-pr-lg">
-          <img class="GPLAY__logo" src="/lg.png">
+          <span @click="$router.push('/')">
+            <img class="GPLAY__logo" src="/lg.png">
+          </span>
         </div>
 
         <q-space />

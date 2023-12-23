@@ -1,3 +1,4 @@
+/* eslint-disable node/prefer-global/process */
 import { pwa } from './config/pwa'
 import { appDescription } from './constants/index'
 
@@ -49,6 +50,14 @@ export default defineNuxtConfig({
       routes: ['/'],
       ignore: ['/hi'],
     },
+  },
+  runtimeConfig: {
+    public: {
+      stripePk: process.env.STRIPE_PK_KEY,
+      emailjsPK: process.env.EMAIL_PUBLIC_KEY,
+    },
+    dbUrl: process.env.DATABASE_URL,
+    githubClientId: process.env.GITHUB_CLIENT_ID,
   },
   quasar: {
     /* */
