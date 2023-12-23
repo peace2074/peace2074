@@ -19,7 +19,7 @@ const online = useOnline()
         </div>
       </template>
     </Suspense>
-    <div>
+    <div class="fit aligh-middle flex justify-center">
       <h3>Home</h3>
     </div>
   </q-page>

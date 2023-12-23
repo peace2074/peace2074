@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
+import { autoClass } from '~/mixins'
 
 const leftDrawerOpen = ref(false)
 const search = ref('')
@@ -42,13 +43,13 @@ const links = ref([
         <q-space />
 
         <div class="q-pl-md q-gutter-sm row no-wrap items-center">
-          <q-btn round dense flat color="grey-8" size="14px" icon="apps">
-            <q-tooltip>Google Apps</q-tooltip>
+          <q-btn round dense flat color="grey-8" size="14px" icon="settings">
+            <q-tooltip>Settings</q-tooltip>
           </q-btn>
 
           <q-btn round dense flat color="grey-8" icon="notifications">
             <q-badge color="red" text-color="white" floating>
-              2
+              0
             </q-badge>
             <q-tooltip>Notifications</q-tooltip>
           </q-btn>
@@ -129,14 +130,14 @@ const links = ref([
       </q-list>
     </q-drawer>
 
-    <q-page-container>
-      <router-view />
+    <q-page-container class="fit" :class="autoClass">
+      <slot />
 
       <q-page-sticky expand position="top">
-        <q-toolbar class="GPLAY__sticky q-px-xl bg-white">
+        <q-toolbar class="GPLAY__sticky q-px-xl" :class="autoClass">
           <q-space />
-          <q-btn icon="help" dense flat size="12px" class="GPLAY__sticky-help" />
-          <q-btn icon="settings" dense flat class="GPLAY__sticky-settings q-ml-md" size="12px" />
+          <q-btn icon="help" :class="autoClass" dense flat size="12px" class="GPLAY__sticky-help" />
+          <q-btn icon="settings" :class="autoClass" dense flat class="GPLAY__sticky-settings q-ml-md" size="12px" />
         </q-toolbar>
       </q-page-sticky>
     </q-page-container>
