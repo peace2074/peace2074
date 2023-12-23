@@ -16,12 +16,12 @@ const links = ref([
   { text: 'Buy gift card' },
   { text: 'My wishlist' },
   { text: 'My Play activity' },
-  { text: 'Parent guide' },
+  { text: 'Settings' },
 ])
 </script>
 
 <template>
-  <q-layout view="hHh LpR fFf" class="bg-grey-3">
+  <q-layout view="hHh LpR fFf" style="{background-color:var(--$accent)}">
     <q-header class="bg-grey-3 text-grey-9" reveal height-hint="60">
       <q-toolbar class="GPLAY__toolbar text-grey-6">
         <q-btn
@@ -124,13 +124,13 @@ const links = ref([
 
         <q-item v-for="link in links" :key="link.text" v-ripple dense clickable class="GPLAY__drawer-item">
           <q-item-section class="text-grey-8">
-            <q-item-label>{{ link.text }}</q-item-label>
+            <q-item-label>{{ $t(link.text) }}</q-item-label>
           </q-item-section>
         </q-item>
       </q-list>
     </q-drawer>
 
-    <q-page-container class="fit" :class="autoClass">
+    <q-page-container class="fit">
       <slot />
 
       <q-page-sticky expand position="top">

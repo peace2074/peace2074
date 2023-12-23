@@ -5,11 +5,11 @@ const online = useOnline()
 </script>
 
 <template>
-  <q-page padding class="flex" :class="autoClass">
+  <q-page padding class="fit flex" :class="autoClass">
     <Suspense>
-      <ClientOnly>
+      <ClientOnly fit :class="autoClass">
         <PageView v-if="online" />
-        <div v-else text-gray:80>
+        <div v-else text-red:80>
           You're offline
         </div>
       </ClientOnly>
@@ -19,7 +19,7 @@ const online = useOnline()
         </div>
       </template>
     </Suspense>
-    <div class="fit aligh-middle flex justify-center">
+    <div class="fit aligh-middle flex justify-center" :class="autoClass">
       <h3>Home</h3>
     </div>
   </q-page>
