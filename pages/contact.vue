@@ -137,25 +137,25 @@ export default {
     <div class="mx-auto">
       <div class="py-lg">
         <div class="text-h4 text-center">
-          {{ t('contact.help') }}
+          {{ t('contact.form.title') }}
         </div>
         <div class="text-h6 text-center">
-          {{ t('contact.offer_help') }}
+          {{ t('contact.form.caption') }}
         </div>
       </div>
       <div class="form-container mx-auto p-4">
         <form id="contactForm" ref="contactForm" class="form mx-auto flex flex-col">
           <!-- User Name -->
           <div class="form-group mx-auto my-2 h-22 w-72 rounded p-1 lg:w-96">
-            <label for="user_name">{{ t('contact.name.label') }}</label>
+            <label for="user_name">{{ t('contact.form.name.label') }}</label>
             <input id="user_name" v-model="user_name" name="full_name" :placeholder="t('contact.name.placeholder')">
           </div>
           <!-- User Email -->
           <div class="form-group mx-auto my-2 h-22 w-72 rounded p-1 lg:w-96">
-            <label for="user_email">{{ t('contact.email.label') }}</label>
+            <label for="user_email">{{ t('contact.form.email.label') }}</label>
             <input
               id="user_email" v-model="user_email" filled name="email" type="email"
-              :placeholder="t('contact.email.placeholder')"
+              :placeholder="t('contact.form.email.placeholder')"
             >
           </div>
           <!-- Project Selector -->
@@ -172,10 +172,10 @@ export default {
           </div>
           <!-- Message Body -->
           <div class="form-group mx-auto my-2 h-30 w-72 rounded p-1 lg:w-96">
-            <label for="user_message">{{ t('contact.message.label') }}</label>
+            <label for="user_message">{{ t('contact.form.message.label') }}</label>
             <textarea
               id="user_message" v-model="message" type="textarea" name="message" min-height="5rem"
-              max-height="10rem" :placeholder="t('contact.message.placeholder')"
+              max-height="10rem" :placeholder="t('contact.form.message.placeholder')"
             />
           </div>
           <!-- Accept Terms -->
@@ -190,13 +190,13 @@ export default {
               class="block cursor-pointer border-none pt-1 text-size-xs font-semibold outline-none"
               @click="accept = !accept"
             >
-              {{ t('contact.terms_accepted') }}
+              {{ t('contact.form.acceptterms') }}
             </button>
           </div>
           <!-- Navigate to Terms -->
           <p>
             <router-link to="terms" class="full-width text-bold block h-10">
-              {{ t('contact.accept_terms') }}
+              {{ t('contact.form.acceptterms') }}
             </router-link>
           </p>
           <!-- Actions Container -->

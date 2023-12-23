@@ -41,6 +41,26 @@
     "TranslationPageTitle": "الترجمات",
     "TranslationPageCaption": "إدارة ترجماتك"
   },
+  "button": {
+    "about": "حول",
+    "back": "رجوع",
+    "go": "اذهب",
+    "home": "المنزل",
+    "toggle_dark": "تبديل الوضع المظلم",
+    "toggle_langs": "تغيير اللغات",
+    "Privacy_Short": "الخصوصية",
+    "Privacy": "الشروط والأحكام الخاصة بنا",
+    "Terms_Short": "الشروط",
+    "Contact": "اتصل بنا",
+    "TimeLine": "الخط الزمني",
+    "Utils": "Utils",
+    "submit": "إرسال",
+    "reset": "إعادة الضبط",
+    "reload": "إعادة التحميل",
+    "close": "إغلاق",
+    "new_content": "يتوفر محتوى جديد، أعد التحميل للتحديث.",
+    "offline_ready": "التطبيق جاهز للعمل دون اتصال"
+  },
   "services": {
     "Branding": "العلامة التجارية",
     "BrandingDesc": "العلامة التجارية للمنتج وإعادة العلامة التجارية",

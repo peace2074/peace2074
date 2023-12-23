@@ -41,6 +41,26 @@
     "TranslationPageTitle": "תרגומים",
     "TranslationPageCaption": "נהל את התרגומים שלך"
   },
+  "button": {
+    "about": "אודות",
+    "back": "חזרה",
+    "go": "לך",
+    "home": "בית",
+    "toggle_dark": "החלפת מצב כהה",
+    "toggle_langs": "שנה שפות",
+    "Privacy_Short": "פרטיות",
+    "Privacy": "התנאים וההגבלות שלנו",
+    "Terms_Short": "תנאים",
+    "Contact": "צור קשר",
+    "TimeLine": "ציר זמן",
+    "Utils": "Utils",
+    "submit": "שלח",
+    "reset": "איפוס",
+    "reload": "טען מחדש",
+    "close": "إغلاق",
+    "new_content": "يتوفر محتوى جديد، أعد التحميل للتحديث.",
+    "offline_ready": "التطبيق جاهز للعمل دون اتصال"
+  },
   "services": {
     "Branding": "מיתוג",
     "BrandingDesc": "מיתוג מוצר ומיתוג מחדש",
