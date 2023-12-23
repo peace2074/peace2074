@@ -1,69 +1,47 @@
-<template>
-    <div id="AuthPage" class="w-full h-[100vh] bg-white">
-        <div class="w-full flex items-center justify-center p-5 border-b border-b-gray-300">
-            <NuxtLink to="/" class="min-w-[170px]">
-                <img width="170" src="/images/logo.png">
-            </NuxtLink>
-        </div>
-
-        <div class="max-w-[400px] mx-auto px-2">
-
-            <div class="text-center my-6">Login / Register</div>
-
-            <button @click="login('google')" class="
-                            flex 
-                            items-center 
-                            justify-center 
-                            gap-3
-                            p-1.5
-                            w-full 
-                            border 
-                            hover:bg-gray-100
-                            rounded-full
-                            text-lg
-                            font-semibold
-                        ">
-                <img class="w-full max-w-[30px]" src="/google-logo.png">
-                <div>Google</div>
-            </button>
-
-            <button @click="login('github')" class="
-                        mt-4
-                            flex 
-                            items-center 
-                            justify-center 
-                            gap-3
-                            p-1.5
-                            w-full 
-                            border 
-                            hover:bg-gray-100
-                            rounded-full
-                            text-lg
-                            font-semibold
-                        ">
-                <img class="w-full max-w-[30px]" src="/github-logo.png">
-                <div>Github</div>
-            </button>
-
-        </div>
-    </div>
-</template>
-
 <script setup>
 // const user = useSupabaseUser()
 
-import hello from "hellojs";
+import hello from 'hellojs'
 
 watchEffect(() => {
-    if (user.value) {
-        return navigateTo('/')
-    }
+  if (user.value)
+    return navigateTo('/')
 })
 
-const login = async (prov) => {
-    const { data, error } = hello(prov).login()
-    console.log(data);
-    console.log(error)
-    return data
+async function login(prov) {
+  const { data, error } = hello(prov).login()
+  console.log(data)
+  console.log(error)
+  return data
 }
 </script>
+
+<template>
+  <div id="AuthPage" class="h-[100vh] w-full bg-white">
+    <div class="w-full flex items-center justify-center border-b border-b-gray-300 p-5">
+      <NuxtLink to="/" class="min-w-[170px]">
+        <img width="170" src="/images/logo.png">
+      </NuxtLink>
+    </div>
+
+    <div class="mx-auto max-w-[400px] px-2">
+      <div class="my-6 text-center">
+        Login / Register
+      </div>
+
+      <button
+        class="w-full flex items-center justify-center gap-3 border rounded-full p-1.5 text-lg font-semibold hover:bg-gray-100" @click="login('google')"
+      >
+        <img class="max-w-[30px] w-full" src="/google-logo.png">
+        <div>Google</div>
+      </button>
+
+      <button
+        class="mt-4 w-full flex items-center justify-center gap-3 border rounded-full p-1.5 text-lg font-semibold hover:bg-gray-100" @click="login('github')"
+      >
+        <img class="max-w-[30px] w-full" src="/github-logo.png">
+        <div>Github</div>
+      </button>
+    </div>
+  </div>
+</template>

@@ -15,7 +15,7 @@ export default defineNuxtConfig({
     vueI18n: '~/i18n.config.ts',
   },
   build: {
-    transpile: ['waelio-utils', '@heroicons/vue', '@headlessui/vue'],
+    transpile: ['waelio-utils', '@heroicons/vue', '@headlessui/vue', 'hellojs'],
   },
   experimental: {
     // when using generate, payload js assets included in sw precache manifest
@@ -70,6 +70,10 @@ export default defineNuxtConfig({
           content: 'black-translucent',
         },
       ],
+      script: [
+        { src: 'https://js.stripe.com/v3/', defer: true },
+      ],
+
     },
   },
 

@@ -31,7 +31,7 @@ const links = ref([
         />
 
         <div v-if="$q.screen.gt.xs" class="q-pr-lg">
-          <img class="GPLAY__logo" src="lg.png">
+          <img class="GPLAY__logo" src="/lg.png">
         </div>
 
         <q-space />
