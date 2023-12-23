@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const color = useColorMode()
+const $q = useQuasar()
 
 useHead({
   meta: [{
@@ -11,6 +12,8 @@ useHead({
 
 function toggleDark() {
   color.preference = color.value === 'dark' ? 'light' : 'dark'
+  const m = color.preference
+  $q.dark.set(m)
 }
 </script>
 

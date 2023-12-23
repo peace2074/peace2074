@@ -3,15 +3,22 @@ const router = useRouter()
 </script>
 
 <template>
-  <main p="x4 y10" text="center teal-700 dark:gray-200">
-    <div text-4xl>
-      <div i-carbon-warning inline-block />
-    </div>
-    <div>Not found</div>
-    <div>
-      <button text-sm btn m="3 t8" @click="router.back()">
-        Back
-      </button>
-    </div>
-  </main>
+  <div class="fixed-center text-center">
+    <p>
+      <img
+        src="~assets/sad.svg"
+        style="width:30vw;max-width:150px;"
+      >
+    </p>
+    <p class="text-faded">
+      Sorry, nothing here...<strong>(404)</strong>
+    </p>
+    <q-btn
+      color="secondary"
+      style="width:200px;"
+      to="/"
+      label="Go back"
+      @click="router.back()"
+    />
+  </div>
 </template>

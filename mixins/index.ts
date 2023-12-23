@@ -6,9 +6,9 @@ export { useToggle }
 
 export const modes = computed(() => {
   return [
-    { key: 0, value: 'auto', label: 'general.auto' },
-    { key: 1, value: 'true', label: 'general.dark' },
-    { key: 2, value: 'false', label: 'general.light' },
+    { key: 0, value: 'auto', label: 'auto' },
+    { key: 1, value: 'true', label: 'dark' },
+    { key: 2, value: 'false', label: 'light' },
   ]
 })
 
@@ -19,11 +19,11 @@ export const autoStyle = computed(() => {
 })
 
 export const autoClass = computed(() => {
-  return isDark.value ? 'bg-dark text-light' : 'bg-light text-dark'
+  return isDark.value ? 'mode-dark' : 'mode-light'
 })
 
 export const autoColor = computed(() => {
-  return isDark.value ? 'black' : 'light'
+  return isDark.value ? '$dark' : '$light'
 })
 
 export const modesKeys = computed(() => {

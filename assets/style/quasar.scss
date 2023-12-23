@@ -5,48 +5,39 @@ body{
 }
 bodyar-IL,
 body.he-IL {
-    direction: rtl!important;
+    direction: rt;
 }
 
 body.en-US {
-    direction: ltr !important;
+    direction: ltr;
 }
 .rtl p, .rtl ul, .rtl .flex {direction: rtl;}
 .ltr p, .ltr ul, .ltr .flex {direction: ltr;}
 
-body.body--dark,
-.dark,
-.bg-dark,
-.bg-dark div,
-.bg-dark *{
-    background-color: var(--$primary);    
-    color: var(--$secondary);
+.mode-dark{    
+    background-color: $primary;
+    color: $accent;
 }
-body.body--light,
-.light,
-.bg-light,
-.bg-light div *,
-.bg-light *{
-    background-color: $secondary !important;
-    color: $primary !important;
+.mode-light {
+    background-color: $primary;
+    color: $secondary;
 }
 
-body.body--dark,
-.dark,
-body.body--light{
-    background-color: $dark !important;
-    color: $accent !important;
+
+body.body--light {
+    background-color: $secondary;
+    color: $primary;
+}
+
+body.body--dark{
+    background-color: $dark;
+    color: $accent;
 }
 
 .text-dark  {
-    color:$dark !important;    
+    color:$dark;    
 }
 
-.light,
-.text-light,
-.text-light div *,
-.text-light * {
-    color: $secondary !important;
-}
-.light * {color: $secondary !important;}
-.dark  * {color: $primary !important;}
+
+.light {color: $secondary;}
+.dark {color: $primary;}
