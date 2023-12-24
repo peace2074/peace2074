@@ -11,12 +11,19 @@ export default defineNuxtConfig({
     '@vite-pwa/nuxt',
     'nuxt-quasar-ui',
     '@nuxtjs/i18n',
+    'nuxt-mongoose',
+
   ],
+  pages: true,
+  imports: {
+    autoImport: true,
+    collectMeta: true,
+  },
   i18n: {
     vueI18n: '~/i18n.config.ts',
   },
   build: {
-    transpile: ['waelio-utils', '@heroicons/vue', '@headlessui/vue', 'hellojs'],
+    transpile: ['hellojs'],
   },
   experimental: {
     // when using generate, payload js assets included in sw precache manifest
@@ -55,14 +62,37 @@ export default defineNuxtConfig({
     public: {
       stripePk: process.env.STRIPE_PK_KEY,
       emailjsPK: process.env.EMAIL_PUBLIC_KEY,
+      google_analytics_id: process.env.GOOGLE_ANALYTICS_ID,
+
     },
     dbUrl: process.env.DATABASE_URL,
     githubClientId: process.env.GITHUB_CLIENT_ID,
+    GithubAppID: process.env.GithubAppID,
+    GithubClientID: process.env.GithubClientID,
+    GithubClientSecret: process.env.GithubClientSecret,
+    AuthSecret: process.env.AUTH_SECRET,
+  },
+  mongoose: {
+    uri: process.env.DATABASE_URL,
+    options: {},
+    modelsDir: 'models',
   },
   quasar: {
     /* */
   },
-
+  nitro: {
+    serveStatic: true,
+    esbuild: {
+      options: {
+        target: 'esnext',
+      },
+    },
+    prerender: {
+      crawlLinks: false,
+      routes: ['/'],
+      ignore: ['/blog'],
+    },
+  },
   app: {
     head: {
       viewport: 'width=device-width,initial-scale=1',

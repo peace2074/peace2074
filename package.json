@@ -24,8 +24,10 @@
     "@emailjs/browser": "^3.11.0",
     "@quasar/extras": "^1.16.9",
     "hellojs": "^1.20.0",
+    "mongoose": "^8.0.3",
     "quasar": "^2.14.2",
-    "stripe": "^14.10.0"
+    "stripe": "^14.10.0",
+    "ws": "^8.15.1"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.4.4",
@@ -35,6 +37,7 @@
     "@nuxtjs/i18n": "8.0.0-rc.11",
     "@pinia/nuxt": "^0.5.1",
     "@quasar/vite-plugin": "^1.6.0",
+    "@types/ws": "^8.5.10",
     "@unocss/eslint-config": "^0.58.0",
     "@unocss/nuxt": "^0.58.0",
     "@vite-pwa/nuxt": "^0.3.5",
@@ -44,11 +47,14 @@
     "eslint-plugin-format": "^0.1.0",
     "eslint-ts-patch": "^8.55.0-1",
     "nuxt": "^3.8.2",
+    "nuxt-mongoose": "^1.0.3",
     "nuxt-quasar-ui": "^2.0.7",
     "pinia": "^2.1.7",
     "sass": "^1.33.0",
     "typescript": "^5.3.3",
     "vue-echarts-v3": "^2.0.1",
-    "vue-tsc": "^1.8.25"
+    "vue-gtag-next": "^1.14.0",
+    "vue-tsc": "^1.8.25",
+    "waelio-utils": "^5.0.1"
   }
 }

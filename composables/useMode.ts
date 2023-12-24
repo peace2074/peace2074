@@ -1,6 +1,6 @@
-export function useMode() {
+export default function useMode() {
   const color = useColorMode()
-  const $q = useQuasar()
+  // const $q = useQuasar()
 
   const light = 'light'
   const dark = 'dark'
@@ -11,7 +11,7 @@ export function useMode() {
   }
   function setMode(m: string) {
     color.preference = color.value = m === light ? light : dark
-    $q.dark.set(isDark)
+    // $q.dark.set(isDark)
   }
 
   return {

@@ -46,7 +46,7 @@ const links = ref([
         <q-space />
 
         <div class="q-pl-md q-gutter-sm row no-wrap items-center">
-          <q-btn round dense flat color="grey-8" size="14px" to="/setiings" icon="settings">
+          <q-btn round dense flat color="grey-8" size="14px" to="/settings" icon="settings">
             <q-tooltip>Settings</q-tooltip>
           </q-btn>
 
