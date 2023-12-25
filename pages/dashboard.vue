@@ -1,9 +1,5 @@
 <script lang="ts" setup>
-import IEcharts from 'vue-echarts-v3/src/full.js'
 import { exportFile } from 'quasar'
-
-const nuxtApp = useNuxtApp()
-nuxtApp.vueApp.component('IEcharts', IEcharts)
 
 function wrapCsvValue(val: any, formatFn: ((arg0: any) => any) | undefined) {
   let formatted = formatFn !== void 0

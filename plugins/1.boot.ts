@@ -1,5 +1,9 @@
-// import iconSet from 'quasar/icon-set/fontawesome-v6.mjs'
+// @ts-expect-error no definitions
+import IEcharts from 'vue-echarts-v3'
+
 import { Quasar } from 'quasar'
+import 'echarts/lib/chart/bar'
+
 import { init } from '@emailjs/browser'
 import { defineNuxtPlugin } from 'nuxt/app'
 import { conf } from '../utils/conf'
@@ -11,7 +15,7 @@ export default defineNuxtPlugin((nuxtApp) => {
   const runtimeConfig = useRuntimeConfig()
 
   nuxtApp.vueApp.mixin(globalMixin)
-  //   Quasar.iconSet.set(iconSet)
+  nuxtApp.vueApp.component('IEcharts', IEcharts)
   Quasar.lang.set(Quasar.lang.he)
   init(runtimeConfig.public.emailjsPK)
 
