@@ -30,26 +30,28 @@ function onReload() {
         :icon="isDark ? 'light_mode' : 'dark_mode'"
         :label="$t('lightMode')"
       >
-        <q-card class="txt-dark">
+        <q-card>
           <q-card-section>
-            <q-toggle v-model="isDark" clickable :label="$t('lightMode')" />
+            <q-toggle v-model="isDark" color="$info" clickable :label="$t('lightMode')" />
           </q-card-section>
 
           <q-card-section>
-            <q-btn label="check" @click="checkForUpdates" />
-          </q-card-section>
-
-          <q-card-section>
-            <laguage-switcher />
-          </q-card-section>
-        </q-card>
-        <q-btn color="warning" text-color="white" label="Reload" @click="onReload" />
-        <q-card class="nf" :class="autoClass">
-          <q-card-section>
-            <laguage-switcher />
+            <q-btn color="positive" label="check" @click="checkForUpdates" />
           </q-card-section>
         </q-card>
       </q-expansion-item>
+      <q-expansion-item
+        expand-separator
+        icon="globe"
+        :label="$t('languages')"
+      />
+      <q-card>
+        <q-card-actions />
+        <q-card-section>
+          <laguage-switcher />
+        </q-card-section>
+      </q-card>
     </q-list>
+    <q-btn color="warning" text-color="white" label="Reload" @click="onReload" />
   </q-page>
 </template>

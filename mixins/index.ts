@@ -15,7 +15,7 @@ export const modes = computed(() => {
 export const autoStyle = computed(() => {
   return isDark.value
     ? 'background-color:bg-dark;color:text-light;'
-    : 'background-color:bg-ligh;color:text-dark;'
+    : 'background-color:bg-light;color:text-dark;'
 })
 
 export const autoClass = computed(() => {

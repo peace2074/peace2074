@@ -14,30 +14,6 @@ body.en-US {
 .rtl p, .rtl ul, .rtl .flex {direction: rtl;}
 .ltr p, .ltr ul, .ltr .flex {direction: ltr;}
 
-.mode-dark{    
-    background-color: $primary;
-    color: $accent;
+select option {
+    color: $dark;
 }
-.mode-light {
-    background-color: $primary;
-    color: $secondary;
-}
-
-
-body.body--light {
-    background-color: $secondary;
-    color: $primary;
-}
-
-body.body--dark{
-    background-color: $dark;
-    color: $accent;
-}
-
-.text-dark  {
-    color:$dark;    
-}
-
-
-.light {color: $secondary;}
-.dark {color: $primary;}

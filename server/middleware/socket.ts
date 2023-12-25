@@ -10,7 +10,7 @@ interface Client {
 declare global {
 
   const wss: WebSocketServer
-  const clients: Client[]
+  const clients: Client[]0
 }
 
 let wss: WebSocketServer
@@ -19,7 +19,7 @@ const clients: Client[] = []
 export default defineEventHandler((event) => {
   //
   if (!global.wss) {
-    wss = new WebSocketServer({ server: event.node.res.socket.server })
+    wss = new WebSocketServer({ server: event.node?.res?.socket?.server })
 
     wss.on('connection', (socket) => {
       socket.send('connected')
