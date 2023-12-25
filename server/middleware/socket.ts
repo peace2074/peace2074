@@ -1,4 +1,5 @@
 import WebSocket, { WebSocketServer } from 'ws'
+import { defineEventHandler } from 'h3'
 
 interface Client {
   id: string
@@ -7,23 +8,25 @@ interface Client {
 }
 
 declare global {
-  var wss: WebSocketServer
-  var clients: Client[]
+
+  const wss: WebSocketServer
+  const clients: Client[]
 }
 
 let wss: WebSocketServer
 const clients: Client[] = []
 
 export default defineEventHandler((event) => {
+  //
   if (!global.wss) {
-    wss = new WebSocketServer({ server: event.node.res.socket?.server })
+    wss = new WebSocketServer({ server: event.node.res.socket.server })
 
     wss.on('connection', (socket) => {
       socket.send('connected')
 
       socket.on('message', (message) => {
         wss.clients.forEach((client) => {
-          if (client == socket && client.readyState === WebSocket.OPEN) {
+          if (client === socket && client.readyState === WebSocket.OPEN) {
             clients.push({
               id: message.toString(),
               send: (data: string) => client.send(data),
