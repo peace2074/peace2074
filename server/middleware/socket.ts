@@ -10,7 +10,7 @@ interface Client {
 declare global {
 
   const wss: WebSocketServer
-  const clients: Client[]0
+  const clients: Client[]
 }
 
 let wss: WebSocketServer
@@ -23,7 +23,6 @@ export default defineEventHandler((event) => {
 
     wss.on('connection', (socket) => {
       socket.send('connected')
-
       socket.on('message', (message) => {
         wss.clients.forEach((client) => {
           if (client === socket && client.readyState === WebSocket.OPEN) {
