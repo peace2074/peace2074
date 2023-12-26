@@ -1,7 +1,8 @@
+/* eslint-disable no-restricted-globals */
 import WebSocket, { WebSocketServer } from 'ws'
 import { defineEventHandler } from 'h3'
 
-interface Client {
+type Client ={
   id: string
   send: (message: string) => void
   readyState: number
@@ -17,8 +18,8 @@ let wss: WebSocketServer
 const clients: Client[] = []
 
 export default defineEventHandler((event) => {
-  //
-  if (!global.wss) {
+
+  if (!global?.wss) {
     wss = new WebSocketServer({ server: event.node?.res?.socket?.server })
 
     wss.on('connection', (socket) => {

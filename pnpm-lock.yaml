@@ -23,6 +23,9 @@ dependencies:
   stripe:
     specifier: ^14.10.0
     version: 14.10.0
+  uuid:
+    specifier: ^9.0.1
+    version: 9.0.1
   ws:
     specifier: ^8.15.1
     version: 8.15.1
@@ -11552,6 +11555,11 @@ packages:
       is-typed-array: 1.1.12
       which-typed-array: 1.1.11
     dev: true
+
+  /uuid@9.0.1:
+    resolution: {integrity: sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==}
+    hasBin: true
+    dev: false
 
   /v-lazy-show@0.2.4(@vue/compiler-core@3.3.8):
     resolution: {integrity: sha512-Lx9Str2i+HTh+zGzs9O3YyhGAZOAAfU+6MUUPcQPPiPxQO1sHBEv9sH3MO9bPc4T09gsjsS2+sbaCWQ1MdhpJQ==}

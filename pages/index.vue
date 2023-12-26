@@ -1,6 +1,35 @@
 <script setup lang="ts">
+import { v4 as uuid } from 'uuid'
 import { autoClass } from '~/mixins'
 
+const message = ref<string>('')
+
+const { $socket } = useNuxtApp()
+const uid = uuid()
+
+onMounted(() => {
+  $socket.onopen = () => {
+    localStorage.setItem(`connection-${uid}`, uid)
+    $socket.send(uid)
+  }
+
+  $socket.onmessage = ({ data }: any) => {
+    console.log('data', data)
+    message.value = data
+  }
+  $socket.onclose = function () {
+    console.log('disconnected')
+  }
+})
+
+function sendMessage() {
+  fetch('/api/sendmessage', {
+    method: 'POST',
+    body: JSON.stringify({ message: Math.random(), sender: localStorage.getItem(`connection-${uid}`) }),
+  }).then(res => res.json()).then((data) => {
+    console.log('sent')
+  })
+}
 const online = useOnline()
 </script>
 
@@ -21,6 +50,19 @@ const online = useOnline()
     </Suspense>
     <div class="fit aligh-middle flex justify-center" :class="autoClass">
       <h3>Home</h3>
+      <div class="q-pa-md row justify-center">
+        <div style="width: 100%; max-width: 400px">
+          <q-chat-message
+            name="me"
+            :text="['hey, how are you?']"
+            sent
+          />
+          <q-chat-message
+            name="Jane"
+            :text="['doing fine, how r you?']"
+          />
+        </div>
+      </div>
     </div>
   </q-page>
 </template>
