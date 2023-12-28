@@ -3,7 +3,8 @@
 body{
     direction: rtl;
 }
-bodyar-IL,
+
+body.ar-IL,
 body.he-IL {
     direction: rt;
 }
@@ -14,6 +15,12 @@ body.en-US {
 .rtl p, .rtl ul, .rtl .flex {direction: rtl;}
 .ltr p, .ltr ul, .ltr .flex {direction: ltr;}
 
-select option {
-    color: $dark;
+
+.mode-dark {
+    color: $primary;
+    background-color: $dark;
+}
+.mode-light {
+    color: $primary;
+    background-color: $secondary;
 }

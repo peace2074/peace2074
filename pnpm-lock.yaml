@@ -52,6 +52,9 @@ devDependencies:
   '@quasar/vite-plugin':
     specifier: ^1.6.0
     version: 1.6.0(@vitejs/plugin-vue@4.5.0)(quasar@2.14.2)(vite@4.5.0)(vue@3.3.8)
+  '@types/uuid':
+    specifier: ^9.0.7
+    version: 9.0.7
   '@types/ws':
     specifier: ^8.5.10
     version: 8.5.10
@@ -3804,6 +3807,10 @@ packages:
 
   /@types/unist@2.0.7:
     resolution: {integrity: sha512-cputDpIbFgLUaGQn6Vqg3/YsJwxUwHLO13v3i5ouxT4lat0khip9AEWxtERujXV9wxIB1EyF97BSJFt6vpdI8g==}
+    dev: true
+
+  /@types/uuid@9.0.7:
+    resolution: {integrity: sha512-WUtIVRUZ9i5dYXefDEAI7sh9/O7jGvHg7Df/5O/gtH3Yabe5odI3UWopVR1qbPXQtvOxWu3mM4XxlYeZtMWF4g==}
     dev: true
 
   /@types/web-bluetooth@0.0.20:

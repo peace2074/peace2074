@@ -1,6 +1,7 @@
 /* eslint-disable node/prefer-global/process */
 import { pwa } from './config/pwa'
 import { appDescription } from './constants/index'
+import { QuasarOptions } from './qusarOptions'
 
 export default defineNuxtConfig({
   modules: [
@@ -77,9 +78,8 @@ export default defineNuxtConfig({
     options: {},
     modelsDir: 'models',
   },
-  quasar: {
-    /* */
-  },
+
+  quasar: QuasarOptions,
   nitro: {
     serveStatic: true,
     esbuild: {

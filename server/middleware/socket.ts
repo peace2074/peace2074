@@ -2,24 +2,21 @@
 import WebSocket, { WebSocketServer } from 'ws'
 import { defineEventHandler } from 'h3'
 
-type Client ={
+let wss: WebSocketServer
+interface Client {
   id: string
   send: (message: string) => void
   readyState: number
 }
+const clients: Client[] = []
 
 declare global {
-
   const wss: WebSocketServer
   const clients: Client[]
 }
 
-let wss: WebSocketServer
-const clients: Client[] = []
-
 export default defineEventHandler((event) => {
-
-  if (!global?.wss) {
+  if (!global.wss) {
     wss = new WebSocketServer({ server: event.node?.res?.socket?.server })
 
     wss.on('connection', (socket) => {
