@@ -56,7 +56,6 @@ export default defineNuxtConfig({
     prerender: {
       crawlLinks: false,
       routes: ['/'],
-      ignore: ['/hi'],
     },
   },
   runtimeConfig: {
@@ -80,19 +79,6 @@ export default defineNuxtConfig({
   },
 
   quasar: QuasarOptions,
-  nitro: {
-    serveStatic: true,
-    esbuild: {
-      options: {
-        target: 'esnext',
-      },
-    },
-    prerender: {
-      crawlLinks: false,
-      routes: ['/'],
-      ignore: ['/blog'],
-    },
-  },
   app: {
     head: {
       viewport: 'width=device-width,initial-scale=1',
