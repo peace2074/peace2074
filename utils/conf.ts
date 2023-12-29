@@ -1,3 +1,4 @@
+/* eslint-disable ts/no-this-alias */
 import client from '~/config/client'
 import dev from '~/config/dev'
 import prod from '~/config/prod'
@@ -6,7 +7,6 @@ import server from '~/config/server'
 class Conf {
   [x: string]: string | number | boolean | string[] | number[] | object;
   constructor() {
-    // eslint-disable-next-line @typescript-eslint/no-this-alias
     const self = this
 
     self.setEnvironment()

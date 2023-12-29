@@ -1,8 +1,8 @@
-import { defineMongooseModel } from "#nuxt/mongoose";
-// import { OrderItemSchema } from "./orderitem.schema";
+import { OrderItemSchema } from './orderitem.schema'
+import { defineMongooseModel } from '#nuxt/mongoose'
 
 export const ProductsSchema = defineMongooseModel({
-  name: "ProductsSchema",
+  name: 'ProductsSchema',
   schema: {
     title: {
       type: String,
@@ -23,4 +23,4 @@ export const ProductsSchema = defineMongooseModel({
     },
     created_at: Date,
   },
-});
+})

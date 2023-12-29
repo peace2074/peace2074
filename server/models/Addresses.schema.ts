@@ -1,8 +1,7 @@
-// @ts-ignore
-import { defineMongooseModel } from "#nuxt/mongoose";
+import { defineMongooseModel } from '#nuxt/mongoose'
 
 export const AddressesSchema = defineMongooseModel({
-  name: "AddressesSchema",
+  name: 'AddressesSchema',
   schema: {
     id: Number,
     userId: String,
@@ -13,4 +12,4 @@ export const AddressesSchema = defineMongooseModel({
     country: String,
     created_at: String,
   },
-});
+})
