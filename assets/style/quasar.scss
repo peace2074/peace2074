@@ -17,10 +17,10 @@ body.en-US {
 
 
 .mode-dark {
-    color: $primary;
-    background-color: $dark;
+    color: var(--$primary); 
+    background-color: var(--$dark);
 }
 .mode-light {
-    color: $primary;
-    background-color: $secondary;
+    color: var(--$primary);
+    background-color: var(--$secondary);
 }
