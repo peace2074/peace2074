@@ -18,8 +18,8 @@ if (import.meta.client) {
 
   watch(locale, async (newLocal, oldLocal) => {
     if (LocalKeys.includes(newLocal)) {
-      const filteredNewResult = localeOptions.find((e: { value: string }) => e.value == newLocal)
-      const filteredOldResult = localeOptions.find((e: { value: string }) => e.value == oldLocal)
+      const filteredNewResult = localeOptions.find((e: { value: string }) => e.value === newLocal)
+      const filteredOldResult = localeOptions.find((e: { value: string }) => e.value === oldLocal)
       locale.value = newLocal
       body.classList.remove(oldLocal)
       if (filteredOldResult)

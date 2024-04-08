@@ -16,7 +16,7 @@ export default defineI18nConfig(() => ({
     },
     {
       code: 'en-US',
-      name: 'English',
+      name: 'Engilish',
     },
     {
       code: 'he-IL',
@@ -24,8 +24,8 @@ export default defineI18nConfig(() => ({
     },
   ],
   messages: {
-    ar: arIL,
-    en: enUS,
-    he: heIL,
+    arabic: arIL,
+    english: enUS,
+    hebrew: heIL,
   },
 }))

@@ -1,5 +1,4 @@
 export default defineNuxtPlugin(() => {
-  // eslint-disable-next-line node/prefer-global/process
   if (process.server)
     return
 

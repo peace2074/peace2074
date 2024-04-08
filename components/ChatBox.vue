@@ -2,69 +2,36 @@
 import { v4 as uuid } from 'uuid'
 import { autoClass, autoStyle } from '~/mixins'
 
-const uid = uuid()
-const { note } = useNote()
+const message = ref<string>('')
 
-interface usri {
-  id: string
-  name: string
-}
-interface msgi {
-  sender: string
-  message: string
-}
-
-const usser: usri = ref({
-  name: 'Wael',
-  id: uid,
-})
-
-const message: Ref<string | null> = ref(null)
-const messages: Ref<msgi[]> = ref([])
-const myForm = ref(null)
 const { $socket } = useNuxtApp()
+const uid = uuid()
 
 onMounted(() => {
   $socket.onopen = () => {
+    localStorage.setItem(`connection-${uid}`, uid)
     $socket.send(uid)
-    onReset()
   }
 
   $socket.onmessage = ({ data }: any) => {
-    console.log('data', data)
+    console.warn('data', data)
     message.value = data
   }
   $socket.onclose = function () {
-    console.log('disconnected')
+    console.warn('disconnected')
   }
 })
 
 function sendMessage() {
-  myForm.value?.validate().then((success: any) => {
-    if (success) {
-      note.success('Sent!')
-      onReset()
-      const payload = {
-        sender: usser.id,
-        message: message.value,
-      }
-      messages.value.push(payload)
-      return useFetch('/api/sendmessage', {
-        method: 'POST',
-        body: {
-          sender: usser.id,
-          message: message.value,
-        },
-      })
-    }
-  }).catch((error: any) => {
-    console.log(error)
-    return null
+  fetch('/api/sendmessage', {
+    method: 'POST',
+    body: JSON.stringify({ message: Math.random(), sender: localStorage.getItem(`connection-${uid}`) }),
+  }).then(res => res.json()).then((_data) => {
+    console.warn('sent')
   })
 }
 function onReset() {
   message.value = ''
-  myForm.value?.resetValidation()
 }
 </script>
 

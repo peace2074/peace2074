@@ -1,19 +1,38 @@
-// server/middleware/socket.ts
-import type { Socket } from 'socket.io'
-import { Server } from 'socket.io'
+import WebSocket, { WebSocketServer } from 'ws'
 
-export default defineEventHandler(({ node }) => {
-  if (global.io)
-    return
+declare global {
+  let wss: WebSocketServer
+  let clients: Client[]
+}
+interface Client {
+  id: string
+  send: (message: string) => void
+  readyState: number
+}
 
-  global.io = new Server(node.res.socket?.server)
+let wss: WebSocketServer
+const clients: Client[] = []
 
-  global.io.on('connection', async (socket: Socket) => {
-    console.log('a user connected')
+export default defineEventHandler((event) => {
+  if (!global.wss) {
+    wss = new WebSocketServer({ server: event.node.res.socket?.server })
 
-    socket.on('message', (data) => {
-      console.log('received message:', data)
-      global.io.emit('message', 'Hello, client!')
+    wss.on('connection', (socket) => {
+      socket.send('connected')
+
+      socket.on('message', (message) => {
+        wss.clients.forEach((client) => {
+          if (client == socket && client.readyState === WebSocket.OPEN) {
+            clients.push({
+              id: message.toString(),
+              send: (data: string) => client.send(data),
+              readyState: client.readyState,
+            })
+            global.clients = clients
+          }
+        })
+      })
+      global.wss = wss
     })
-  })
+  }
 })
