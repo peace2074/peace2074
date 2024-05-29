@@ -1,4 +1,4 @@
-import { ref, unref, Ref } from "vue";
+import { ref, unref, } from "vue";
 
 export class UCORE {
   _STORE: Ref<any> = ref(null);

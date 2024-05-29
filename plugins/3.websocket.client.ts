@@ -1,9 +1,10 @@
+import { WebSocketServer } from "ws"
+
 export default defineNuxtPlugin(() => {
   if (process.server)
     return
 
-  const wsProtocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:'
-  const socket = new WebSocket(`${wsProtocol}//${window.location.host}`)
+  const socket = new WebSocket('ws://localhost:3000/api/send-message')
 
   return {
     provide: {

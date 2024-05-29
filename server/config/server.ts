@@ -1,12 +1,12 @@
 export default {
   init: false,
   app: {
-    businessName: "",
-    businessDomain: "",
-    businessAddress: "",
-    businessEmail: "",
+    businessName: "Peace2074",
+    businessDomain: "https://peace2074.com",
+    businessAddress: "Hashachar 3, Hod Hasharon, Israel",
+    businessEmail: "peacem74@gmail.com",
     businessImage: "",
-    businessDescription: "",
+    businessDescription: "Paersonal blog of peace2074",
   },
   settings: {
     locale: "en-us",

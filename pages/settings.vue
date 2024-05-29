@@ -21,15 +21,11 @@ function onReload() {
 
 <template>
   <q-page padding class="q-pa-lg col q-mt-lg" :class="autoClass">
-    <h1 class="text-h2 text-center">
+    <h1 class="text-h4 text-center">
       <strong>{{ $t("navigation.SettingsPageTitle") }}</strong>
     </h1>
     <q-list bordered class="rounded-borders">
-      <q-expansion-item
-        expand-separator
-        :icon="isDark ? 'light_mode' : 'dark_mode'"
-        :label="$t('lightMode')"
-      >
+      <q-expansion-item expand-separator :icon="isDark ? 'light_mode' : 'dark_mode'" :label="$t('lightMode')">
         <q-card>
           <q-card-section>
             <q-toggle v-model="isDark" color="$info" clickable :label="$t('lightMode')" />
@@ -40,11 +36,7 @@ function onReload() {
           </q-card-section>
         </q-card>
       </q-expansion-item>
-      <q-expansion-item
-        expand-separator
-        icon="globe"
-        :label="$t('languages')"
-      />
+      <q-expansion-item expand-separator icon="globe" :label="$t('languages')" />
       <q-card>
         <q-card-actions />
         <q-card-section>

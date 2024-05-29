@@ -3,7 +3,7 @@ import { useI18n, watch } from '#imports'
 
 const { locale } = useI18n()
 enum langsE { en = 'es-US', he = 'he-IL', ar = 'ar-IL' }
-const langs = ['es-US', 'he-IL', 'ar-IL']
+const langs = ['en', 'he', 'ar']
 const localeOptions = reactive([
   { value: langsE.en as string, label: 'English', dir: 'ltr' },
   { value: langsE.he as string, label: 'Hebrew', dir: 'rtl' },
@@ -14,7 +14,7 @@ if (import.meta.client) {
   const body = document.body
   body.classList.add(langsE.he, 'rtl')
 
-  const LocalKeys = langs
+  const LocalKeys = langs /*?*/
 
   watch(locale, async (newLocal, oldLocal) => {
     if (LocalKeys.includes(newLocal)) {
@@ -28,6 +28,8 @@ if (import.meta.client) {
       body.classList.add(newLocal)
       if (filteredNewResult)
         body.classList.add(filteredNewResult?.dir)
+    }else{
+      locale.value = 'en'
     }
   })
 }

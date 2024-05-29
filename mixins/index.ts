@@ -1,6 +1,5 @@
 import { useDark, useToggle } from '@vueuse/core'
 import { computed } from '#imports'
-
 export const isDark = useDark()
 export { useToggle }
 

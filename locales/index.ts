@@ -1,15 +1,15 @@
-import enUS from '../locales/enUs.json'
-import heIL from '../locales/heIl.json'
-import arIL from '../locales/arIl.json'
-
+import enUS from './en'
+import heIL from './he'
+import arIL from './ar'
+import { _reParseString } from 'waelio-utils'
 export type arIlT = typeof arIL
 export type heIlT = typeof heIL
 export type enUsT = typeof enUS
 
 const me = {
-  arIL,
-  enUS,
-  heIL,
+  ar: JSON.stringify(arIL),
+  en: JSON.stringify(enUS), 
+  he: JSON.stringify(heIL),
 }
 export type MessagesT = typeof me
 

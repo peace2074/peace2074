@@ -2,7 +2,7 @@
 import client from '~/config/client'
 import dev from '~/config/dev'
 import prod from '~/config/prod'
-import server from '~/config/server'
+import server from '~/server/config/server'
 
 class Conf {
   [x: string]: string | number | boolean | string[] | number[] | object;
@@ -26,12 +26,12 @@ class Conf {
     // console.log("this._store", this._store);
   }
 
-  set(key: string, value: string | number | object) {
+  set(key: string, value: string | number) {
     if (key.match(/:/)) {
       const keys = key.split(':')
-      let storeKey = this._store
+      let storeKey: Record<string, any> = Object.keys(this._store)
 
-      keys.forEach((k: string | number, i: number) => {
+      keys.forEach((k: string, i: number) => {
         if (keys.length === i + 1)
           storeKey[k] = value
 
@@ -51,7 +51,8 @@ class Conf {
   }
 
   getItem(key: string) {
-    return this._store[key]
+    // @ts-ignore
+    return Object.keys(this._store).includes(key) ? this._store[key] : undefined
   }
 
   get(key: string) {
@@ -63,6 +64,7 @@ class Conf {
     }
 
     // Return regular key
+    // @ts-ignore
     return this._store[key]
   }
 
@@ -152,7 +154,7 @@ class Conf {
     const keys = nestedKey.split(':')
     let storeKey = this._store
 
-    keys.forEach((k: string | number) => {
+    keys.forEach((k: string) => {
       try {
         storeKey = storeKey[k]
       }

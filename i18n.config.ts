@@ -1,4 +1,4 @@
-import { arIL, enUS, heIL } from './locales'
+import  messages from './locales'
 
 export default defineI18nConfig(() => ({
   legacy: false,
@@ -11,21 +11,17 @@ export default defineI18nConfig(() => ({
   },
   locales: [
     {
-      code: 'ar-IL',
+      code: 'ar',
       name: 'Arabic',
     },
     {
-      code: 'en-US',
+      code: 'en',
       name: 'Engilish',
     },
     {
-      code: 'he-IL',
+      code: 'he',
       name: 'Hebrew',
     },
   ],
-  messages: {
-    arabic: arIL,
-    english: enUS,
-    hebrew: heIL,
-  },
+  messages, // import { messages } from './locales'
 }))
