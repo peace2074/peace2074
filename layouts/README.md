@@ -4,7 +4,7 @@ Vue components in this dir are used as layouts.
 
 By default, `default.vue` will be used unless an alternative is specified in the route meta.
 
-```vue
+```html
 <script setup lang="ts">
 definePageMeta({
   layout: 'home',
@@ -12,4 +12,4 @@ definePageMeta({
 </script>
 ```
 
-Learn more on https://nuxt.com/docs/guide/directory-structure/layouts
+Learn more on https://v3.nuxtjs.org/guide/directory-structure/layouts

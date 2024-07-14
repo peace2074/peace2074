@@ -1,5 +1,0 @@
-export const appName = 'Peace2074'
-export const appDescription = 'Peace Shopping'
-export const appThemeCookieName = 'peaceTheme'
-export const modeLight = 'light'
-export const modeDark = 'dark'

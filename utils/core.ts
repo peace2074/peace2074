@@ -1,4 +1,4 @@
-import { ref, unref, } from "vue";
+import { ref, unref, Ref } from "vue";
 
 export class UCORE {
   _STORE: Ref<any> = ref(null);
@@ -106,4 +106,3 @@ export class UCORE {
 }
 const core = new UCORE()
 export { core };
-export default { core };

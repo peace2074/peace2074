@@ -1,27 +1,24 @@
-import  messages from './locales'
-
+import { en, ar, he } from "~/locale";
 export default defineI18nConfig(() => ({
   legacy: false,
-  locale: 'he-IL',
-  globalInjection: true,
-  detectBrowserLanguage: {
-    useCookie: true,
-    cookieKey: 'i18n_redirected',
-    redirectOn: 'root',
-  },
+  locale: 'en',
   locales: [
     {
-      code: 'ar',
-      name: 'Arabic',
+      code: 'en',
+      name: 'English'
     },
     {
-      code: 'en',
-      name: 'Engilish',
+      code: 'ar',
+      name: 'Arabic'
     },
     {
       code: 'he',
-      name: 'Hebrew',
-    },
+      name: 'Hebrew'
+    }
   ],
-  messages, // import { messages } from './locales'
+  messages: {
+    en,
+    ar,
+    he
+  }
 }))

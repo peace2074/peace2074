@@ -1,73 +1,82 @@
-import type { WaelioUtils } from "waelio-utils/types/waelioUtils";
+import { MediaFile, RefreshToken, Tweet } from "@prisma/client"
+import { NavigationGuard, RouteLocationNormalized } from "~/.nuxt/vue-router"
 
-export type waelioUtils = typeof WaelioUtils;
-export type KeyT = number;
-export type ColorT = string;
-export type NameT = string;
-export type LinkT = string;
-export type YearT = string;
-export type TextT = string;
-export type ValueT = string;
-export type DescriptionT = string;
+export type KeyT = number
+export type ColorT = string
+export type NameT = string
+export type YearT = string
+export type TextT = string
+export type ValueT = string
+export type DescriptionT = string
 
-export interface Window {
+export interface WindowI {
   Etherium: any;
   web3: any;
 }
 /** User Roles from casl */
-export interface RoleT {
+export interface RoleI {
   name: NameT;
   subject: NameT;
   actions: NameT[];
   inverted?: boolean;
-  conditions?: NameT[];
+  conditions?: NameT[]
   fields?: NameT[];
   reason?: NameT;
 }
 
 /** Loght Modes */
-export enum LightModes {
-  Dark = "dark",
-  Light = "light",
-  System = "auto",
+export enum LightModesE {
+  Dark = 'dark',
+  Light = 'light',
+  System = 'auto'
 }
 
+/** Enum Note Actions */
+export enum NoteAcionsE {
+  Show = 'show',
+  Hide = 'hide',
+  success = 'success',
+  Info = 'info',
+  warning = 'warning',
+  Errror = 'error',
+  Loading = 'loading'
+}
 /** Loding Defaults */
 export type LoadingDefaultsT = {
   spinner: string;
   message: string;
-};
+}
 /** Notify Positions */
-export enum EPositionsE {
-  top = "top",
-  topRight = "top-right",
-  topLeft = "top-left",
-  bottom = "bottom",
-  bottomRight = "bottom-right",
-  bottomLeft = "bottom-left",
-  right = "right",
-  left = "left",
-  center = "center",
+export enum PositionsE {
+  top = 'top',
+  topRight = 'top-right',
+  topLeft = 'top-left',
+  bottom = 'bottom',
+  bottomRight = 'bottom-right',
+  bottomLeft = 'bottom-left',
+  right = 'right',
+  left = 'left',
+  center = 'center'
 }
 /** Education History interface */
 export interface HistoryI {
-  key: KeyT;
-  color: ColorT;
-  name: NameT;
-  link: LinkT;
-  year: YearT;
-  text: string;
+  key: KeyT,
+  color: ColorT,
+  name: NameT,
+  link: LinkT,
+  year: YearT,
+  text: string
 }
 /** Project interface */
-export interface ProjectI {
-  key: string;
-  value: ValueT;
-  selected: boolean;
+export interface IProject {
+  key: string
+  value: ValueT,
+  selected: boolean
 }
 export interface SponsorI {
-  name: string;
-  img: string;
-  url: string;
+  name: string,
+  img: string,
+  url: string
 }
 export interface WorkOptionsI {
   name?: "SHA-256" | "PBKDF2";
@@ -100,66 +109,63 @@ export interface ScopeI {
   icon?: string;
   emitName?: string | Function;
 }
-export type TScope = ScopeI;
+export type ScopeT = ScopeI
 
 export interface HarfI {
   name: string;
   weight: number;
-  value: string;
+  value: string
   description?: string;
   color?: string;
   encoding?: string;
 }
-export interface KalemaI {
+export interface kalimatI {
   horuf: HarfI[];
 }
-export interface AayI {
-  Kalemat: KalemaI[];
+export interface AyaI {
+  Kalemat: kalimatI[];
 }
-
 export interface SuraI {
-  Ayat: AayI[];
+  Ayat: AyaI[];
 }
-
-export type SuraT = SuraI[];
 export interface QuranI {
   Surah: SuraI[];
 }
-export interface ISTATE {
+export interface StateI {
   quran: QuranI;
   Surah: SuraI[];
   Index: QuranI;
 }
 
-export interface Q2BI {
-  state: ISTATE;
+export interface Q2bI {
+  state: StateI
 }
-export interface LINKI {
+export interface LinkT {
   text: string;
   icon: string;
 }
 
 export interface HistoryI {
-  key: KeyT;
-  color: ColorT;
-  name: NameT;
-  link: LinkT;
-  year: YearT;
-  text: string;
+  key: KeyT,
+  color: ColorT,
+  name: NameT,
+  link: LinkT,
+  year: YearT,
+  text: string
 }
 export interface ProjectsI {
-  key: string;
-  value: ValueT;
-  selected: boolean;
+  key: string
+  value: ValueT,
+  selected: boolean
 }
-export type TProjects = ProjectsI;
+export type ProjectsT = ProjectsI
 export interface SponsorsI {
-  name: string;
-  img: string;
-  url: string;
+  name: string,
+  img: string,
+  url: string
 }
-export type TSponsors = SponsorsI;
-export interface TransactionInterfaceT {
+export type SponsorsT = SponsorsI
+export interface TransactionInterfaceI {
   addressFrom: string;
   addressTo: string;
   amount: number;
@@ -171,36 +177,35 @@ export interface TransactionInterfaceT {
   receiver: string;
   sender: string;
 }
-export type Transaction = TransactionInterfaceT & {
+export type TransactionT = TransactionInterfaceI & {
   id?: string | number;
 };
-export type Transactions = Transaction[];
+export type TransactionsT = TransactionT[];
 
 export interface UserI {
+  [x: string]: any
   id?: string;
   email: string;
   username: string;
-  name?: string;
   handle?: string;
   password: string;
   first_name?: string;
   last_name?: string;
   profileImage?: string;
   role: string;
-  createdAt?: string;
-  updatedAt?: string;
   // Refresh token
-  refreshToken?: object;
+  refreshToken?: RefreshToken[];
 
   //Auth0
   auth0Id?: string;
 
   // Tweet
-  tweet?: object;
+  tweet?: Tweet[];
   // MediaFiles
-  mediaFiles?: string[];
+  mediaFiles?: MediaFile[]
 }
-export type UserT = UserI;
+export type UserT = UserI
+
 
 export interface PermessionI {
   id?: string;
@@ -214,7 +219,7 @@ export interface PermessionI {
   createdAt?: string;
   updatedAt?: string;
 }
-export type PermessionT = PermessionI;
+export type PermessionT = PermessionI
 
 export interface TokenI {
   userId: string;
@@ -222,12 +227,21 @@ export interface TokenI {
   exp: number;
 }
 export type TokenT = {
-  id: string;
+  id: string
   token: string;
   createdAt: string;
   updatedAt: string;
   userId: string;
-};
+}
+
+export type RegisterUserT = {
+  username: string,
+  user_email: string,
+  password: string,
+  repeatPassword: string,
+  first_name: string,
+  last_name: string
+}
 
 export interface SubscriptionI {
   id: string;
@@ -238,7 +252,7 @@ export interface SubscriptionI {
   createdAt: string;
   updatedAt: string;
   userId: string;
-  user: object;
+  user: UserI;
 }
 
 export type ReshreshTokenT = {
@@ -247,101 +261,61 @@ export type ReshreshTokenT = {
   userId: string;
   updatedAt?: Date;
   createdAt?: Date;
-};
-
-export interface ProductI {
-  _id: string;
-  title: string;
-  description: string;
-  price: number;
-  url: string | string[];
 }
+
+export interface PostI {
+  [x: string]: string | number
+  userId: number | string,
+  id: number,
+  title: string
+}
+
+export interface RequestPostI {
+  data: PostI
+}
+
+export interface RouteMiddlewareI {
+  (to: RouteLocationNormalized, from: RouteLocationNormalized): ReturnType<NavigationGuard>
+}
+
 export enum CaslActionE {
-  CREATE = "create",
-  READ = "read",
-  UPDATE = "update",
-  DELETE = "delete",
-  MANAGE = "manage",
+  CREATE = 'create',
+  READ = 'read',
+  UPDATE = 'update',
+  DELETE = 'delete',
+  MANAGE = 'manage'
 }
 export enum CaslSubjectE {
-  ALL = "all",
-  ADMIN = "admin",
-  CATEGORY = "category",
-  LIKES = "likes",
-  MEDIAFILE = "mediafile",
-  PERMISSIONS = "permissions",
-  POST = "post",
-  ROLES = "roles",
-  REFRESH_TOKEN = "reshresh_token",
-  TWEET = "tweet",
-  USER = "user",
+  ALL = 'all',
+  ADMIN = 'admin',
+  CATEGORY = 'category',
+  LIKES = 'likes',
+  MEDIAFILE = 'mediafile',
+  PERMISSIONS = 'permissions',
+  POST = 'post',
+  ROLES = 'roles',
+  REFRESH_TOKEN = 'reshresh_token',
+  TWEET = 'tweet',
+  USER = 'user',
 }
-
 // CASL
-export type CaslActionsT =
-  | CaslActionE.CREATE
-  | CaslActionE.READ
-  | CaslActionE.UPDATE
-  | CaslActionE.DELETE;
-
-export type CaslSubjectsT =
-  | CaslSubjectE.CATEGORY
-  | CaslSubjectE.LIKES
-  | CaslSubjectE.MEDIAFILE
-  | CaslSubjectE.PERMISSIONS
-  | CaslSubjectE.POST
-  | CaslSubjectE.ROLES
-  | CaslSubjectE.TWEET
-  | CaslSubjectE.USER
-  | CaslSubjectE.ADMIN;
+export type CaslActionsT = CaslActionE.CREATE | CaslActionE.READ | CaslActionE.UPDATE | CaslActionE.DELETE;
+export type CaslSubjectsT = CaslSubjectE.CATEGORY | CaslSubjectE.LIKES | CaslSubjectE.MEDIAFILE | CaslSubjectE.PERMISSIONS | CaslSubjectE.POST | CaslSubjectE.ROLES | CaslSubjectE.TWEET | CaslSubjectE.USER | CaslSubjectE.ADMIN;
 
 export interface CaslActionsI {
-  actions: CaslActionsT;
+  actions: CaslActionsT
 }
 export interface CaslSubjectsI {
-  actions: CaslSubjectsT;
+  actions: CaslSubjectsT
 }
 
-export enum LangsE {
-  "en" = "enUS",
-  "he" = "heIL",
-  "ar" = "arIL",
+type KeysT = {
+  p256dh: string
+  auth: string
 }
-export enum NoteAcionsE {
-  Show = "show",
-  Hide = "hide",
-  success = "success",
-  Info = "info",
-  warning = "warning",
-  Errror = "error",
-  Loading = "loading",
+export interface SubscriptionI {
+  endpoint: string;
+  expirationTime: string;
+  keys: KeysT
 }
-export interface NoteActionsI {
-  show: "show";
-  hide: "hide";
-  success: "success";
-  info: "info";
-  warning: "warning";
-  error: "error";
-  loading: "loading";
-}
-export interface PwaInjection {
-  /**
-   * @deprecated use `isPWAInstalled` instead
-   */
-  isInstalled: boolean;
-  /**
-   * From version v0.3.5+.
-   */
-  isPWAInstalled: Ref<boolean>;
-  showInstallPrompt: Ref<boolean>;
-  cancelInstall: () => void;
-  install: () => Promise<void>;
-  swActivated: Ref<boolean>;
-  registrationError: Ref<boolean>;
-  offlineReady: Ref<boolean>;
-  needRefresh: Ref<boolean>;
-  updateServiceWorker: (reloadPage?: boolean | undefined) => Promise<void>;
-  cancelPrompt: () => Promise<void>;
-  getSWRegistration: () => ServiceWorkerRegistration | undefined;
-}
+export type SubscriptionT = SubscriptionI

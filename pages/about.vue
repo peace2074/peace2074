@@ -1,10 +1,11 @@
-<script lang="ts" setup>
-</script>
-
 <template>
-  <q-page padding class="q-mt-xl">
-    <h1 class="text-h3">
-      {{ $t('SiteTitle') }}
-    </h1>
-  </q-page>
+  <NuxtLayout name="default">
+    <q-page padding>
+      <h1>{{ $t( 'button.about') }}</h1>
+      <section>
+      <p class="text-h3 q-my-md">{{ $t('about.par10') }}</p>
+      </section>
+    </q-page>
+  </NuxtLayout>
 </template>
+<script lang="ts" setup></script>

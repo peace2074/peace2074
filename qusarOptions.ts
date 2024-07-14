@@ -2,31 +2,31 @@
 // import materialIconsRound from 'quasar/icon-set/svg-material-icons-round'
 
 export const QuasarOptions = {
-    plugins: [
-        'AppFullscreen',
-        'Dialog',
-        'Loading',
-        'LoadingBar',
-        'BottomSheet',
-        'Notify',
-    ],
-    importStrategy: 'auto',
-    extras: {
-        font: 'roboto-font',
-        fontIcons: ['material-icons'],
+  plugins: [
+    'AppFullscreen',
+    'Dialog',
+    'Loading',
+    'LoadingBar',
+    'BottomSheet',
+    'Notify',
+  ],
+  importStrategy: 'auto',
+  extras: {
+    font: 'roboto-font',
+      fontIcons: ['material-icons'],
         animations: 'all',
+  },
+  config: {
+    dark: false,
     },
-    config: {
-        dark: false,
-    },
-    // @ts-ignore
-    components: {
-        defaults: {
-            QBtn: {
-                glossy: true,
-            },
+  // @ts-ignore
+  components: {
+    defaults: {
+      QBtn: {
+        glossy: true,
         },
     },
+  },
 }
 
 

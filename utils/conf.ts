@@ -1,13 +1,12 @@
-/* eslint-disable ts/no-this-alias */
 import client from '~/config/client'
 import dev from '~/config/dev'
 import prod from '~/config/prod'
-import server from '~/server/config/server'
+import server from '~/config/server'
 
 class Conf {
-  [x: string]: string | number | boolean | string[] | number[] | object;
+  [x: string]: {};
   constructor() {
-    const self = this
+    const self = this;
 
     self.setEnvironment()
     self._server = self.getServerVars()
@@ -26,22 +25,23 @@ class Conf {
     // console.log("this._store", this._store);
   }
 
-  set(key: string, value: string | number) {
+  set(key: string, value: string | number | object) {
     if (key.match(/:/)) {
       const keys = key.split(':')
-      let storeKey: Record<string, any> = Object.keys(this._store)
+      let storeKey = this._store
 
-      keys.forEach((k: string, i: number) => {
-        if (keys.length === i + 1)
+      keys.forEach(function (k: string | number, i: number) {
+        if (keys.length === i + 1) {
           storeKey[k] = value
+        }
 
-        if (storeKey[k] === undefined)
+        if (storeKey[k] === undefined) {
           storeKey[k] = {}
+        }
 
         storeKey = storeKey[k]
       })
-    }
-    else {
+    } else {
       this._store[key] = value
     }
   }
@@ -51,8 +51,7 @@ class Conf {
   }
 
   getItem(key: string) {
-    // @ts-ignore
-    return Object.keys(this._store).includes(key) ? this._store[key] : undefined
+    return this._store[key]
   }
 
   get(key: string) {
@@ -64,7 +63,6 @@ class Conf {
     }
 
     // Return regular key
-    // @ts-ignore
     return this._store[key]
   }
 
@@ -75,6 +73,7 @@ class Conf {
   dev() {
     return this.getItem('dev')
   }
+
 
   server() {
     return this.getItem('server')
@@ -89,11 +88,11 @@ class Conf {
   }
 
   setEnvironment() {
-    if (process.browser)
+    if (process.browser) {
       this._env = 'client'
-
-    else
+    } else {
       this._env = 'server'
+    }
   }
 
   getServerVars() {
@@ -102,10 +101,10 @@ class Conf {
     if (this._env === 'server') {
       try {
         serverVars = server
-      }
-      catch (e) {
-        if (process.env.NODE_ENV === 'development')
-          console.warn('Didn\'t find a server config in `./config`.')
+      } catch (e) {
+        if (process.env.NODE_ENV === 'development') {
+          console.warn("Didn't find a server config in `./config`.")
+        }
       }
     }
 
@@ -117,12 +116,12 @@ class Conf {
 
     try {
       clientVars = client
-    }
-    catch (e) {
+    } catch (e) {
       clientVars = {}
 
-      if (process.env.NODE_ENV === 'development')
-        console.warn('Didn\'t find a client config in `./config`.')
+      if (process.env.NODE_ENV === 'development') {
+        console.warn("Didn't find a client config in `./config`.")
+      }
     }
 
     return clientVars
@@ -132,16 +131,15 @@ class Conf {
     let overrides
     const filename = process.env.NODE_ENV === 'production' ? 'prod' : 'dev'
     try {
-      overrides
-        = process.env.NODE_ENV === 'production'
+      overrides =
+        process.env.NODE_ENV === 'production'
           ? prod
           : dev
 
       console.warn(
         `FYI: data in \`./config/${filename}.js\` file will override Server & Client equal data/values.`,
       )
-    }
-    catch (e) {
+    } catch (e) {
       overrides = {}
     }
 
@@ -154,11 +152,10 @@ class Conf {
     const keys = nestedKey.split(':')
     let storeKey = this._store
 
-    keys.forEach((k: string) => {
+    keys.forEach(function (k: string | number) {
       try {
         storeKey = storeKey[k]
-      }
-      catch (e) {
+      } catch (e) {
         return undefined
       }
     })
