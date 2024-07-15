@@ -1,4 +1,6 @@
 # Nuxt3.6 Template
+[![Netlify Status](https://api.netlify.com/api/v1/badges/07cec8d0-adce-4c33-8136-ea8f423036eb/deploy-status)](https://app.netlify.com/sites/peace2074/deploys)
+
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 ## Features
