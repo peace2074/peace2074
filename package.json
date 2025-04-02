@@ -1,11 +1,6 @@
 {
-  "name": "peace2074",
-  "private": false,
-  "author": {
-    "name": "PeaceMarshal",
-    "email": "peacem74@gmail.com",
-    "url": "https://peace2074.com"
-  },
+  "name": "nuxt-app",
+  "private": true,
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
